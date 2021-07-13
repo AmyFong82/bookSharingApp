@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import BooksContainer from './containers/BooksContainer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <p>Can you see me?</p>
+      <BooksContainer />
     </div>
   );
 }
