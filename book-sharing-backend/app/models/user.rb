@@ -4,4 +4,6 @@ class User < ApplicationRecord
 	has_many :reviews
 
 	has_secure_password
+	validates :username, uniqueness: { case_sensitive: false }
+	validates :username, :email, :password, presence: true
 end

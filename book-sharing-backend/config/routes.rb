@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :users, except: [:index] do
         resources :books
         post '/login', to: 'auth#create'
-        get '/account', to: 'users#account'
+        get '/account', to: 'users#show'
       end
       resources :reviews
       resources :requests
