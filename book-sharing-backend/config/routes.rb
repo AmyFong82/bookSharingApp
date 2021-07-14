@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, except: [:index] do
         resources :books
+        post '/login', to: 'auth#create'
+        get '/account', to: 'users#account'
       end
       resources :reviews
       resources :requests
