@@ -16,7 +16,7 @@ class Book extends Component {
 					<Card.Text>by {book.author}</Card.Text>
 				    <Card.Text>{book.format}</Card.Text>
 				    <Card.Text>for {book.reading_age}</Card.Text>
-				    <a href="#" className="btn btn-primary">Go somewhere</a>
+				    <a href="#" className="btn btn-primary">Request</a>
 				  </Card.Body>
 				</Card>
 			</div>
