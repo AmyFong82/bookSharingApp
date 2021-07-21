@@ -7,14 +7,16 @@ class Book extends Component {
 		const { book } = this.props;
 
 		return(
-			<div>
-				<img src={book.cover_image} alt={book.title}/>
-				<h3>{book.title}</h3>
-				<li>
-					{book.title} by {book.author}
-				</li>
+			<div className="card" style={{width: 18 + 'rem'}}>
+			  <img src={book.cover_image} className="card-img-top" alt={book.title}/>
+			  <div className="card-body">
+			    <h5 className="card-title">{book.title}</h5>
+				<p className="card-text">by {book.author}</p>
+			    <p className="card-text">{book.format}</p>
+			    <p className="card-text">{book.reading_age}</p>
+			    <a href="#" className="btn btn-primary">Go somewhere</a>
+			  </div>
 			</div>
-
 		)
 	}
 }
