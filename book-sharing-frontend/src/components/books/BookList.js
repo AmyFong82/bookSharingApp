@@ -8,7 +8,7 @@ class BookList extends Component {
 
 	render(){
 		return (
-			<div>{this.listBooks()}</div>
+			<div className="row">{this.listBooks()}</div>
 		)
 	}
 }

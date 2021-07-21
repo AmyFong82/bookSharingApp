@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
+
 
 class Book extends Component {
 
 	render() {
-		console.log(this.props)
 		const { book } = this.props;
 
 		return(
-			<div className="card" style={{width: 18 + 'rem'}}>
-			  <img src={book.cover_image} className="card-img-top" alt={book.title}/>
-			  <div className="card-body">
-			    <h5 className="card-title">{book.title}</h5>
-				<p className="card-text">by {book.author}</p>
-			    <p className="card-text">{book.format}</p>
-			    <p className="card-text">{book.reading_age}</p>
-			    <a href="#" className="btn btn-primary">Go somewhere</a>
-			  </div>
+			<div className="col-sm-3">
+				<Card>
+				  <Card.Img src={book.cover_image} className="card-img-top" alt={book.title}/>
+				  <Card.Body>
+				    <Card.Title>{book.title}</Card.Title>
+					<Card.Text>by {book.author}</Card.Text>
+				    <Card.Text>{book.format}</Card.Text>
+				    <Card.Text>for {book.reading_age}</Card.Text>
+				    <a href="#" className="btn btn-primary">Go somewhere</a>
+				  </Card.Body>
+				</Card>
 			</div>
 		)
 	}
