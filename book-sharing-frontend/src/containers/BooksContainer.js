@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import BookList from '../components/books/BookList'
 import { fetchBooks } from '../actions/bookActions'
+import { connect } from 'react-redux';
 
 class BooksContainer extends Component {
 
@@ -13,7 +13,7 @@ class BooksContainer extends Component {
 		return (
 			<div className="BooksContainer">
 				<h1>Books</h1>
-				<BookList bookList={this.props.books}/>
+				<BookList books={this.props.books}/>
 			</div>
 		)
 	}

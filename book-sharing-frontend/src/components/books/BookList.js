@@ -3,9 +3,7 @@ import Book from './Book'
 
 class BookList extends Component {
 	listBooks = () => {
-		console.log(this.props.books)
-		return this.props.books
-		// return this.props.books.map(book => <Book key={book.id}/>)
+		return this.props.books.map(book => <Book key={book.id} book={book} />)
 	}
 
 	render(){
