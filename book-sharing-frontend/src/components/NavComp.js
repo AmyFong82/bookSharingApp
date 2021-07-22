@@ -36,6 +36,9 @@ class NavComp extends Component {
 					<Route exact path="/">
 		        		<BooksContainer />
 		          	</Route>
+		          	<Route path="/books">
+			        	<BooksContainer />
+			        </Route>
 			        <Route path="/login">
 			        	<LoginContainer />
 			        </Route>

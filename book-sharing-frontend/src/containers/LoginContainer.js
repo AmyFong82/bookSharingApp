@@ -4,7 +4,9 @@ import Login from '../components/users/Login'
 export default class LoginContainer extends Component {
 	render() {
 		return(
-			<Login/>
+			<div className="login-container mt-5">
+				<Login/>
+			</div>
 		)
 	}
 }
