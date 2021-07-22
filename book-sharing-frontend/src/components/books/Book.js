@@ -13,9 +13,9 @@ class Book extends Component {
 				  <Card.Img src={book.cover_image} className="card-img-top" alt={book.title}/>
 				  <Card.Body>
 				    <Card.Title>{book.title}</Card.Title>
-					<Card.Text>by {book.author}</Card.Text>
+					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text>{book.format}</Card.Text>
-				    <Card.Text>for {book.reading_age}</Card.Text>
+				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
 				    <a href="#" className="btn btn-primary">Request</a>
 				  </Card.Body>
 				</Card>

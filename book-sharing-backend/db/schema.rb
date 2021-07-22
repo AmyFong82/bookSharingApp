@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 2021_07_08_141353) do
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.date "date_requested"
+    t.date "date_shipped"
+    t.date "date_received"
     t.string "acquire_method"
     t.string "address"
     t.string "status", default: "pending"

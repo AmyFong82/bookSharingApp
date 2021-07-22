@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import BooksContainer from '../containers/BooksContainer'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import BooksContainer from '../containers/BooksContainer'
+import AccountContainer from '../containers/AccountContainer'
 import LoginContainer from '../containers/LoginContainer'
 
 import {
@@ -38,6 +39,9 @@ class NavComp extends Component {
 		          	</Route>
 		          	<Route path="/books">
 			        	<BooksContainer />
+			        </Route>
+			        <Route path="/account">
+			        	<AccountContainer />
 			        </Route>
 			        <Route path="/login">
 			        	<LoginContainer />

@@ -34,7 +34,7 @@ book4 = Book.create(title: 'This Is Not My Hat',
 					user_id: 2)
 
 book5 = Book.create(title: 'Little Kids First Big Book of Dinosaurs',
-					author: 'Catherine Hughes',
+					author: 'National Geographic Catherine Hughes',
 					cover_image: 'https://images-na.ssl-images-amazon.com/images/I/817nvjKbDPL.jpg',
 					reading_age: '3 - 9',
 					user_id: 2)
