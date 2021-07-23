@@ -2,15 +2,14 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
 	def show
-		user = User.find(params[:id])
-		render json: user, only: [:name, :email]
+		render json: {user: current_user, only: [:username, :email]}, status: :accepted
 	end
 
 	def create
 		@user = User.create(user_params)
 		if @user.valid?
 			@token = encode_token(user_id: @user.id)
-			render json: { user: @user, only: [:name, :email], jwt: @token }, status: :created
+			render json: { user: @user, only: [:username, :email], jwt: @token }, status: :created
 		else
 			render json: { error: 'failed to create user' }, status: :not_acceptable
 		end
@@ -19,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :password, :email)
+		params.require(:user).permit(:username, :password, :email)
 	end
 
 end
