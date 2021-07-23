@@ -7,7 +7,7 @@ const userReducer = (state = { user: [], authenticating: false}, action) => {
 				authenticating: true
 			}
 
-		case 'ADD_USER':
+		case 'LOGIN_USER':
 			return {
 				...state,
 				user: action.user,

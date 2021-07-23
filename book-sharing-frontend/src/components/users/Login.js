@@ -7,16 +7,22 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 class Login extends React.Component{
+
 	state = {
-		user: {
-			username: ""
-			password: ""
-		}
+		username: "",
+		password: ""
+	}
+
+	handleOnChange = event => {
+	    this.setState({
+	      [event.target.name]: event.target.value
+	    });
 	}
 
 	handleSubmit = event => {
 		event.preventDafault()
-    	this.props.dispatch({type: 'AUTHENTICATE', payload: this.state})
+		const user = {...this.state}
+    	this.props.fetchUser(user)
   	}
 
 	render(){
@@ -26,12 +32,12 @@ class Login extends React.Component{
 			<Form onSubmit={ event => this.handleSubmit(event) }>
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Username" className="mb-3">
-				    <Form.Control type="text" placeholder="Username" required />
+				    <Form.Control type="text" placeholder="Username" required onChange={(event) => this.handleOnChange(event)}/>
 				  </FloatingLabel>
 			  </Form.Group>
   			  <Form.Group className="mb-3" controlId="formBasicPassword">
 				  <FloatingLabel label="Password">
-				    <Form.Control type="password" placeholder="Password" required />
+				    <Form.Control type="password" placeholder="Password" required onChange={(event) => this.handleOnChange(event)}/>
 				  </FloatingLabel>
 			  </Form.Group>
 
@@ -39,7 +45,6 @@ class Login extends React.Component{
 			    Login
 			  </Button>
 			</Form>
-			{user}
 		)
 	}
 }

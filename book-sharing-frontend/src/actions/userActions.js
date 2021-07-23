@@ -1,17 +1,16 @@
-export const fetchUser = () => {
+export const fetchUser = user => {
 	return (dispatch) => {
 		dispatch({type: 'AUTHENTICATING'})
-		const data = {username: , password: }
 		fetch('http://localhost:3001/api/v1/users',{
 			method: 'POST',
 			headers: {
 			"Content-Type": "application/json",
     		"Accept": "application/json"
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify(user)
 		}).then(resp => resp.json())
 			.then(respJson => {
-			dispatch({type: 'ADD_BOOKS', books: respJson})
+			dispatch({type: 'LOGIN_USER', user: respJson})
 		})
 	}
 }
