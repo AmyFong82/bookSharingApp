@@ -8,12 +8,16 @@ export default class Login extends React.Component{
 	render(){
 		return(
 			<Form>
-			  <FloatingLabel label="Username" className="mb-3">
-			    <Form.Control type="text" placeholder="Username" />
-			  </FloatingLabel>
-			  <FloatingLabel label="Password">
-			    <Form.Control type="password" placeholder="Password" />
-			  </FloatingLabel>
+			  <Form.Group className="mb-3" controlId="formBasicUsername">
+				  <FloatingLabel label="Username" className="mb-3">
+				    <Form.Control type="text" placeholder="Username" required />
+				  </FloatingLabel>
+			  </Form.Group>
+  			  <Form.Group className="mb-3" controlId="formBasicPassword">
+				  <FloatingLabel label="Password">
+				    <Form.Control type="password" placeholder="Password" required />
+				  </FloatingLabel>
+			  </Form.Group>
 
 			  <Button variant="primary" type="submit">
 			    Login
