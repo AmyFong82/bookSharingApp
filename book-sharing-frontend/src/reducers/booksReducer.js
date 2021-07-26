@@ -3,7 +3,7 @@ const booksReducer = (state = { books: [], loading: false}, action) => {
 		case 'LOADING_BOOKS':
 			return {
 				...state,
-				books: [...state.cats],
+				books: [...state.books],
 				loading: true
 			}
 
