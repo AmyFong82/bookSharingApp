@@ -23,21 +23,38 @@ class Login extends React.Component{
 		event.preventDafault()
 		const user = {...this.state}
     	this.props.fetchUser(user)
+	    this.setState({
+	      title: '',
+	      authorName: ''
+	    });
   	}
 
 	render(){
-		const user = this.props.user
-
 		return(
 			<Form onSubmit={ event => this.handleSubmit(event) }>
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Username" className="mb-3">
-				    <Form.Control type="text" placeholder="Username" required onChange={(event) => this.handleOnChange(event)}/>
+				  	{/*//username input}*/}
+				    <Form.Control 
+				    	type="text" 
+				    	placeholder="Username"
+				    	onChange={(event) => this.handleOnChange(event)}
+				    	name='username'
+				    	value={this.state.username}
+				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
+
   			  <Form.Group className="mb-3" controlId="formBasicPassword">
 				  <FloatingLabel label="Password">
-				    <Form.Control type="password" placeholder="Password" required onChange={(event) => this.handleOnChange(event)}/>
+				  {/*// password input*/}
+				    <Form.Control 
+				    	type="password" 
+				    	placeholder="Password"
+				    	onChange={(event) => this.handleOnChange(event)}
+				    	name='password'
+				    	value={this.state.password}
+				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
 
@@ -62,5 +79,5 @@ class Login extends React.Component{
 // 	}
 // }
 
-export default connect()(Login)
+export default connect(null, { fetchUser })(Login)
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)

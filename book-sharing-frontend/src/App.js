@@ -7,7 +7,7 @@ class App extends Component {
 
   render(){
     return (
-      <Container className="p-3">
+      <Container className="app p-3">
         <NavContainer />
       </Container>
     );
