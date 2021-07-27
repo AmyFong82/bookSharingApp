@@ -3,7 +3,7 @@ export const fetchBooks = () => {
 		dispatch({type: 'LOADING_BOOKS'})
 		fetch('http://localhost:3001/api/v1/books').then(resp => resp.json())
 			.then(respJson => {
-			dispatch({type: 'FETCH_BOOKS', books: respJson})
+			dispatch({type: 'FETCH_BOOKS', booklist: respJson})
 		})
 	}
 }
