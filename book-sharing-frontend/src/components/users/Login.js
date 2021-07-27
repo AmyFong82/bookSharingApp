@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchUser } from '../../actions/userActions'
+import { loginUser } from '../../actions/userActions'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
@@ -9,9 +9,10 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 class Login extends React.Component{
 
 	state = {
-		username: "",
-		password: ""
+		username: '',
+		password: ''
 	}
+
 
 	handleOnChange = event => {
 	    this.setState({
@@ -20,12 +21,12 @@ class Login extends React.Component{
 	}
 
 	handleSubmit = event => {
-		event.preventDafault()
+		event.preventDefault()
 		const user = {...this.state}
-    	this.props.fetchUser(user)
+    	this.props.loginUser(user)
 	    this.setState({
-	      title: '',
-	      authorName: ''
+	      username: '',
+	      password: ''
 	    });
   	}
 
@@ -34,7 +35,6 @@ class Login extends React.Component{
 			<Form onSubmit={ event => this.handleSubmit(event) }>
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Username" className="mb-3">
-				  	{/*//username input}*/}
 				    <Form.Control 
 				    	type="text" 
 				    	placeholder="Username"
@@ -47,7 +47,6 @@ class Login extends React.Component{
 
   			  <Form.Group className="mb-3" controlId="formBasicPassword">
 				  <FloatingLabel label="Password">
-				  {/*// password input*/}
 				    <Form.Control 
 				    	type="password" 
 				    	placeholder="Password"
@@ -73,11 +72,6 @@ class Login extends React.Component{
 // 	}
 // }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		fetchUser: () => dispatch(fetchUser())
-// 	}
-// }
 
-export default connect(null, { fetchUser })(Login)
+export default connect(null, { loginUser })(Login)
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -12,7 +12,6 @@ class BooksContainer extends Component {
 	render() {
 		return (
 			<div className="books-container mt-5">
-				{console.log(this.props)}
 				<BookList books={this.props.books}/>
 			</div>
 		)
