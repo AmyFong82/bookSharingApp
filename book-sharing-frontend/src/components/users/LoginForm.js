@@ -23,7 +23,7 @@ function LoginForm ({Login}){
 	const handleSubmit = event => {
 			event.preventDefault()
 	    	Login(details)
-			history.push("/")
+			history.push("/account")
 	  	}
 
 	return(

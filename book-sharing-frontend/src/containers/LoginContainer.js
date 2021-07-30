@@ -10,7 +10,7 @@ class LoginContainer extends Component {
 		return(
 			<div className="login-container mt-5">
 				{(this.props.user.current_user) ? (
-					<Redirect to="/" />
+					<Redirect to="/account" />
 				) : (
 					<LoginForm Login={Login}/>
 				)}

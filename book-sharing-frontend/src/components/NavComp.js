@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
@@ -26,8 +27,14 @@ class NavComp extends Component {
 				      <Nav className="me-auto">
 				        <Nav.Link href="/books">Books</Nav.Link>
 				        <Nav.Link href="/account">Account</Nav.Link>
-		              </Nav>
-				      <Button href="/Login" variant="outline-primary" >Login / Sign Up</Button>
+		          </Nav>
+		          {console.log(this.props)}
+		          {console.log(this.props.user)}
+		          {(this.props.user.length !== 0) ? (
+  					      <Button href="/" variant="outline-primary" >Logout</Button>
+		           ) : (
+				      		<Button href="/Login" variant="outline-primary" >Login / Sign Up</Button>
+		           )}
 				    </Navbar.Collapse>
 				  </Container>
 				</Navbar>
@@ -50,7 +57,13 @@ class NavComp extends Component {
 
 		)
 	}
-
 }
 
-export default NavComp
+const mapStateToProps = state => {
+		return {
+			user: state.user.current_user,
+			authenticating: state.user.authenticating
+	}
+}
+
+export default connect(mapStateToProps)(NavComp)
