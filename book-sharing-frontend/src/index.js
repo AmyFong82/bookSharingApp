@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createBrowserHistory } from 'history';
 import App from './App';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
@@ -14,9 +16,11 @@ const store = createStore(
   compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
   );
 
+export const browserHistory = createBrowserHistory();
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+      <App />
   </Provider>,
   document.getElementById('root')
 );

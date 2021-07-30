@@ -1,4 +1,4 @@
-export const loginUser = user => {
+export const Login = user => {
 	return (dispatch) => {
 		dispatch({type: 'AUTHENTICATING'})
 		fetch('http://localhost:3001/api/v1/login',{
@@ -12,5 +12,9 @@ export const loginUser = user => {
 			.then(respJson => {
 			dispatch({type: 'LOGIN_USER', current_user: respJson})
 			})
+		.catch((error) => {
+			console.log("Incorrect Login Info")
+		})
+
 	}
 }

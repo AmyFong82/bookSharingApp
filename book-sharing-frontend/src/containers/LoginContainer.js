@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import Login from '../components/users/Login'
+import { Redirect } from "react-router-dom";
+import { Login } from '../actions/userActions'
+import LoginForm from '../components/users/LoginForm'
+import { connect } from 'react-redux'
 
 
-export default class LoginContainer extends Component {
+class LoginContainer extends Component {
 	render() {
 		return(
 			<div className="login-container mt-5">
-				<Login/>
+				{(this.props.user.current_user) ? (
+					<Redirect to="/" />
+				) : (
+					<LoginForm Login={Login}/>
+				)}
 			</div>
 		)
 	}
 }
 
-// const mapStateToProps = state => {
-// 	return {
-// 		user: state.user.current_user,
-// 		authenticating: state.user.authenticating
-// 	}
-// }
+const mapStateToProps = state => {
+	return {
+		user: state.user.current_user,
+		authenticating: state.user.authenticating
+	}
+}
 
 // const mapDispatchToProps = dispatch => {
 // 	return {
@@ -25,4 +32,4 @@ export default class LoginContainer extends Component {
 // 	}
 // }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStateToProps)(LoginContainer)
