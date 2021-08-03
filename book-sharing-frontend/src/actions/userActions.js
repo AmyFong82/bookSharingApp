@@ -10,7 +10,7 @@ export const Login = user => {
 			body: JSON.stringify(user)
 		}).then(resp => resp.json())
 			.then(respJson => {
-			dispatch({type: 'LOGIN_USER', current_user: respJson})
+			dispatch({type: 'LOGIN_USER', currentUser: respJson})
 			})
 		.catch((error) => {
 			console.log("Incorrect Login Info")

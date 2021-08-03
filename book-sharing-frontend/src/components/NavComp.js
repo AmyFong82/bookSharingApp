@@ -28,8 +28,6 @@ class NavComp extends Component {
 				        <Nav.Link href="/books">Books</Nav.Link>
 				        <Nav.Link href="/account">Account</Nav.Link>
 		          </Nav>
-		          {console.log(this.props)}
-		          {console.log(this.props.user)}
 		          {(this.props.user.length !== 0) ? (
   					      <Button href="/" variant="outline-primary" >Logout</Button>
 		           ) : (

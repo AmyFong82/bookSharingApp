@@ -20,6 +20,8 @@ class BooksContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
+		...state,
+		user: state.user,
 		books: state.books.booklist,
 		loading: state.books.loading
 	}

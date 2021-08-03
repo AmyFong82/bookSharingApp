@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import NavComp from '../components/NavComp'
 
-export default class NavContainer extends Component {
+class NavContainer extends Component {
 
 	render() {
 		return(
-			<NavComp/>
+			<NavComp user={this.state}/>
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		user: state.user.current_user,
+		books: state.books.booklist
+	}
+}
+
+export default connect(mapStateToProps)(NavContainer)
