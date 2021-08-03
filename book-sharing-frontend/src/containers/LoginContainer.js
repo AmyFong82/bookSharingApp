@@ -6,15 +6,14 @@ import { connect } from 'react-redux'
 
 
 class LoginContainer extends Component {
+	constructor(props){
+		super(props)
+	}
+
 	render() {
 		return(
 			<div className="login-container mt-5">
-				{(this.props.user) ? (
-				// {(this.props.user.current_user) ? (
-					<Redirect to="/account" />
-				) : (
-					<LoginForm Login={Login}/>
-				)}
+				<LoginForm Login={Login} />
 			</div>
 		)
 	}

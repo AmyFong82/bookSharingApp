@@ -17,14 +17,6 @@ import LoginContainer from './containers/LoginContainer'
 
 
 class App extends Component {
-  // constructor(){
-  //   super();
-
-  //   this.state = {
-  //     loggedInStatus: "NOT_LOGGED_IN",
-  //     user: {}
-  //   }
-  // }
 
   render(){
     return (
@@ -45,23 +37,30 @@ class App extends Component {
           </Navbar>
 
           <Switch>
-            <Route exact path="/">
-                  <BooksContainer />
-                  </Route>
-                  <Route path="/books">
-                  <BooksContainer />
-                </Route>
-                <Route path="/account">
-                  <AccountContainer />
-                </Route>
-                <Route path="/login">
-                  <LoginContainer />
-                </Route>
-              </Switch>
-          </Router>
+            <Route exact path="/" 
+              render={props => (
+                <BooksContainer {...props} />
+              )}
+            />
+            <Route exact path="/books" 
+             render={props => (
+                <BooksContainer {...props} />
+              )}
+            />
+            <Route path="/account" component={AccountContainer} props={this.props}/>
+            <Route path="/login" component={LoginContainer} />
+          </Switch>
+        </Router>
       </Container>
     );
   }
 }
 
+// const mapStateToProps = state => {
+//     return {
+//       state
+//   }
+// }
+
+// export default connect(mapStateToProps)(App);
 export default App;

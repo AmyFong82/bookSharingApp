@@ -21,10 +21,9 @@ function LoginForm ({Login}){
 	}
 
 	const handleSubmit = event => {
-			event.preventDefault()
-	    	Login(details)
-			history.push("/account")
-	  	}
+		event.preventDefault()
+		Login(details)
+	}
 
 	return(
 		<Form onSubmit={handleSubmit}>

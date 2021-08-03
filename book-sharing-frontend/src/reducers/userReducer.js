@@ -1,21 +1,19 @@
 const userReducer = (
 	state = { 
 		loggedInStatus: "NOT_LOGGED_IN",
-      	user: {},
+      	currentUser: {},
 		}, action) => {
 	switch(action.type) {
 		case 'AUTHENTICATING':
 			return {
 				...state,
-				user: [state.user],
-				authenticating: true
+				currentUser: state.currentUser
 			}
 
 		case 'LOGIN_USER':
 			return {
 				loggedInStatus: "LOGGED_IN",
-				user: action.currentUser,
-					authenticating: false
+				currentUser: action.currentUser
 			}
 
 		default:
