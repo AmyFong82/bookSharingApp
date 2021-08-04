@@ -4,9 +4,6 @@ import { fetchBooks } from '../actions/bookActions'
 import { connect } from 'react-redux';
 
 class BooksContainer extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	componentDidMount(){
 		this.props.fetchBooks()
@@ -23,7 +20,7 @@ class BooksContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		...state,
+		user: state.user,
 		books: state.books.booklist,
 		loading: state.books.loading
 	}

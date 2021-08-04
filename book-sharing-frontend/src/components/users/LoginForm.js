@@ -23,6 +23,8 @@ function LoginForm ({Login}){
 	const handleSubmit = event => {
 		event.preventDefault()
 		Login(details)
+		//put some conditions in here.
+		history.push("/account")
 	}
 
 	return(
@@ -58,13 +60,14 @@ function LoginForm ({Login}){
 	)
 }
 
-const mapStateToProps = details => {
-	return {
-		username: details.username,
-		password: details.password
-	}
-}
+
+// const mapStateToProps = details => {
+// 	return {
+// 		username: details.username,
+// 		password: details.password
+// 	}
+// }
 
 
-export default connect(mapStateToProps, { Login })(LoginForm)
+export default connect(null, { Login })(LoginForm)
 // export default connect(mapStateToProps, mapDispatchToProps)(Login)

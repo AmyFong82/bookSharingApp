@@ -37,18 +37,12 @@ class App extends Component {
           </Navbar>
 
           <Switch>
-            <Route exact path="/" 
-              render={props => (
-                <BooksContainer {...props} />
-              )}
-            />
-            <Route exact path="/books" 
-             render={props => (
-                <BooksContainer {...props} />
-              )}
-            />
-            <Route path="/account" component={AccountContainer} props={this.props}/>
-            <Route path="/login" component={LoginContainer} />
+            <Route exact path="/" component={BooksContainer} />
+            <Route exact path="/books" component={BooksContainer} />
+            <Route exact path="/account" component={AccountContainer} />
+            <Route exact path="/login" component={LoginContainer} />
+{/*            <Route path="/account" component={AccountContainer} state={this.state}/>
+            <Route path="/login" component={LoginContainer} state={this.state}/>*/}
           </Switch>
         </Router>
       </Container>
@@ -56,11 +50,4 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//       state
-//   }
-// }
-
-// export default connect(mapStateToProps)(App);
-export default App;
+export default connect()(App);
