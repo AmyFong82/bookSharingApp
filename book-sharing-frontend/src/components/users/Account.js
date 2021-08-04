@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 
-export default class Account extends Component {
+class Account extends Component {
 
-	render(){
+	render(props){
 		return(
 			<Form>
 			  <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -20,3 +21,12 @@ export default class Account extends Component {
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return{
+		user: state.user,
+		books: state.books.booklist
+	}
+}
+
+export default connect(mapStateToProps)(Account)

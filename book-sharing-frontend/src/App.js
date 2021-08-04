@@ -17,6 +17,17 @@ import LoginContainer from './containers/LoginContainer'
 
 
 class App extends Component {
+  constructor(){
+    super()
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout() {
+    this.props.user: {}
+    this.
+  }
 
   render(){
     return (
@@ -50,4 +61,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    books: state.books.booklist
+  }
+}
+export default connect(mapStateToProps)(App);

@@ -9,31 +9,37 @@ import {
 
 import { Login } from '../actions/userActions'
 import LoginForm from '../components/users/LoginForm'
+import AccountContainer from './AccountContainer'
+
 
 
 class LoginContainer extends Component {
 
+	checkLoginStatus(props){
+		
+	}
+
 	render() {
+		console.log(this.props.user)
+		if(this.props.user){
+			router.push('/account')
 
-		const loggedIn = (this.props.user.length === 1)
+		}else{
+			return(
+				<div className="login-container mt-5">
+					<LoginForm Login={Login} />
+				</div>
+			)
 
-		return(
-			<div className="login-container mt-5">
-				<Router>
-		        	<Switch>
-						<Route exact path="/login">
-						  {loggedIn ? <Redirect to="/account" /> : <LoginForm Login={Login} />}
-						</Route>
-					</Switch>
-				</Router>
-			</div>
-		)
+		}
+
+
 	}
 }
 
 const mapStateToProps = state => {
 	return{
-		user: state.user
+		user: state.user.currentUser
 	}
 }
 

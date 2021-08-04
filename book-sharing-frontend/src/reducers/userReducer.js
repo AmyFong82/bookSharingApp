@@ -16,6 +16,12 @@ const userReducer = (
 				currentUser: action.currentUser
 			}
 
+		case 'LOGOUT_USER':
+			return {
+				loggedInStatus: "LOGGED_OUT",
+				currentUser: {}
+			}
+
 		default:
 			return state;
 	}

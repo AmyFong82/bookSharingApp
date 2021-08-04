@@ -12,6 +12,7 @@ export const Login = user => {
 			.then(respJson => {
 				if (respJson.user){
 					dispatch({type: 'LOGIN_USER', currentUser: respJson})
+					this.props.history.push('/account')
 				}else{
 					console.log("Incorrect Login Info")
 				}
