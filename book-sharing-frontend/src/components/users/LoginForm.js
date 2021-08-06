@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { Login } from '../../actions/userActions'
+import { useHistory } from "react-router-dom";
+import { login } from '../../actions/userActions'
+
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
-function LoginForm ({Login}){
+function LoginForm(props) {
 
-	const [details, setDetails] = useState({username: "", password:""})
+	const [details, setDetails] = useState({username: "", password: ""})
+
+	const [loggedIn, setLoggedIn] = useState("NOT_LOGGED_IN")
 
 	const history = useHistory();
 
@@ -22,7 +25,8 @@ function LoginForm ({Login}){
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		Login(details)
+		props.login(details)
+		props.componentDidUpdate()
 	}
 
 	return(
@@ -58,4 +62,4 @@ function LoginForm ({Login}){
 	)
 }
 
-export default connect(null, { Login })(LoginForm)
+export default connect(null, {login})(LoginForm)

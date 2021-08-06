@@ -6,7 +6,7 @@ const userReducer = (
 	switch(action.type) {
 		case 'AUTHENTICATING':
 			return {
-				...state,
+				loggedInStatus: "AUTHENTICATING",
 				currentUser: state.currentUser
 			}
 

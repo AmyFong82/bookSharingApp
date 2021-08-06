@@ -7,7 +7,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import { Login } from '../actions/userActions'
+import { login } from '../actions/userActions'
 import LoginForm from '../components/users/LoginForm'
 import AccountContainer from './AccountContainer'
 
@@ -15,31 +15,19 @@ import AccountContainer from './AccountContainer'
 
 class LoginContainer extends Component {
 
-	checkLoginStatus(props){
-		
-	}
-
-	render() {
-		console.log(this.props.user)
-		if(this.props.user){
-			router.push('/account')
-
-		}else{
-			return(
-				<div className="login-container mt-5">
-					<LoginForm Login={Login} />
-				</div>
-			)
-
-		}
-
-
+	render(){
+		return(
+			<div className="login-container mt-5">
+				<LoginForm login={login} componentDidUpdate={this.componentDidUpdate}/>
+			</div>
+		)
 	}
 }
 
 const mapStateToProps = state => {
-	return{
-		user: state.user.currentUser
+	return {
+		...state,
+		loggedInStatus: state.user.LoggedInStatus
 	}
 }
 

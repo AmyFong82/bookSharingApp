@@ -1,4 +1,4 @@
-export const Login = user => {
+export const login = user => {
 	return (dispatch) => {
 		dispatch({type: 'AUTHENTICATING'})
 		fetch('http://localhost:3001/api/v1/login',{
@@ -12,7 +12,6 @@ export const Login = user => {
 			.then(respJson => {
 				if (respJson.user){
 					dispatch({type: 'LOGIN_USER', currentUser: respJson})
-					this.props.history.push('/account')
 				}else{
 					console.log("Incorrect Login Info")
 				}

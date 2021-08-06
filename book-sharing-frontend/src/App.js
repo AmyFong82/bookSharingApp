@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 import { connect } from 'react-redux'
@@ -18,16 +19,38 @@ import LoginContainer from './containers/LoginContainer'
 
 class App extends Component {
   constructor(){
-    super()
+    super();
 
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    this.checkLoggedIn = this.checkLoggedIn.bind(this)
+    this.componentDidUpdate = this.componentDidUpdate.bind(this)
   }
+
+  componentDidUpdate(){
+    console.log(this.checkLoggedIn())
+    if(this.checkLoggedIn() === "LOGGED_IN"){
+      return(<Redirect to="/account" />)
+    }
+  }
+
+  checkLoggedIn(){
+    return this.props.user.loggedInStatus
+  }
+
 
   handleLogout() {
-    this.props.user: {}
-    this.
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    });
   }
+
+  handleLogin(data) {
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user: data.user
+    });
+  }
+
 
   render(){
     return (
@@ -63,8 +86,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
-    books: state.books.booklist
+    user: state.user
   }
 }
 export default connect(mapStateToProps)(App);
