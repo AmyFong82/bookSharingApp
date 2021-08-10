@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from "react-router-dom";
 import { login } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
@@ -11,9 +10,6 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 function LoginForm(props) {
 
 	const [details, setDetails] = useState({username: "", password: ""})
-
-	const [loggedIn, setLoggedIn] = useState("NOT_LOGGED_IN")
-
 
 	const handleOnChange = event => {
 	    setDetails({
