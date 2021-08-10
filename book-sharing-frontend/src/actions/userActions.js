@@ -13,7 +13,7 @@ export const login = user => {
 				if (respJson.user){
 					dispatch({type: 'LOGIN_USER', currentUser: respJson})
 				}else{
-					console.log("Incorrect Login Info")
+					dispatch({type: 'LOGIN_FAILED', loginStatus: respJson.message})
 				}
 			})
 		// .catch((error) => {

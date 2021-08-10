@@ -9,7 +9,7 @@ import LoginForm from '../components/users/LoginForm'
 class LoginContainer extends Component {
 
 	componentDidUpdate(){
-		if(this.props.user.loggedInStatus === "LOGGED_IN"){
+		if(this.props.user.loginStatus === "LOGGED_IN"){
 				this.props.history.push("/account")
 			}
 	}
@@ -19,7 +19,7 @@ class LoginContainer extends Component {
 		return(
 			<div className="login-container mt-5">
 				<LoginForm login={login} />
-				<h2>Logged In Status: {this.props.user.loggedInStatus}</h2>
+				<h2>Login Status: {this.props.user.loginStatus}</h2>
 			</div>
 		)
 	}
@@ -28,7 +28,7 @@ class LoginContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		...state,
-		loggedInStatus: state.user.LoggedInStatus
+		loginStatus: state.user.LoginStatus
 	}
 }
 
