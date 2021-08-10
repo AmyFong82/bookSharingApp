@@ -14,7 +14,6 @@ function LoginForm(props) {
 
 	const [loggedIn, setLoggedIn] = useState("NOT_LOGGED_IN")
 
-	const history = useHistory();
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -26,7 +25,6 @@ function LoginForm(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		props.login(details)
-		props.componentDidUpdate()
 	}
 
 	return(

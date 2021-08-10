@@ -18,38 +18,38 @@ import LoginContainer from './containers/LoginContainer'
 
 
 class App extends Component {
-  constructor(){
-    super();
+  // constructor(){
+  //   super();
 
-    this.checkLoggedIn = this.checkLoggedIn.bind(this)
-    this.componentDidUpdate = this.componentDidUpdate.bind(this)
-  }
+  //   this.checkLoggedIn = this.checkLoggedIn.bind(this)
+  //   this.componentDidUpdate = this.componentDidUpdate.bind(this)
+  // }
 
-  componentDidUpdate(){
-    console.log(this.checkLoggedIn())
-    if(this.checkLoggedIn() === "LOGGED_IN"){
-      return(<Redirect to="/account" />)
-    }
-  }
+  // componentDidUpdate(){
+  //   console.log(this.checkLoggedIn())
+  //   if(this.checkLoggedIn() === "LOGGED_IN"){
+  //     return(<Redirect to="/account" />)
+  //   }
+  // }
 
-  checkLoggedIn(){
-    return this.props.user.loggedInStatus
-  }
+  // checkLoggedIn(){
+  //   return this.props.user.loggedInStatus
+  // }
 
 
-  handleLogout() {
-    this.setState({
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {}
-    });
-  }
+  // handleLogout() {
+  //   this.setState({
+  //     loggedInStatus: "NOT_LOGGED_IN",
+  //     user: {}
+  //   });
+  // }
 
-  handleLogin(data) {
-    this.setState({
-      loggedInStatus: "LOGGED_IN",
-      user: data.user
-    });
-  }
+  // handleLogin(data) {
+  //   this.setState({
+  //     loggedInStatus: "LOGGED_IN",
+  //     user: data.user
+  //   });
+  // }
 
 
   render(){
@@ -75,8 +75,6 @@ class App extends Component {
             <Route exact path="/books" component={BooksContainer} />
             <Route exact path="/account" component={AccountContainer} />
             <Route exact path="/login" component={LoginContainer} />
-{/*            <Route path="/account" component={AccountContainer} state={this.state}/>
-            <Route path="/login" component={LoginContainer} state={this.state}/>*/}
           </Switch>
         </Router>
       </Container>
@@ -89,4 +87,11 @@ const mapStateToProps = state => {
     user: state.user
   }
 }
+
+// const mapStateToProps = state => {
+//   return {
+//     ...state,
+//     loggedInStatus: state.user.LoggedInStatus
+//   }
+// }
 export default connect(mapStateToProps)(App);
