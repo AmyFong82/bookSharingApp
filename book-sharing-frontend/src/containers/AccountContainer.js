@@ -6,7 +6,7 @@ class AccountContainer extends Component {
 	render() {
 		return(
 			<div className="account-container mt-5">
-				<Account user={this.props.user}/>
+				<Account user={this.props.user} books={this.props.books}/>
 			</div>
 		)
 	}
@@ -14,7 +14,8 @@ class AccountContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		user: state.user.currentUser.user
+		user: state.user.currentUser.user,
+		books: state.user.currentUser.books
 	}
 }
 

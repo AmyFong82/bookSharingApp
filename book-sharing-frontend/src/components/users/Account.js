@@ -1,17 +1,16 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import BookList from '../books/BookList'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 
 export default class Account extends Component {
-	constructor(props){
-		super(props)
-	}
-
 
 	render(props){
+		console.log(this.props)
 		return(
+			<>
 			<Form>
 			  <Form.Group className="mb-3" controlId="formBasicEmail">
 			    <Form.Label>Email address</Form.Label>
@@ -23,6 +22,9 @@ export default class Account extends Component {
 			    Edit
 			  </Button>
 			</Form>
+			{console.log(this.props.user)}
+			<BookList books={this.props.books}/>
+			</>
 		)
 	}
 }
