@@ -1,9 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   # skip_before_action :authorized, only: [:create]
 
-	def show
-		render json: {user: current_user, only: [:username, :email]}, status: :accepted
-	end
+	# def show
+	# 	render json: {user: current_user, only: [:username, :email]}, status: :accepted
+	# end
 
 	def create
 		@user = User.create(user_params)

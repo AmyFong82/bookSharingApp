@@ -4,14 +4,19 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 
-class Account extends Component {
+export default class Account extends Component {
+	constructor(props){
+		super(props)
+	}
+
 
 	render(props){
 		return(
 			<Form>
 			  <Form.Group className="mb-3" controlId="formBasicEmail">
 			    <Form.Label>Email address</Form.Label>
-			    <Form.Control type="email" placeholder="user.email" />
+			    <h2>{this.props.user.email}</h2>
+			    <Form.Control type="email" placeholder={this.props.user.email} />
 			  </Form.Group>
 
 			  <Button variant="primary" type="submit">
@@ -22,11 +27,4 @@ class Account extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return{
-		user: state.user,
-		books: state.books.booklist
-	}
-}
-
-export default connect(mapStateToProps)(Account)
+ // connect(mapStateToProps)(Account)

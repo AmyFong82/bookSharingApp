@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Account from '../components/users/Account'
 
-export default class AccountContainer extends Component {
-	render(props) {
+class AccountContainer extends Component {
+	render() {
 		return(
 			<div className="account-container mt-5">
-				<Account/>
+				<Account user={this.props.user}/>
 			</div>
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		user: state.user.currentUser.user
+	}
+}
+
+export default connect(mapStateToProps)(AccountContainer)

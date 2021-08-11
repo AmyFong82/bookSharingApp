@@ -16,9 +16,5 @@ export const login = user => {
 					dispatch({type: 'LOGIN_FAILED', loginStatus: respJson.message})
 				}
 			})
-		// .catch((error) => {
-		// 	console.log("Incorrect Login Info")
-		// })
-
 	}
 }
