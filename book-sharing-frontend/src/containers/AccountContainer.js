@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Account from '../components/users/Account'
-import LoggedIn from '../components/users/LoggedIn'
 
 class AccountContainer extends Component {
 	render() {

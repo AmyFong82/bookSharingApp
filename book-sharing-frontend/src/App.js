@@ -36,12 +36,12 @@ class App extends Component {
   // }
 
 
-  // handleLogout() {
-  //   this.setState({
-  //     loggedInStatus: "NOT_LOGGED_IN",
-  //     user: {}
-  //   });
-  // }
+  handleLogout() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    });
+  }
 
   // handleLogin(data) {
   //   this.setState({
@@ -64,7 +64,7 @@ class App extends Component {
                     <Nav.Link href="/books">Books</Nav.Link>
                     <Nav.Link href="/account">Account</Nav.Link>
                   </Nav>
-                    <Button href="/Login" variant="outline-primary" >Login / Sign Up</Button>
+                    <Button href="/Login" variant="outline-primary" >{this.props.user ? "Logout" : "Login / Sign Up"}</Button>
                 </Navbar.Collapse>
             </Container>
           </Navbar>
@@ -83,7 +83,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user.currentUser
   }
 }
 

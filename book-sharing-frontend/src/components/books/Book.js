@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
-import LoggedIn from '../users/LoggedIn';
-import CurrentUser from '../users/CurrentUser'
 
 class Book extends Component {
 
