@@ -12,7 +12,7 @@ class BooksContainer extends Component {
 	render() {
 		return (
 			<div className="books-container mt-5">
-				<BookList books={this.props.books}/>
+				<BookList books={this.props.books} user={this.props.user}/>
 			</div>
 		)
 	}
@@ -20,6 +20,7 @@ class BooksContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
+		user: state.user.currentUser,
 		books: state.books.booklist
 	}
 }

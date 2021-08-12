@@ -1,6 +1,10 @@
 function LoggedIn(props){
 	const {currentUser} = props
-	return <h3>{currentUser.id}</h3>
+	if(currentUser.id){
+		return true
+	}else{
+		return false
+	}
 }
 
 export default LoggedIn

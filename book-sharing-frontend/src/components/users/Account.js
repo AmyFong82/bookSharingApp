@@ -20,7 +20,7 @@ export default class Account extends Component {
 			    Edit
 			  </Button>
 			</Form>
-			<BookList books={this.props.books}/>
+			<BookList user={this.props.user} books={this.props.books}/>
 			</>
 		)
 	}

@@ -8,7 +8,6 @@ class AccountContainer extends Component {
 		return(
 			<div className="account-container mt-5">
 				<Account user={this.props.user} books={this.props.books}/>
-				<LoggedIn currentUser={this.props.user}/>
 			</div>
 		)
 	}
