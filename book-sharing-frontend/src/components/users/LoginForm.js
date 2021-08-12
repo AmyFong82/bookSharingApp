@@ -18,7 +18,7 @@ function LoginForm(props) {
 	    });
 	}
 
-	const handleSubmit = (event) => {
+	const handleSubmit = event => {
 		event.preventDefault()
 		props.login(details)
 	}

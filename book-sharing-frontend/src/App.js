@@ -7,13 +7,15 @@ import {
 } from "react-router-dom";
 
 import { connect } from 'react-redux'
+import { logout } from './actions/userActions'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button'
 import BooksContainer from './containers/BooksContainer'
 import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
+import LoginButton from './components/users/LoginButton'
+import LogoutButton from './components/users/LogoutButton'
 
 
 class App extends Component {
@@ -36,13 +38,6 @@ class App extends Component {
   // }
 
 
-  handleLogout() {
-    this.setState({
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {}
-    });
-  }
-
   // handleLogin(data) {
   //   this.setState({
   //     loggedInStatus: "LOGGED_IN",
@@ -64,7 +59,7 @@ class App extends Component {
                     <Nav.Link href="/books">Books</Nav.Link>
                     <Nav.Link href="/account">Account</Nav.Link>
                   </Nav>
-                    <Button href="/Login" variant="outline-primary" >{this.props.user ? "Logout" : "Login / Sign Up"}</Button>
+                    {this.props.user ? <LogoutButton logout={this.props.logout}/> : <LoginButton /> }
                 </Navbar.Collapse>
             </Container>
           </Navbar>
@@ -93,4 +88,4 @@ const mapStateToProps = state => {
 //     loggedInStatus: state.user.LoggedInStatus
 //   }
 // }
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {logout})(App);
