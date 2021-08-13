@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import { connect } from 'react-redux'
@@ -45,7 +46,7 @@ class App extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
-                    {this.loggedIn() ? <Nav.Link href="/account">Account</Nav.Link> : null }
+                    { this.loggedIn() ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
                     { this.loggedIn() ? <LogoutButton logout={this.props.logout} /> : <LoginButton /> } 
                 </Navbar.Collapse>
@@ -55,7 +56,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={BooksContainer} />
             <Route exact path="/books" component={BooksContainer} />
-            <Route exact path="/account" component={AccountContainer} />
+            <Route exact path="/account"> 
+              {this.loggedIn() ? <AccountContainer/> : <Redirect to="/login" />}
+            </Route>
             <Route exact path="/login" component={LoginContainer} />
           </Switch>
         </Router>
