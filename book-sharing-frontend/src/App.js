@@ -57,7 +57,7 @@ class App extends Component {
             <Route exact path="/" component={BooksContainer} />
             <Route exact path="/books" component={BooksContainer} />
             <Route exact path="/account"> 
-              {this.loggedIn() ? <AccountContainer/> : <Redirect to="/login" />}
+              {this.loggedIn() ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login" component={LoginContainer} />
           </Switch>
