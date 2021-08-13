@@ -1,7 +1,9 @@
 import Button from 'react-bootstrap/Button'
 
-export default function requestBookBtn(){
+function RequestBookBtn(){
 	return(
 	    <a href="#" className="btn btn-primary">Request</a>
 	)
 }
+
+export default RequestBookBtn
