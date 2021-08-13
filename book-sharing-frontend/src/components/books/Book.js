@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
+import { editBookBtn } from './editBookBtn'
+import { requestBookBtn } from './requestBookBtn'
+import { loggedIn } from '../users/loggedIn'
 
 class Book extends Component {
 
@@ -16,7 +19,7 @@ class Book extends Component {
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text>{book.format}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
-				    <a href="#" className="btn btn-primary">{book.user_id === this.props.userID ? "Edit" : "Request"}</a>
+				    {loggedIn && book.user_id === this.props.userID ? <editBookBtn /> : <requestBookBtn />}
 				  </Card.Body>
 				</Card>
 			</div>
@@ -26,7 +29,7 @@ class Book extends Component {
 
 const mapStateToProps = state => {
 	return{
-		userID: state.user.currentUser.user.id
+		loginStatus: state.loginStatus
 	}
 }
 

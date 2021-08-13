@@ -16,26 +16,35 @@ import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
 import LogoutButton from './components/users/LogoutButton'
+import { loggedIn } from './components/users/loggedIn'
 
 
 class App extends Component {
-  // constructor(){
-  //   super();
+  constructor(){
+    super();
 
-  //   this.checkLoggedIn = this.checkLoggedIn.bind(this)
-  //   this.componentDidUpdate = this.componentDidUpdate.bind(this)
-  // }
+    this.loggedIn = this.loggedIn.bind(this)
+    // this.componentDidUpdate = this.componentDidUpdate.bind(this)
+  }
 
   // componentDidUpdate(){
-  //   console.log(this.checkLoggedIn())
-  //   if(this.checkLoggedIn() === "LOGGED_IN"){
-  //     return(<Redirect to="/account" />)
+  //   const loggedIn = (props) => {
+  //     if(props === 'LOGGED_IN'){
+  //       //maybe return btn = login ?
+  //       return true
+  //     }else{
+  //       return false
+  //     }
   //   }
   // }
 
-  // checkLoggedIn(){
-  //   return this.props.user.loggedInStatus
-  // }
+  loggedIn(){
+    if(this.props.loginStatus === 'LOGGED_IN'){
+      return true
+    }else{
+      return false
+    }
+  }
 
 
   // handleLogin(data) {
@@ -47,6 +56,7 @@ class App extends Component {
 
 
   render(){
+
     return (
       <Container className="app p-3">
         <Router>
@@ -59,7 +69,7 @@ class App extends Component {
                     <Nav.Link href="/books">Books</Nav.Link>
                     <Nav.Link href="/account">Account</Nav.Link>
                   </Nav>
-                    {this.props.user ? <LogoutButton logout={this.props.logout}/> : <LoginButton /> }
+                    { this.loggedIn() ? <LogoutButton logout={this.props.logout}/> : <LoginButton /> } 
                 </Navbar.Collapse>
             </Container>
           </Navbar>
@@ -76,9 +86,10 @@ class App extends Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
-    user: state.user.currentUser
+    loginStatus: state.user.loginStatus
   }
 }
 
