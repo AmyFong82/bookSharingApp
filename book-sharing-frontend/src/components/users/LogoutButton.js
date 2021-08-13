@@ -1,13 +1,16 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { useHistory } from "react-router-dom";
 
 function LogoutButton(props){
+
+	const history = useHistory();
 
   const handleLogout = event => {
     console.log("I'm here")
     event.preventDefault()
     props.logout()
-
+    history.push("/");
   }
 
 	return(

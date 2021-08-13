@@ -16,7 +16,6 @@ import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
 import LogoutButton from './components/users/LogoutButton'
-import { loggedIn } from './components/users/loggedIn'
 
 
 class App extends Component {
@@ -24,8 +23,21 @@ class App extends Component {
     super();
 
     this.loggedIn = this.loggedIn.bind(this)
+    // this.logOutMsg = this.logOutMsg.bind(this)
     // this.componentDidUpdate = this.componentDidUpdate.bind(this)
+
   }
+
+
+  componentDidUpdate(){
+    if(this.props.loginStatus === 'LOGGED_IN'){
+      console.log(this.props)
+        // history.push("/account")
+    }else if(this.props.loginStatus === 'LOGGED_OUT'){
+      console.log(this.props)
+        // history.push("/")
+    }
+  } 
 
   // componentDidUpdate(){
   //   const loggedIn = (props) => {
@@ -44,6 +56,10 @@ class App extends Component {
     }else{
       return false
     }
+  }
+
+  handleLogOut(){
+
   }
 
 
@@ -69,7 +85,7 @@ class App extends Component {
                     <Nav.Link href="/books">Books</Nav.Link>
                     <Nav.Link href="/account">Account</Nav.Link>
                   </Nav>
-                    { this.loggedIn() ? <LogoutButton logout={this.props.logout}/> : <LoginButton /> } 
+                    { this.loggedIn() ? <LogoutButton logout={this.props.logout} /> : <LoginButton /> } 
                 </Navbar.Collapse>
             </Container>
           </Navbar>
