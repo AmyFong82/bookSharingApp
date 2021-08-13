@@ -19,38 +19,8 @@ import LogoutButton from './components/users/LogoutButton'
 
 
 class App extends Component {
-  constructor(){
-    super();
 
-    this.loggedIn = this.loggedIn.bind(this)
-    // this.logOutMsg = this.logOutMsg.bind(this)
-    // this.componentDidUpdate = this.componentDidUpdate.bind(this)
-
-  }
-
-
-  componentDidUpdate(){
-    if(this.props.loginStatus === 'LOGGED_IN'){
-      console.log(this.props)
-        // history.push("/account")
-    }else if(this.props.loginStatus === 'LOGGED_OUT'){
-      console.log(this.props)
-        // history.push("/")
-    }
-  } 
-
-  // componentDidUpdate(){
-  //   const loggedIn = (props) => {
-  //     if(props === 'LOGGED_IN'){
-  //       //maybe return btn = login ?
-  //       return true
-  //     }else{
-  //       return false
-  //     }
-  //   }
-  // }
-
-  loggedIn(){
+  loggedIn = () => {
     if(this.props.loginStatus === 'LOGGED_IN'){
       return true
     }else{
@@ -61,14 +31,6 @@ class App extends Component {
   handleLogOut(){
 
   }
-
-
-  // handleLogin(data) {
-  //   this.setState({
-  //     loggedInStatus: "LOGGED_IN",
-  //     user: data.user
-  //   });
-  // }
 
 
   render(){
@@ -83,7 +45,7 @@ class App extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
-                    <Nav.Link href="/account">Account</Nav.Link>
+                    {this.loggedIn() ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
                     { this.loggedIn() ? <LogoutButton logout={this.props.logout} /> : <LoginButton /> } 
                 </Navbar.Collapse>
