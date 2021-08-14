@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { login } from '../../actions/userActions'
+import { signup } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
-function LoginForm(props) {
+function SignupForm(props) {
 
-	const [details, setDetails] = useState({username: "", password: ""})
+	const [details, setDetails] = useState({username: "", email: "", password: ""})
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -20,13 +20,14 @@ function LoginForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.login(details)
+		props.signup({user: details})
 	}
 
 	return(
 		<div className="col m-5">
-			<h5>Existing User</h5>
+		<h5>New User</h5>
 			<Form onSubmit={handleSubmit}>
+
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Username" className="mb-3">
 				    <Form.Control 
@@ -39,7 +40,19 @@ function LoginForm(props) {
 				  </FloatingLabel>
 			  </Form.Group>
 
-				  <Form.Group className="mb-3" controlId="formBasicPassword">
+			  <Form.Group className="mb-3" controlId="formBasicUsername">
+				  <FloatingLabel label="Email" className="mb-3">
+				    <Form.Control 
+				    	type="text" 
+				    	placeholder="Email"
+				    	onChange={handleOnChange}
+				    	name='email'
+				    	value={details.email}
+				    	required />
+				  </FloatingLabel>
+			  </Form.Group>
+
+				<Form.Group className="mb-3" controlId="formBasicPassword">
 				  <FloatingLabel label="Password">
 				    <Form.Control 
 				    	type="password" 
@@ -52,11 +65,11 @@ function LoginForm(props) {
 			  </Form.Group>
 
 			  <Button variant="primary" type="submit">
-			    Login
+			    Sign Up
 			  </Button>
 			</Form>
 		</div>
 	)
 }
 
-export default connect(null, {login})(LoginForm)
+export default connect(null, {signup})(SignupForm)

@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, except: [:index] do
         resources :books
-        get '/account', to: 'users#show'
       end
       resources :reviews
       resources :requests
       resources :books
       post '/login', to: 'auth#create'
+      post '/signup', to: 'users#create'
     end
  end
 

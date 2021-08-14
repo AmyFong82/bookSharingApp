@@ -10,7 +10,19 @@ const userReducer = (
 				currentUser: state.currentUser
 			}
 
+		case 'REGISTERING':
+			return {
+				loginStatus: "REGISTERING",
+				currentUser: state.currentUser
+			}
+
 		case 'LOGIN_USER':
+			return {
+				loginStatus: "LOGGED_IN",
+				currentUser: action.currentUser
+			}
+
+		case 'SIGNUP_USER':
 			return {
 				loginStatus: "LOGGED_IN",
 				currentUser: action.currentUser
@@ -27,6 +39,14 @@ const userReducer = (
 				loginStatus: action.loginStatus,
 				currentUser: {}
 			}
+
+		case 'SIGNUP_FAILED':
+			return {
+				loginStatus: action.loginStatus,
+				currentUser: {}
+			}
+
+
 
 		default:
 			return state;

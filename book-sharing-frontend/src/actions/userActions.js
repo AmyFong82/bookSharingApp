@@ -19,6 +19,28 @@ export const login = user => {
 	}
 }
 
+export const signup = user => {
+	console.log(user)
+	return (dispatch) => {
+		dispatch({type: 'REGISTERING'})
+		fetch('http://localhost:3001/api/v1/signup',{
+			method: 'POST',
+			headers: {
+			"Content-Type": "application/json",
+    		"Accept": "application/json"
+			},
+			body: JSON.stringify(user)
+		}).then(resp => resp.json())
+			.then(respJson => {
+				if (respJson.user){
+					dispatch({type: 'SIGNUP_USER', currentUser: respJson})
+				}else{
+					dispatch({type: 'SIGNUP_FAILED', loginStatus: respJson.message})
+				}
+			})
+	}
+}
+
 export const logout = () => {
 	return {
 		type: 'LOGOUT_USER'
