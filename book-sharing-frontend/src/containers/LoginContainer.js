@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { login } from '../actions/userActions'
 import LoginForm from '../components/users/LoginForm'
 import SignupForm from '../components/users/SignupForm'
 
@@ -20,8 +19,8 @@ class LoginContainer extends Component {
 		return(
 			<div className="container mt-5">
 				<div className="row">
-					<LoginForm login={login} />
-					<SignupForm login={login} />
+					<LoginForm loginStatus={this.props.user.loginStatus}/>
+					<SignupForm loginStatus={this.props.user.loginStatus}/>
 				</div>
 			</div>
 		)

@@ -29,13 +29,8 @@ class App extends Component {
     }
   }
 
-  handleLogOut(){
-
-  }
-
 
   render(){
-
     return (
       <Container className="app p-3">
         <Router>

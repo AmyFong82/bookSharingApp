@@ -47,7 +47,6 @@ const userReducer = (
 			}
 
 
-
 		default:
 			return state;
 	}

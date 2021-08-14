@@ -55,7 +55,10 @@ function LoginForm(props) {
 			    Login
 			  </Button>
 			</Form>
+			{console.log(props)}
+			<h5>{(props.loginStatus !== "LOGGED_IN") ? props.loginStatus : null }</h5>
 		</div>
+
 	)
 }
 
