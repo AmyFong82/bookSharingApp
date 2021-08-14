@@ -20,7 +20,7 @@ function LoginForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.login(details)
+		props.login({user: details})
 	}
 
 	return(

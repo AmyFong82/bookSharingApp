@@ -2,10 +2,8 @@ class Api::V1::AuthController < ApplicationController
 	# skip_before_action :authorized, only: [:create]
 
 	def create #POST /api/v1/login
-		@user = User.find_by(username: params[:username])
-		# @user = User.find_by(username: user_login_params[:username])
-		if @user && @user.authenticate(params[:password])
-		# if @user && @user.authenticate(user_login_params[:password])
+		@user = User.find_by(username: user_login_params[:username])
+		if @user && @user.authenticate(user_login_params[:password])
 			@token = encode_token({ user_id: @user.id })
 			render json: { user: @user, books: @user.books, jwt: @token }, status: :accepted
 		else
@@ -15,8 +13,8 @@ class Api::V1::AuthController < ApplicationController
 
 	private
 
-	# def user_login_params
-	# 	# { user: { username: 'Amy', password: '1' } }
-	#     params.require(:user).permit(:username, :password)
-	# end
+	def user_login_params
+		# { user: { username: 'Amy', password: '1' } }
+	    params.require(:user).permit(:username, :password)
+	end
 end
