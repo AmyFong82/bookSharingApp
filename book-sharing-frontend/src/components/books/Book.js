@@ -11,6 +11,10 @@ class Book extends Component {
 		return loggedIn(this.props.loginStatus)
 	}
 
+	currentUser() {
+		return this.props.user
+	}
+
 	render(props) {
 		const { book } = this.props;
 
@@ -23,9 +27,9 @@ class Book extends Component {
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text>{book.format}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
-				    {/*{console.log(this.userID)}*/}
+				    {/*{console.log(this.currentUser())}*/}
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
-				    {this.checkLogin() ? ((book.user_id === this.props.user.user.id) ? <EditBookBtn /> : <RequestBookBtn />) : <RequestBookBtn />}
+				    {this.checkLogin() ? ((book.user_id === this.props.user.user.id) ? <EditBookBtn /> : <RequestBookBtn loggedIn={this.checkLogin()}/>) : <RequestBookBtn loggedIn={this.checkLogin()}/>}
 				  </Card.Body>
 				</Card>
 			</div>
