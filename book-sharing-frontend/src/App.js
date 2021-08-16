@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import { connect } from 'react-redux'
+import { loggedIn } from './components/users/loggedIn'
 import { logout } from './actions/userActions'
 
 import Navbar from 'react-bootstrap/Navbar'
@@ -21,15 +22,6 @@ import LogoutButton from './components/users/LogoutButton'
 
 class App extends Component {
 
-  loggedIn = () => {
-    if(this.props.loginStatus === 'LOGGED_IN'){
-      return true
-    }else{
-      return false
-    }
-  }
-
-
   render(){
     return (
       <Container className="app p-3">
@@ -41,9 +33,9 @@ class App extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
-                    { this.loggedIn() ? <Nav.Link href="/account">Account</Nav.Link> : null }
+                    { loggedIn(this.props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
-                    { this.loggedIn() ? <LogoutButton logout={this.props.logout} /> : <LoginButton /> } 
+                    { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : (window.location.pathname === '/Login') ? null : <LoginButton />}    
                 </Navbar.Collapse>
             </Container>
           </Navbar>
@@ -52,7 +44,7 @@ class App extends Component {
             <Route exact path="/" component={BooksContainer} />
             <Route exact path="/books" component={BooksContainer} />
             <Route exact path="/account"> 
-              {this.loggedIn() ? <AccountContainer /> : <Redirect to="/login" />}
+              {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login" component={LoginContainer} />
           </Switch>
