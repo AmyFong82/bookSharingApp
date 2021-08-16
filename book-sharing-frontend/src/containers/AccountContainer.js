@@ -14,6 +14,7 @@ class AccountContainer extends Component {
 	render() {
 		return(
 			<div className="account-container mt-5">
+				{console.log("in container: ", this.props.children)}
 				<Account user={this.props.user} books={this.props.books}/>
 			</div>
 		)
