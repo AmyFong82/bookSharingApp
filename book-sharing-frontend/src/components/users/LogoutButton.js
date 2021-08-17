@@ -7,7 +7,6 @@ function LogoutButton(props){
 	const history = useHistory();
 
   const handleLogout = event => {
-    console.log("I'm here")
     event.preventDefault()
     props.logout()
     history.push("/");

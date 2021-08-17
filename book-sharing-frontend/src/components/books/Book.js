@@ -27,9 +27,9 @@ class Book extends Component {
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text>{book.format}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
-				    {/*{console.log(this.currentUser())}*/}
+				    {/*{console.log(this.props)}*/}
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
-				    {this.checkLogin() ? ((book.user_id === this.props.user.user.id) ? <EditBookBtn /> : <RequestBookBtn loggedIn={this.checkLogin()}/>) : <RequestBookBtn loggedIn={this.checkLogin()}/>}
+				    {this.checkLogin() ? ((book.user_id === this.props.user.user.id) ? <EditBookBtn /> : <RequestBookBtn loggedIn={this.checkLogin()}/>) : <RequestBookBtn props={this.props}/>}
 				  </Card.Body>
 				</Card>
 			</div>

@@ -22,27 +22,31 @@ import LogoutButton from './components/users/LogoutButton'
 
 class App extends Component {
 
+  componentDidUpdate(){
+    console.log(window.location.pathname)
+  }
+
   render(){
     return (
       <Container className="app p-3">
         <Router>
           <Navbar bg="light" expand="lg" fixed="top">
             <Container>
-              <Navbar.Brand href="/"><i class="fas fa-book"></i> <b>Book Sharing</b></Navbar.Brand>
+              <Navbar.Brand href="/"><i className="fas fa-book"></i> <b>Book Sharing</b></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
                     { loggedIn(this.props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
-                    { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : (window.location.pathname === '/Login') ? null : <LoginButton />}    
+                    { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/>}    
+                  
                 </Navbar.Collapse>
             </Container>
           </Navbar>
 
           <Switch>
-            <Route exact path="/" component={BooksContainer} />
-            <Route exact path="/books" component={BooksContainer} />
+            <Route exact path={["/", "/books"]} component={BooksContainer} />
             <Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
