@@ -6,6 +6,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { PrivateRoute } from './components/PrivateRoute'
 
 import { connect } from 'react-redux'
 import { loggedIn } from './components/users/loggedIn'
@@ -22,9 +23,7 @@ import LogoutButton from './components/users/LogoutButton'
 
 class App extends Component {
 
-  componentDidUpdate(){
-    console.log(window.location.pathname)
-  }
+  path = window.location.pathname
 
   render(){
     return (
@@ -50,7 +49,7 @@ class App extends Component {
             <Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
-            <Route exact path="/login" component={LoginContainer} />
+            <Route exact path="/login" component={LoginContainer} path={this.path}/>
           </Switch>
         </Router>
       </Container>
