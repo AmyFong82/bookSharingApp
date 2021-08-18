@@ -49,7 +49,7 @@ class App extends Component {
             <Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
-            <Route exact path="/login" component={LoginContainer} path={this.path}/>
+            <Route exact path="/login" component={LoginContainer} />
           </Switch>
         </Router>
       </Container>
