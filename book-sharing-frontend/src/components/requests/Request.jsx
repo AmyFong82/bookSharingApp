@@ -1,5 +1,6 @@
 import React from 'react'
 import Book from '../books/Book'
+import RequestForm from "./RequestForm"
 
 function Request(props) {
 
@@ -8,8 +9,11 @@ function Request(props) {
 	}
 
 	return (
-			<div className="books-container mt-5">
-				<Book book={book()}/>
+			<div className="container mt-5">
+				<div className="row">
+					<Book book={book()}/>
+					<RequestForm />
+				</div>
 			</div>
 
 		)
