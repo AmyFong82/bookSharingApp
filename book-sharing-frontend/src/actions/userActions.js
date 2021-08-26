@@ -20,7 +20,6 @@ export const login = user => {
 }
 
 export const signup = user => {
-	console.log(user)
 	return (dispatch) => {
 		dispatch({type: 'REGISTERING'})
 		fetch('http://localhost:3001/api/v1/signup',{

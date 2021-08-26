@@ -7,9 +7,6 @@ import SignupForm from '../components/users/SignupForm'
 
 
 class LoginContainer extends Component {
-	constructor(props){
-		super(props)
-	}
 
 	componentDidUpdate(){
 		if(this.props.user.loginStatus === "LOGGED_IN"){

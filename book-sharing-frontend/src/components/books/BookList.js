@@ -7,7 +7,9 @@ function BookList(props){
 	}
 
 	return (
-		<div className="row">{listBooks()}</div>
+		<div className="books-container mt-5">
+			<div className="row">{listBooks()}</div>
+		</div>
 	)
 }
 

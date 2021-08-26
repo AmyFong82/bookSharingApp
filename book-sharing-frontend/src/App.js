@@ -19,40 +19,44 @@ import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
 import LogoutButton from './components/users/LogoutButton'
+import Request from './components/requests/Request'
 
 
 class App extends Component {
 
-  path = window.location.pathname
-
-  render(){
+  render(props){
     return (
-      <Container className="app p-3">
-        <Router>
+      <Router>
+        <Container className="app p-3">
           <Navbar bg="light" expand="lg" fixed="top">
             <Container>
-              <Navbar.Brand href="/"><i className="fas fa-book"></i> <b>Book Sharing</b></Navbar.Brand>
+              <Navbar.Brand href="/"><b>Book Sharing!</b></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
                     { loggedIn(this.props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
-                    { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/>}    
-                  
+                  { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/> }    
                 </Navbar.Collapse>
             </Container>
           </Navbar>
 
           <Switch>
-            <Route exact path={["/", "/books"]} component={BooksContainer} />
+            <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
+            {/*<Route exact path={["/", "/books"]} component={BooksContainer} />*/}
             <Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login" component={LoginContainer} />
+            <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
+            {/*<Route exact path="/request" component={Request} />*/}
+            {/*<Route path='/books/:id' render={routerProps => <Request {...routerProps} />} />*/}
+            {/*<Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />*/}
           </Switch>
-        </Router>
-      </Container>
+        </Container>
+      </Router>
+
     );
   }
 }
@@ -60,9 +64,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    loginStatus: state.user.loginStatus
+    loginStatus: state.user.loginStatus,
+    books: state.books
   }
 }
+
+
 
 // const mapStateToProps = state => {
 //   return {

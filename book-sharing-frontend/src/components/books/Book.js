@@ -15,10 +15,13 @@ class Book extends Component {
 		return this.props.user
 	}
 
+
 	render(props) {
 		const { book } = this.props;
+		
 
 		return(
+
 			<div className="col-sm-3">
 				<Card>
 				  <Card.Img src={book.cover_image} className="card-img-top" alt={book.title}/>
@@ -30,7 +33,7 @@ class Book extends Component {
 				    {/*{console.log(this.props)}*/}
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
 				    {this.checkLogin() ? 
-				    	((book.user_id === this.props.user.user.id) ? <EditBookBtn /> : <RequestBookBtn loggedIn={this.checkLogin()}/>) 
+				    	((book.user_id === this.props.user.user.id) ? <EditBookBtn bookId={book.id}/> : <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>) 
 				    	: <RequestBookBtn props={this.props}/>}
 				  </Card.Body>
 				</Card>
