@@ -8,15 +8,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function RequestForm(props) {
+	console.log(props)
 
-	const [details, setDetails] = useState({userid: "", bookid: "", date_requested: ""})
-
-	const handleOnChange = event => {
-	    setDetails({
-	    	...details,
-	      [event.target.name]: event.target.value
-	    });
-	}
+	const [details, setDetails] = useState({requester_id: "", book_id: "", date_requested: ""})
 
 	const handleSubmit = event => {
 		event.preventDefault()
@@ -31,7 +25,6 @@ function RequestForm(props) {
 			    Request
 			  </Button>
 			</Form>
-			<h5>{(props.loginStatus !== "LOGGED_IN") ? props.loginStatus : null }</h5>
 		</div>
 
 	)

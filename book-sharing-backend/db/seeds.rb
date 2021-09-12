@@ -41,5 +41,3 @@ book5 = Book.create(title: 'Little Kids First Big Book of Dinosaurs',
 					user_id: 2)
 
 request1 = Request.create(user_id: 1, book_id: 2)
-
-review1 = Review.create(user_id: 1, book_id: 1, content: 'Great book! Me and my 5-year-old boy love it!')
