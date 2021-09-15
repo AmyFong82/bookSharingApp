@@ -6,6 +6,7 @@ function BookList(props){
 		return props.books.map(book => <Book key={book.id} book={book} />)
 	}
 
+console.log(props)
 	return (
 		<div className="books-container mt-5">
 			<div className="row">{listBooks()}</div>
