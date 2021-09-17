@@ -8,10 +8,16 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 			}
 
 		case 'FETCH_BOOKS':
-		console.log(action)
 			return {
 				...state,
 				booklist: action.booklist,
+				loading: false
+			}
+
+		case 'FETCH_BOOK':
+			return {
+				...state,
+				booklist: action.book,
 				loading: false
 			}
 

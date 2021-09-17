@@ -10,11 +10,15 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 function RequestForm(props) {
 	console.log(props)
 
-	const [details, setDetails] = useState({requester_id: "", book_id: "", date_requested: ""})
+	const [details, setDetails] = useState({requester_id: "", book_id: ""})
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.requestBook({request: details})
+		// setDetails({
+	 //    	...details,
+	 //      [event.target.name]: event.target.value
+	 //    });
+		// props.request({request: details})
 	}
 
 	return(

@@ -5,6 +5,7 @@ import RequestForm from "./RequestForm"
 function Request(props) {
 
 	const book = () => {
+		console.log(props)
 		return props.props.books.booklist.find(book => book.id == props.match.params.id)
 	}
 
