@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import { fetchBook } from '../../actions/bookActions'
 import Book from '../books/Book'
 import RequestForm from "./RequestForm"
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 
 class Request extends Component {
@@ -21,7 +20,6 @@ class Request extends Component {
 		.then(resp => resp.json())
 		.then(
 			respJson => {
-				console.log(respJson)
 				this.setState({
 					isLoaded: true,
 					book: respJson
@@ -35,12 +33,9 @@ class Request extends Component {
 	        }
         )
 	}
-
 	
 
 	render(){
-
-		console.log(this.props)
 		const { error, isLoaded, book } = this.state
 		if (error) {
 			return <div> Error: {error.message}</div>
@@ -51,26 +46,19 @@ class Request extends Component {
 				<div className="container mt-5">
 					<div className="row">
 						<Book book={book}/>
-						<RequestForm />
+						<RequestForm book={book} requester={this.props.user}/>
 					</div>
 				</div>
 			)
 		}
 
 	}
-
 }
 
-// const book = () => {
-// 	console.log(this.props)
-	// return props.props.books.booklist.find(book => book.id == props.match.params.id)
-// }
+const mapStateToProps = state => {
+	return {
+		user: state.user.currentUser.user
+	}
+}
 
-// const mapStateToProps = state => {
-// 	return {
-// 		user: state.user.currentUser,
-// 		books: state.books.booklist
-// 	}
-// }
-
-export default Request
+export default connect(mapStateToProps)(Request)
