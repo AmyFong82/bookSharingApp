@@ -16,7 +16,11 @@ function RequestForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		if(loggedIn()){
+		console.log("props: " + props)
+		console.log(props.loginStatus)
+		if(loggedIn(props.loginStatus)){
+			console.log("true: ")
+			console.log(loggedIn(props.loginStatus))
 			const details = {requester_id: props.requester.id,
 							book_id: props.book.id}
 			fetch('http://localhost:3001/api/v1/requests', {
@@ -31,7 +35,8 @@ function RequestForm(props) {
 					console.log(respJson)
 				})
 			}else{
-				console.log(loggedIn)
+				console.log("false: ")
+				console.log(loggedIn(props.loginStatus))
 			    history.push("/login");
 			}
 
@@ -51,6 +56,10 @@ function RequestForm(props) {
 	)
 }
 
-
+const mapStateToProps = state => {
+	return {
+		loginStatus: state.user.loginStatus
+	}
+}
 
 export default RequestForm

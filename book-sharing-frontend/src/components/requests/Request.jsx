@@ -46,7 +46,7 @@ class Request extends Component {
 				<div className="container mt-5">
 					<div className="row">
 						<Book book={book}/>
-						<RequestForm book={book} requester={this.props.user}/>
+						<RequestForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
 					</div>
 				</div>
 			)
@@ -57,7 +57,8 @@ class Request extends Component {
 
 const mapStateToProps = state => {
 	return {
-		user: state.user.currentUser.user
+		user: state.user.currentUser.user,
+		loginStates: state.user.loginStatus
 	}
 }
 
