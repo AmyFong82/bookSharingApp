@@ -10,8 +10,10 @@ export default class Account extends Component {
 		return(
 			<div>
 				<h5>Your email: {this.props.user.email}</h5>
-				<h3>Your Books For Sharing</h3>
+				<h4 className="display-6">Your Books For Sharing</h4>
 				{(this.props.books === undefined) ? null : <BookList user={this.props.user} books={this.props.books}/> }
+				<br />
+				<h4 className="display-6">Your Requested Books</h4>
 			</div>
 		)
 	}
