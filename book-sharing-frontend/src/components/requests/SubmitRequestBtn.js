@@ -32,11 +32,11 @@ function SubmitRequestBtn(props) {
 				.then(respJson => {
 					if(respJson.message === "Request Successful!") {
 						setShow(true)						
-						const alertHeading = document.getElementsByClassName("alert-heading")[0]
+						const alertHeading = document.querySelector(".alert-heading")
 						alertHeading.innerHTML = respJson.message
 					}else if(respJson.message === "Book has already been requested."){
 						setShow(true)
-						const alertHeading = document.getElementsByClassName("alert-heading")[0]
+						const alertHeading = document.querySelector(".alert-heading")
 						alertHeading.innerHTML = respJson.message
 					}
 				})

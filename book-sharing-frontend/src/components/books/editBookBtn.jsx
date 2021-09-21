@@ -1,6 +1,8 @@
-function EditBookBtn(){
+import { Link } from 'react-router-dom'
+
+function EditBookBtn(props){
 	return(
-	    <a href="#" className="btn btn-primary">Edit</a>
+	    <Link to={`/books/${props.bookId}`} className="btn btn-primary">Edit</Link>
 	)
 }
 

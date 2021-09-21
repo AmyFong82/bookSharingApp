@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Book from '../books/Book'
-import RequestForm from "./RequestForm"
+import SubmitRequestBtn from "./SubmitRequestBtn"
 import { connect } from 'react-redux'
 
 
@@ -49,7 +49,7 @@ class Request extends Component {
 					</div>
 					<div className="row justify-content-center">
 						<div className="col-sm-3">
-							<RequestForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
+							<SubmitRequestBtn book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
 						</div>
 					</div>
 				</div>
