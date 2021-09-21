@@ -9,3 +9,7 @@ body {
 .display-6 {
 	color: #1058c3;
 }
+
+.card {
+	margin: 20px 0;
+}

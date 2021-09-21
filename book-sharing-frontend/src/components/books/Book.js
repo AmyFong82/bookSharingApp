@@ -20,7 +20,6 @@ class Book extends Component {
 		const { book } = this.props;
 
 		return(
-
 			<div className="col-sm-3">
 				<Card>
 				  <Card.Img src={book.cover_image} className="card-img-top" alt={book.title}/>

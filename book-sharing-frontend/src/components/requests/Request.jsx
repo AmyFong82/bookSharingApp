@@ -44,9 +44,13 @@ class Request extends Component {
 		} else {
 			return (
 				<div className="container mt-5">
-					<div className="row">
+					<div className="row justify-content-center">
 						<Book book={book}/>
-						<RequestForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
+					</div>
+					<div className="row justify-content-center">
+						<div className="col-sm-3">
+							<RequestForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
+						</div>
 					</div>
 				</div>
 			)
