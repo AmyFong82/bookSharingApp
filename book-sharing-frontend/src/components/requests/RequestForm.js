@@ -30,8 +30,14 @@ function SubmitRequestBtn(props) {
 				body: JSON.stringify(details)
 			}).then(resp => resp.json())
 				.then(respJson => {
-					if(respJson.message === "Request Successful") {
+					if(respJson.message === "Request Successful!") {
+						setShow(true)						
+						const alertHeading = document.getElementsByClassName("alert-heading")[0]
+						alertHeading.innerHTML = respJson.message
+					}else if(respJson.message === "Book has already been requested."){
 						setShow(true)
+						const alertHeading = document.getElementsByClassName("alert-heading")[0]
+						alertHeading.innerHTML = respJson.message
 					}
 				})
 			}else{
@@ -46,7 +52,7 @@ function SubmitRequestBtn(props) {
 	  if (show) {
 	    return (
 	      <Alert variant="success" onClose={() => setShow(false)} dismissible>
-	        <Alert.Heading>Request Submit Sucessful!</Alert.Heading>
+	        <Alert.Heading>Request Successful!</Alert.Heading>
 	      </Alert>
 	    );
 	  }
