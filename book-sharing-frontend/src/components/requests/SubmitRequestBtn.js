@@ -2,17 +2,14 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
-import { request } from '../../actions/bookActions'
 import { loggedIn } from '../users/loggedIn'
-import { RequestAlert } from  '../alerts/RequestAlert'
 
 import Alert from 'react-bootstrap/Alert'
-import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function SubmitRequestBtn(props) {
+	// where is the closing bracket?
 
 	const history = useHistory();
 
@@ -29,34 +26,28 @@ function SubmitRequestBtn(props) {
 				},
 				body: JSON.stringify(details)
 			}).then(resp => resp.json())
-				.then(respJson => {
-					if(respJson.message === "Request Successful!") {
-						setShow(true)						
-						const alertHeading = document.querySelector(".alert-heading")
-						alertHeading.innerHTML = respJson.message
-					}else if(respJson.message === "Book has already been requested."){
-						setShow(true)
-						const alertHeading = document.querySelector(".alert-heading")
-						alertHeading.innerHTML = respJson.message
-					}
-				})
-			}else{
-			    history.push("/login");
-			}
-
-
+			.then(respJson => {
+				if(respJson.message) {
+					setShow(true)						
+					const alertHeading = document.querySelector(".alert-heading")
+					alertHeading.innerHTML = respJson.message
+				}
+			})
+		}else{
+		    history.push("/login");
+		}
 	}
 
 	const [show, setShow] = useState(false);
 
-	  if (show) {
+	if (show) {
 	    return (
-	      <Alert variant="success" onClose={() => setShow(false)} dismissible>
-	        <Alert.Heading>Request Successful!</Alert.Heading>
+	      <Alert variant="success" onClose={() => setShow(false)} >
+	        <Alert.Heading></Alert.Heading>
 	      </Alert>
 	    );
 	  }
-	   return <Button onClick={handleSubmit}>Submit Request</Button>;
+	   return <Button id="request_btn" onClick={handleSubmit}>Submit Request</Button>;
 	}
 
 	const mapStateToProps = state => {
@@ -64,5 +55,6 @@ function SubmitRequestBtn(props) {
 			loginStatus: state.user.loginStatus
 		}
 	}
+
 
 export default connect(mapStateToProps)(SubmitRequestBtn)

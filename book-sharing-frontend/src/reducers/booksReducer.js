@@ -14,6 +14,13 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 				loading: false
 			}
 
+		case 'ADD_BOOK':
+			return {
+				...state,
+				booklist: [...state.booklist, action.book],
+				loading: false
+			}
+
 		default:
 			return state;
 	}

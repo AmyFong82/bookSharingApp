@@ -7,3 +7,20 @@ export const fetchBooks = () => {
 		})
 	}
 }
+
+export const addBook = book => {
+	return(dispatch) => {
+		dispatch({type: 'LOADING_BOOKS'})
+		fetch(`http://localhost:3001/api/v1/users/${book.user_id}/books`,{
+			method: 'POST',
+			headers: {
+			"Content-Type": "application/json",
+    		"Accept": "application/json"
+			},
+			body: JSON.stringify(book)
+		}).then(resp => resp.json())
+		.then(respJson => {
+			console.log(respJson)
+		})
+	}
+}

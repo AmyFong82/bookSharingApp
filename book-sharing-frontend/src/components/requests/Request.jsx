@@ -48,7 +48,7 @@ class Request extends Component {
 						<Book book={book}/>
 					</div>
 					<div className="row justify-content-center">
-						<div className="col-sm-3">
+						<div className="col-sm-3 pt-3">
 							<SubmitRequestBtn book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
 						</div>
 					</div>

@@ -6,7 +6,6 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { PrivateRoute } from './components/PrivateRoute'
 
 import { connect } from 'react-redux'
 import { loggedIn } from './components/users/loggedIn'
@@ -20,6 +19,8 @@ import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
 import LogoutButton from './components/users/LogoutButton'
 import Request from './components/requests/Request'
+import ShareBookBtn from './components/books/ShareBookBtn'
+import NewBookForm from './components/books/NewBookForm'
 
 
 class App extends Component {
@@ -37,18 +38,21 @@ class App extends Component {
                     <Nav.Link href="/books">Books</Nav.Link>
                     { loggedIn(this.props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
-                  { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/> }    
+                    <ShareBookBtn />
+                  { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/> }   
                 </Navbar.Collapse>
             </Container>
           </Navbar>
 
           <Switch>
             <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
-            {/*<Route exact path={["/", "/books"]} component={BooksContainer} />*/}
+            {/*<Route exact path="/account" render={routerProps => <AccountContainer {...routerProps} /> } /> */}
             <Route exact path="/account"> 
+            {/*{loggedIn(this.props.loginStatus) ? <AccountContainer props={...routerProps}/> : <Redirect to="/login" />}*/}
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login" component={LoginContainer} />
+            <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             {/*<Route exact path="/request" component={Request} />*/}
             {/*<Route path='/books/:id' render={routerProps => <Request {...routerProps} />} />*/}
@@ -61,11 +65,9 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = state => {
   return {
     loginStatus: state.user.loginStatus,
-    user: state.user.currentUser.user.username,
     books: state.books
   }
 }
