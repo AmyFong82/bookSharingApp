@@ -25,7 +25,7 @@ function SignupForm(props) {
 
 	return(
 		<div className="col m-5">
-		<h5>New User</h5>
+		<h5 className="bg-primary">New User</h5>
 			<Form onSubmit={handleSubmit}>
 
 			  <Form.Group className="mb-3" controlId="formBasicUsername">

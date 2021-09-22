@@ -25,7 +25,7 @@ function LoginForm(props) {
 
 	return(
 		<div className="col m-5">
-			<h5>Existing User</h5>
+			<h5 className="bg-primary">Existing User</h5>
 			<Form onSubmit={handleSubmit}>
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Username" className="mb-3">

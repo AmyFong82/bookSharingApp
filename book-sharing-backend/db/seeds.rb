@@ -25,13 +25,13 @@ book2 = Book.create(title: 'Ming Lo Moves the Mountain',
 book3 = Book.create(title: 'I Want My Hat Back',
 					author: 'Jon Klassen',
 					cover_image: 'https://m.media-amazon.com/images/P/0763655988.01._SCLZZZZZZZ_SX500_.jpg',
-					reading_age: 'Toddler',
+					reading_age: 'Toddlers',
 					user_id: 2)
 
 book4 = Book.create(title: 'This Is Not My Hat',
 					author: 'Jon Klassen',
 					cover_image: 'https://images-na.ssl-images-amazon.com/images/I/81t7W-bij3L.jpg',
-					reading_age: 'Toddler',
+					reading_age: 'Toddlers',
 					user_id: 2)
 
 book5 = Book.create(title: 'Little Kids First Big Book of Dinosaurs',
