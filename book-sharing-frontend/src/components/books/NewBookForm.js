@@ -12,7 +12,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 function NewBookForm(props) {
 	console.log(props)
 
-	const [book, setDetails] = useState({user_id: "", title: "", author: "", cover_image: "", reading_age: ""})
+	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: ""})
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -23,8 +23,8 @@ function NewBookForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		console.log({book})
-		props.addBook({book})
+		console.log(book)
+		props.addBook(book)
 	}
 
 	return(
@@ -110,4 +110,10 @@ function NewBookForm(props) {
 	)
 }
 
-export default connect(null, {addBook})(NewBookForm)
+const mapStateToProps = state => {
+	return {
+		user_id: state.user.currentUser.user.id
+	}
+}
+
+export default connect(mapStateToProps, {addBook})(NewBookForm)

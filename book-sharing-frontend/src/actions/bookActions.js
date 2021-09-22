@@ -10,6 +10,7 @@ export const fetchBooks = () => {
 
 export const addBook = book => {
 	return(dispatch) => {
+		console.log(book)
 		dispatch({type: 'LOADING_BOOKS'})
 		fetch(`http://localhost:3001/api/v1/users/${book.user_id}/books`,{
 			method: 'POST',
