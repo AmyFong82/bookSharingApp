@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
 import { loggedIn } from '../users/loggedIn'
+import { request } from '../../actions/requestActions'
 
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
@@ -18,21 +19,24 @@ function SubmitRequestBtn(props) {
 		if(loggedIn(props.loginStatus)){
 			const details = {requester_id: props.requester.id,
 							book_id: props.book.id}
-			fetch('http://localhost:3001/api/v1/requests', {
-				method: 'POST',
-				headers: {
-				"Content-Type": "application/json",
-	    		"Accept": "application/json"
-				},
-				body: JSON.stringify(details)
-			}).then(resp => resp.json())
-			.then(respJson => {
-				if(respJson.message) {
-					setShow(true)						
-					const alertHeading = document.querySelector(".alert-heading")
-					alertHeading.innerHTML = respJson.message
-				}
-			})
+			props.request(details)
+			console.log(props.request)
+			setShow(true)						
+			// fetch('http://localhost:3001/api/v1/requests', {
+			// 	method: 'POST',
+			// 	headers: {
+			// 	"Content-Type": "application/json",
+	  //   		"Accept": "application/json"
+			// 	},
+			// 	body: JSON.stringify(details)
+			// }).then(resp => resp.json())
+			// .then(respJson => {
+			// 	if(respJson.message) {
+			// 		setShow(true)						
+			// 		const alertHeading = document.querySelector(".alert-heading")
+			// 		alertHeading.innerHTML = respJson.message
+			// 	}
+			// })
 		}else{
 		    history.push("/login");
 		}
@@ -57,4 +61,4 @@ function SubmitRequestBtn(props) {
 	}
 
 
-export default connect(mapStateToProps)(SubmitRequestBtn)
+export default connect(mapStateToProps, {request})(SubmitRequestBtn)

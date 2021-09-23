@@ -12,7 +12,7 @@ class Api::V1::BooksController < ApplicationController
 
 	def create
 		book = Book.create(book_params)
-		render json: { book: book}, status: :created
+		render json: book, except: [:created_at, :updated_at], status: :created
 	end
 
 	def update

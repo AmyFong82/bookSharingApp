@@ -31,7 +31,7 @@ const userReducer = (
 		case 'LOGOUT_USER':
 			return {
 				loginStatus: "LOGGED_OUT",
-				currentUser: {}
+				currentUser: {},
 			}
 
 		case 'LOGIN_FAILED':
