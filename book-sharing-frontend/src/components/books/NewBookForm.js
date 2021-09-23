@@ -58,9 +58,16 @@ function NewBookForm(props) {
 			  </Form.Group>
 
 
-			  <Form.Group controlId="cover_image" className="mb-3">
-			    <Form.Label>Upload Cover Image</Form.Label>
-			    <Form.Control type="file" />
+			  <Form.Group className="mb-3" controlId="author">
+				  <FloatingLabel label="Cover Image Link" className="mb-3">
+				    <Form.Control 
+				    	type="text" 
+				    	placeholder="Cover Image Link"
+				    	onChange={handleOnChange}
+				    	name='cover_image'
+				    	value={book.cover_image}
+				    	required />
+				  </FloatingLabel>
 			  </Form.Group>
 
 			  <fieldset>
@@ -71,29 +78,37 @@ function NewBookForm(props) {
 			      <Col m={4} className="mt-3">
 			        <Form.Check
 			          inline
+			    	  onChange={handleOnChange}
 			          type="radio"
 			          label="Toddlers"
+			          value="Toddlers"
 			          name="reading_age"
 			          id="toddlers"
 			        />
 			        <Form.Check
 			          inline
+  			    	  onChange={handleOnChange}
 			          type="radio"
 			          label="Kids"
+			          value="Kids"
 			          name="reading_age"
 			          id="kids"
 			        />
 			        <Form.Check
 			          inline
+			    	  onChange={handleOnChange}
 			          type="radio"
 			          label="Teens"
+			          value="Teens"
 			          name="reading_age"
 			          id="teens"
 			        />
 			        <Form.Check
 			          inline
+			    	  onChange={handleOnChange}
 			          type="radio"
 			          label="Adults"
+			          value="Adults"
 			          name="reading_age"
 			          id="adults"
 			        />
