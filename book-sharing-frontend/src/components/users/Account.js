@@ -18,6 +18,7 @@ export default class Account extends Component {
 				</div>
 				<div>
 					<h5 className="bg-primary text-start">Your Requested Books</h5>
+					// {(this.props.requests === undefined) ? null : <BookList user={this.props.user} books={this.props.requests}/> }
 				</div>
 			</div>
 		)

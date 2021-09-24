@@ -130,7 +130,7 @@ function NewBookForm(props) {
 
 const mapStateToProps = state => {
 	return {
-		user_id: state.user.currentUser.user.id
+		user_id: state.user.details.id
 	}
 }
 

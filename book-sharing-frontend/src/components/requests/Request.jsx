@@ -61,7 +61,7 @@ class Request extends Component {
 
 const mapStateToProps = state => {
 	return {
-		user: state.user.currentUser.user,
+		user: state.user.details,
 		loginStates: state.user.loginStatus
 	}
 }

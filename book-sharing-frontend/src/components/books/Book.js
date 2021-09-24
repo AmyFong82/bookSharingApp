@@ -31,7 +31,7 @@ class Book extends Component {
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
 				    {window.location.href.includes("http://localhost:3000/books/") ? null :
 				    	this.checkLogin() ? 
-				    	((book.user_id === this.props.user.user.id) ? <EditBookBtn bookId={book.id}/> : <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>) 
+				    	((book.user_id === this.props.user.id) ? <EditBookBtn bookId={book.id}/> : <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>) 
 				    	: <RequestBookBtn props={this.props}/>}
 				  </Card.Body>
 				</Card>
@@ -43,7 +43,7 @@ class Book extends Component {
 const mapStateToProps = state => {
 	return{
 		loginStatus: state.user.loginStatus,
-		user: state.user.currentUser,
+		user: state.user.details
 	}
 }
 

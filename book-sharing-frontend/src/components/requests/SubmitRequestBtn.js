@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
 import { loggedIn } from '../users/loggedIn'
-import { request } from '../../actions/requestActions'
+import { request } from '../../actions/userActions'
 
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
@@ -22,21 +22,6 @@ function SubmitRequestBtn(props) {
 			props.request(details)
 			console.log(props.request)
 			setShow(true)						
-			// fetch('http://localhost:3001/api/v1/requests', {
-			// 	method: 'POST',
-			// 	headers: {
-			// 	"Content-Type": "application/json",
-	  //   		"Accept": "application/json"
-			// 	},
-			// 	body: JSON.stringify(details)
-			// }).then(resp => resp.json())
-			// .then(respJson => {
-			// 	if(respJson.message) {
-			// 		setShow(true)						
-			// 		const alertHeading = document.querySelector(".alert-heading")
-			// 		alertHeading.innerHTML = respJson.message
-			// 	}
-			// })
 		}else{
 		    history.push("/login");
 		}

@@ -1,49 +1,64 @@
 const userReducer = (
 	state = { 
 		loginStatus: "NOT_LOGGED_IN",
-      	currentUser: {},
+      	details: {},
+      	books: {},
+      	requests: []
 		}, action) => {
 	switch(action.type) {
 		case 'AUTHENTICATING':
 			return {
 				loginStatus: "AUTHENTICATING",
-				currentUser: state.currentUser
+				details: state.details
 			}
 
 		case 'REGISTERING':
 			return {
-				loginStatus: "REGISTERING",
-				currentUser: state.currentUser
+				...state,
+				loginStatus: "REGISTERING"
 			}
 
 		case 'LOGIN_USER':
 			return {
+				...state,
 				loginStatus: "LOGGED_IN",
-				currentUser: action.currentUser
+				details: action.details,
+				books: action.books,
+				requests: action.requests
 			}
 
 		case 'SIGNUP_USER':
 			return {
 				loginStatus: "LOGGED_IN",
-				currentUser: action.currentUser
+				details: action.details
 			}
 
 		case 'LOGOUT_USER':
 			return {
 				loginStatus: "LOGGED_OUT",
-				currentUser: {},
+				details: {},
 			}
 
 		case 'LOGIN_FAILED':
 			return {
 				loginStatus: action.loginStatus,
-				currentUser: {}
+				details: {}
 			}
 
 		case 'SIGNUP_FAILED':
 			return {
 				loginStatus: action.loginStatus,
-				currentUser: {}
+				details: {}
+			}
+
+		case 'LOAD_REQUEST':
+			return state;
+
+
+		case 'SUBMIT_REQUEST':
+			return {
+				...state,
+				requests: [...state.requests, action.request]
 			}
 
 
