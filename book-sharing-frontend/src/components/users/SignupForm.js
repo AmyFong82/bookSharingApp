@@ -43,7 +43,7 @@ function SignupForm(props) {
 			  <Form.Group className="mb-3" controlId="formBasicUsername">
 				  <FloatingLabel label="Email" className="mb-3">
 				    <Form.Control 
-				    	type="text" 
+				    	type="email" 
 				    	placeholder="Email"
 				    	onChange={handleOnChange}
 				    	name='email'
