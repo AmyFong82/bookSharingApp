@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 import ShareBookBtn from '../books/ShareBookBtn'
 import BookList from '../books/BookList'
 
-export default class Account extends Component {
+class Account extends Component {
 
 	displayUserBooks(){
 		if(this.props.books.length > 0){
@@ -16,10 +17,20 @@ export default class Account extends Component {
 		}
 	}
 
+	displayUserRequests(){
+		console.log(this.props.requests)
+		console.log(this.props.allBooks)
+		if(this.props.requests.length > 0){
+			return (
+				<div>
+					<h5 className="bg-primary text-start">Your Requested Books</h5>
+					<BookList user={this.props.user} books={this.props.requestedBooks}/>
+				</div>
+			)
+		}
+	}
+
 	render(props){
-
-		const books = this.props.books
-
 		return(
 			<div>
 				<h4>Welcome {this.props.user.username}!</h4>
@@ -27,37 +38,16 @@ export default class Account extends Component {
 				<br />
 				<ShareBookBtn/>
 				{this.displayUserBooks()}
-				<div>
-					<h5 className="bg-primary text-start">Your Requested Books</h5>
-					{(this.props.requests === undefined) ? null : <BookList user={this.props.user} books={this.props.requests}/> }
-				</div>
+				{this.displayUserRequests()}
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = state =>{
-	return {
-		user: state.user.details,
-		books: state.user.books
+const mapStateToProps = state => {
+	return{
+		allBooks: state.books
 	}
 }
 
-
-
-
-		// const displayUserBooks = props => {
-		// 	console.log(props)
-		// 	if(books.length > 0){
-		// 		return (
-		// 			<div>
-		// 				<h5 className="bg-primary text-start">Your Books For Sharing</h5>
-		// 				<BookList user={this.props.user} books={this.props.books}/>
-		// 			</div>
-		// 		)
-		// 	}
-		// }
-// const books = this.props.books => {
-// 					if(this.props.books.length > 0){
-
-// 			}
+export default connect(mapStateToProps)(Account)

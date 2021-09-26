@@ -7,4 +7,8 @@ class User < ApplicationRecord
 	validates :username, :email, :password, presence: true
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+	def requestedBooks
+		Book.joins(:request).where(request: {user_id: self.id})
+	end
+
 end
