@@ -18,7 +18,7 @@ class BooksContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		user: state.user.currentUser,
+		user: state.user.details,
 		books: state.books.booklist
 	}
 }

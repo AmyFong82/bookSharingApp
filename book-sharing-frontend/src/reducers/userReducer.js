@@ -2,14 +2,14 @@ const userReducer = (
 	state = { 
 		loginStatus: "NOT_LOGGED_IN",
       	details: {},
-      	books: {},
+      	books: [],
       	requests: []
 		}, action) => {
 	switch(action.type) {
 		case 'AUTHENTICATING':
 			return {
-				loginStatus: "AUTHENTICATING",
-				details: state.details
+				...state,
+				loginStatus: "AUTHENTICATING"
 			}
 
 		case 'REGISTERING':
@@ -29,6 +29,7 @@ const userReducer = (
 
 		case 'SIGNUP_USER':
 			return {
+				...state,
 				loginStatus: "LOGGED_IN",
 				details: action.details
 			}
@@ -37,18 +38,20 @@ const userReducer = (
 			return {
 				loginStatus: "LOGGED_OUT",
 				details: {},
+				books: [],
+				requests: []
 			}
 
 		case 'LOGIN_FAILED':
 			return {
+				...state,
 				loginStatus: action.loginStatus,
-				details: {}
 			}
 
 		case 'SIGNUP_FAILED':
 			return {
+				...state,
 				loginStatus: action.loginStatus,
-				details: {}
 			}
 
 		case 'LOAD_REQUEST':
