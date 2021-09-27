@@ -4,6 +4,7 @@ import { login } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
@@ -55,6 +56,8 @@ function LoginForm(props) {
 			    Login
 			  </Button>
 			</Form>
+			<br />
+			{props.loginStatus === "Invalid username or password" ? <Alert variant="danger">"Invalid username or password"</Alert>: null}
 		</div>
 
 	)

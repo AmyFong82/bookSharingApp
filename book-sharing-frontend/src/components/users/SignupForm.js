@@ -4,6 +4,7 @@ import { signup } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
@@ -68,6 +69,9 @@ function SignupForm(props) {
 			    Sign Up
 			  </Button>
 			</Form>
+			<br />
+			{console.log(props)}
+			{props.loginStatus === "Username taken" ? <Alert variant="danger">"Username taken"</Alert>: null}
 		</div>
 	)
 }

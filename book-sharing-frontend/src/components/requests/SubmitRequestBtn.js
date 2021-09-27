@@ -29,9 +29,10 @@ function SubmitRequestBtn(props) {
 	const [show, setShow] = useState(false);
 
 	if (show) {
+		
 	    return (
 	      <Alert variant="success" onClose={() => setShow(false)} >
-	        <Alert.Heading></Alert.Heading>
+	        <Alert.Heading>Request Submit Successful</Alert.Heading>
 	      </Alert>
 	    );
 	  }

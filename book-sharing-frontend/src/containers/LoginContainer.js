@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import LoginForm from '../components/users/LoginForm'
 import SignupForm from '../components/users/SignupForm'
 
+import Alert from 'react-bootstrap/Alert'
+
+
 
 
 class LoginContainer extends Component {
@@ -20,7 +23,7 @@ class LoginContainer extends Component {
 			<div className="container mt-5">
 				<div className="row">
 					<LoginForm loginStatus={this.props.user.loginStatus}/>
-					<SignupForm />
+					<SignupForm loginStatus={this.props.user.loginStatus}/>
 				</div>
 			</div>
 		)

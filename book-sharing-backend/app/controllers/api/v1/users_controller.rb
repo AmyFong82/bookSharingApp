@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
 			# how to user except: here?
 			render json: { details: @user, jwt: @token }, status: :created
 		else
-			render json: { error: 'failed to create user' }, status: :not_acceptable
+			render json: { error: 'Username taken' }, status: :not_acceptable
 		end
 	end
 
