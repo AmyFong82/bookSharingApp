@@ -58,8 +58,8 @@ export const request = details => {
 			body: JSON.stringify(details)
 		}).then(resp => resp.json())
 		.then(respJson => {
-			console.log(respJson)
 			if(respJson){
+				console.log(respJson)
 				dispatch({type: 'SUBMIT_REQUEST', request: respJson})
 			}
 			return(respJson.message)

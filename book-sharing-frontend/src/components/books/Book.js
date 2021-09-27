@@ -15,14 +15,13 @@ class Book extends Component {
 		return this.props.user
 	}
 
-	displayBtn(){
-		const book = this.props.book
+	displayBtn(book, requestedBook){
 				console.log(book)
-		const book_id = this.props.book.id
-				console.log(book_id)
-		const requests = this.props.requests
-			console.log(requests)
-		const requestedBook = (requests.filter(book => book.id === book_id))
+		// const book_id = this.props.book.id
+		// 		console.log(book_id)
+		// const requests = this.props.requests
+		// 	console.log(requests)
+		// const requestedBook = (requests.filter(book => book.id === book_id))
 		console.log(requestedBook)
 		if(window.location.href.includes("http://localhost:3000/books/")){
 			return null
@@ -44,6 +43,13 @@ class Book extends Component {
 
 	render(props) {
 		const { book } = this.props;
+		console.log(book)
+
+				const book_id = this.props.book.id
+				console.log(book_id)
+		const requests = this.props.requests
+			console.log(requests)
+		const requestedBook = (requests.filter(book => book.id === book_id))
 
 		return(
 			<div className="col-sm-3 pt-3 pb-3">
@@ -53,7 +59,7 @@ class Book extends Component {
 				    <Card.Title>{book.title}</Card.Title>
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
-				    {this.displayBtn()}
+				    {this.displayBtn(book, requestedBook)}
 				    {/*{console.log(this.props)}*/}
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
 				    {/*{window.location.href.includes("http://localhost:3000/books/") ? null :

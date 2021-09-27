@@ -59,11 +59,11 @@ const userReducer = (
 
 
 		case 'SUBMIT_REQUEST':
+		console.log(action.request)
 			return {
 				...state,
 				requests: [...state.requests, action.request]
 			}
-
 
 		default:
 			return state;
