@@ -18,13 +18,11 @@ class Account extends Component {
 	}
 
 	displayUserRequests(){
-		console.log(this.props.requests)
-		console.log(this.props.allBooks)
 		if(this.props.requests.length > 0){
 			return (
 				<div>
 					<h5 className="bg-primary text-start">Your Requested Books</h5>
-					<BookList user={this.props.user} books={this.props.requestedBooks}/>
+					<BookList user={this.props.user} books={this.props.requests}/>
 				</div>
 			)
 		}

@@ -20,7 +20,6 @@ function SubmitRequestBtn(props) {
 			const details = {requester_id: props.requester.id,
 							book_id: props.book.id}
 			props.request(details)
-			console.log(props.request)
 			setShow(true)						
 		}else{
 		    history.push("/login");

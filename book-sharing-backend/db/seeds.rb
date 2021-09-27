@@ -40,4 +40,4 @@ book5 = Book.create(title: 'Little Kids First Big Book of Dinosaurs',
 					reading_age: 'Kids',
 					user_id: 2)
 
-request1 = Request.create(user_id: 1, book_id: 2)
+request1 = Request.create(user_id: 1, book_id: 3)
