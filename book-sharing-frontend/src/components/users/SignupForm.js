@@ -70,7 +70,6 @@ function SignupForm(props) {
 			  </Button>
 			</Form>
 			<br />
-			{console.log(props)}
 			{props.loginStatus === "Username taken" ? <Alert variant="danger">"Username taken"</Alert>: null}
 		</div>
 	)

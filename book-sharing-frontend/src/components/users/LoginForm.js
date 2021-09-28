@@ -9,8 +9,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function LoginForm(props) {
-
 	const [details, setDetails] = useState({username: "", password: ""})
+	const [alert, setAlert] = useState(false)
+
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -23,6 +24,7 @@ function LoginForm(props) {
 		event.preventDefault()
 		props.login({user: details})
 	}
+
 
 	return(
 		<div className="col m-5">
@@ -52,12 +54,13 @@ function LoginForm(props) {
 				  </FloatingLabel>
 			  </Form.Group>
 
-			  <Button variant="primary" type="submit">
+			  <Button variant="primary" type="submit" onClick={() => setAlert(true)}>
 			    Login
 			  </Button>
 			</Form>
 			<br />
-			{props.loginStatus === "Invalid username or password" ? <Alert variant="danger">"Invalid username or password"</Alert>: null}
+			{ (alert) ? <Alert variant="primary" onClose={() => setAlert(false)} dismissible>{props.loginStatus}</Alert> : null }
+			
 		</div>
 
 	)

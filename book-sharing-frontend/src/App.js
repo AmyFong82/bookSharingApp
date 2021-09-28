@@ -51,7 +51,7 @@ class App extends Component {
             {/*{loggedIn(this.props.loginStatus) ? <AccountContainer props={...routerProps}/> : <Redirect to="/login" />}*/}
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
-            <Route exact path="/login" component={LoginContainer} />
+            <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             {/*<Route exact path="/request" component={Request} />*/}
@@ -72,12 +72,4 @@ const mapStateToProps = state => {
   }
 }
 
-
-
-// const mapStateToProps = state => {
-//   return {
-//     ...state,
-//     loggedInStatus: state.user.LoggedInStatus
-//   }
-// }
 export default connect(mapStateToProps, {logout})(App);

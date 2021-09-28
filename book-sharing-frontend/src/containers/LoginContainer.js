@@ -4,26 +4,25 @@ import { connect } from 'react-redux'
 import LoginForm from '../components/users/LoginForm'
 import SignupForm from '../components/users/SignupForm'
 
-import Alert from 'react-bootstrap/Alert'
-
-
-
 
 class LoginContainer extends Component {
 
 	componentDidUpdate(){
-		if(this.props.user.loginStatus === "LOGGED_IN"){
+		if(this.props.props.loginStatus === "LOGGED_IN"){
 				this.props.history.go(-1)
-			}
+		}
 	}
-	
+
+	loginStatus(){
+		return this.props.props.loginStatus
+	}
 
 	render(){
 		return(
 			<div className="container mt-5">
 				<div className="row">
-					<LoginForm loginStatus={this.props.user.loginStatus}/>
-					<SignupForm loginStatus={this.props.user.loginStatus}/>
+					<LoginForm loginStatus={this.props.props.loginStatus} />
+					<SignupForm loginStatus={this.props.props.loginStatus} />
 				</div>
 			</div>
 		)
@@ -32,7 +31,6 @@ class LoginContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		...state,
 		loginStatus: state.user.LoginStatus
 	}
 }
