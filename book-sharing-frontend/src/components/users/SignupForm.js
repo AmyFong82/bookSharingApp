@@ -11,6 +11,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 function SignupForm(props) {
 
 	const [details, setDetails] = useState({username: "", email: "", password: ""})
+	const [alert, setAlert] = useState(false)
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -65,12 +66,12 @@ function SignupForm(props) {
 				  </FloatingLabel>
 			  </Form.Group>
 
-			  <Button variant="primary" type="submit">
+			  <Button variant="primary" type="submit" onClick={() => setAlert(true)}>
 			    Sign Up
 			  </Button>
 			</Form>
 			<br />
-			{props.loginStatus === "Username taken" ? <Alert variant="danger">"Username taken"</Alert>: null}
+			{ (alert) ? <Alert variant="primary" onClose={() => setAlert(false)} dismissible>{props.loginStatus}</Alert> : null }
 		</div>
 	)
 }
