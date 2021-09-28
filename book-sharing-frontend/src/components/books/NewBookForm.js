@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/bookActions'
 
@@ -11,8 +11,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function NewBookForm(props) {
-    // let history = useHistory();
+    let history = useHistory();
 	console.log(props)
+	console.log(props.book_id)
 
 	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: ""})
 
@@ -26,8 +27,7 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		// history.push(`/books/`)
-
+		history.push(`/books/${props.book_id + 1}`)
 	}
 
 	return(
@@ -130,7 +130,8 @@ function NewBookForm(props) {
 
 const mapStateToProps = state => {
 	return {
-		user_id: state.user.details.id
+		user_id: state.user.details.id,
+		book_id: state.books.booklist.length
 	}
 }
 
