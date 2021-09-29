@@ -11,45 +11,61 @@ class Book extends Component {
 		return loggedIn(this.props.loginStatus)
 	}
 
-	currentUser() {
-		return this.props.user
-	}
 
-	displayBtn(book, requestedBook){
-				console.log(book)
-		// const book_id = this.props.book.id
-		// 		console.log(book_id)
-		// const requests = this.props.requests
-		// 	console.log(requests)
-		// const requestedBook = (requests.filter(book => book.id === book_id))
-		console.log(requestedBook)
-		if(window.location.href.includes("http://localhost:3000/books/")){
-			return null
-		}else if (this.checkLogin()){
-			if(book.user_id === this.props.user.id){
-				return <EditBookBtn bookId={book.id}/>
-			}else if(this.props.requests.includes(book)){
-				return "Cancel Request"
-			}else if(requestedBook === book){
-				return "Cancel Request"
-			}else{
-				return <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>
-			}
-		}else {
-			return <RequestBookBtn props={this.props}/>
-		}
-	}
+	// displayBtn(){
+	// 	if(currentUser().id === book.user_id)
+	// }
+
+	// displayBtn(book, requestedBook){
+	// 			console.log(book)
+	// 	// const book_id = this.props.book.id
+	// 	// 		console.log(book_id)
+	// 	// const requests = this.props.requests
+	// 	// 	console.log(requests)
+	// 	// const requestedBook = (requests.filter(book => book.id === book_id))
+	// 	console.log(requestedBook)
+	// 	if(window.location.href.includes("http://localhost:3000/books/")){
+	// 		return null
+	// 	}else if (this.checkLogin()){
+	// 		if(book.user_id === this.props.user.id){
+	// 			return <EditBookBtn bookId={book.id}/>
+	// 		}else if(this.props.requests.includes(book)){
+	// 			return "Cancel Request"
+	// 		}else if(requestedBook === book){
+	// 			return "Cancel Request"
+	// 		}else{
+	// 			return <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>
+	// 		}
+	// 	}else {
+	// 		return <RequestBookBtn props={this.props}/>
+	// 	}
+	// }
 
 
 	render(props) {
 		const { book } = this.props;
-		console.log(book)
+		const currentUserId = this.props.user.id;
 
-				const book_id = this.props.book.id
-				console.log(book_id)
-		const requests = this.props.requests
-			console.log(requests)
-		const requestedBook = (requests.filter(book => book.id === book_id))
+		console.log(this.props.requests)
+		console.log(book)
+				console.log(this.props.requests.includes(book))
+
+		const displayBtn = () => {
+			if(currentUserId === book.user_id){
+				return <EditBookBtn bookId={book.id}/>
+			}else if (this.props.requests.includes(book)){
+				console.log("true")
+			}
+		}
+
+
+		// console.log(book)
+
+		// 		const book_id = this.props.book.id
+		// 		console.log(book_id)
+		// const requests = this.props.requests
+		// 	console.log(requests)
+		// const requestedBook = (requests.filter(book => book.id === book_id))
 
 		return(
 			<div className="col-sm-3 pt-3 pb-3">
@@ -59,7 +75,8 @@ class Book extends Component {
 				    <Card.Title>{book.title}</Card.Title>
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
-				    {this.displayBtn(book, requestedBook)}
+				    {displayBtn()}
+				    {/*{this.displayBtn(book, requestedBook)}*/}
 				    {/*{console.log(this.props)}*/}
 				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
 				    {/*{window.location.href.includes("http://localhost:3000/books/") ? null :

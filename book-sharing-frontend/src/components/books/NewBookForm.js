@@ -27,7 +27,8 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		history.push(`/books/${props.book_id + 1}`)
+		const newBook = props.books[props.books.length - 1]
+		history.push(`/books/${newBook.id}`)
 	}
 
 	return(
@@ -131,7 +132,7 @@ function NewBookForm(props) {
 const mapStateToProps = state => {
 	return {
 		user_id: state.user.details.id,
-		book_id: state.books.booklist.length
+		books: state.books.booklist
 	}
 }
 

@@ -59,7 +59,9 @@ function LoginForm(props) {
 			  </Button>
 			</Form>
 			<br />
-			{ (alert) ? <Alert variant="primary" onClose={() => setAlert(false)} dismissible>{props.loginStatus}</Alert> : null }
+			{ (!alert) ? 
+				null : (props.loginStatus === "Invalid username or password") ? 
+				<Alert variant="primary" onClose={() => setAlert(false)} dismissible>{props.loginStatus}</Alert> : null }
 			
 		</div>
 

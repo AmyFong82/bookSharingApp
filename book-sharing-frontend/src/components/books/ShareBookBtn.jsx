@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 function ShareBookBtn(props){
 
 	const handleClick = () => {
-		return(loggedIn(props.loginStatus) ? 'books/new' : '/login')
+		return(loggedIn(props.loginStatus) ? '/books/new' : '/login')
 	}
 
 	return(
