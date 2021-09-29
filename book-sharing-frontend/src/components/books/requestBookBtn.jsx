@@ -1,4 +1,6 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+
 
 function RequestBookBtn(props){
 
@@ -7,7 +9,7 @@ function RequestBookBtn(props){
 	    loginBtn.style.display = "none"
   	}
   
-	if (props.loggedIn) {
+	if(props.loginStatus === "LOGGED_IN") {
 		return(
 			<Link to={`/books/${props.bookId}`} className="btn btn-primary">Request</Link>
 		)}
@@ -16,5 +18,12 @@ function RequestBookBtn(props){
 	)
 }
 
-export default RequestBookBtn
+
+const mapStateToProps = state => {
+	return{
+		loginStatus: state.user.loginStatus
+	}
+}
+
+export default connect(mapStateToProps)(RequestBookBtn)
 

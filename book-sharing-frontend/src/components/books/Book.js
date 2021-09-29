@@ -1,71 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+
+import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
+
 import EditBookBtn from './EditBookBtn'
 import RequestBookBtn from './RequestBookBtn'
 import { loggedIn } from '../users/loggedIn'
 
+
+
 class Book extends Component {
-
-	checkLogin() {
-		return loggedIn(this.props.loginStatus)
-	}
-
-
-	// displayBtn(){
-	// 	if(currentUser().id === book.user_id)
-	// }
-
-	// displayBtn(book, requestedBook){
-	// 			console.log(book)
-	// 	// const book_id = this.props.book.id
-	// 	// 		console.log(book_id)
-	// 	// const requests = this.props.requests
-	// 	// 	console.log(requests)
-	// 	// const requestedBook = (requests.filter(book => book.id === book_id))
-	// 	console.log(requestedBook)
-	// 	if(window.location.href.includes("http://localhost:3000/books/")){
-	// 		return null
-	// 	}else if (this.checkLogin()){
-	// 		if(book.user_id === this.props.user.id){
-	// 			return <EditBookBtn bookId={book.id}/>
-	// 		}else if(this.props.requests.includes(book)){
-	// 			return "Cancel Request"
-	// 		}else if(requestedBook === book){
-	// 			return "Cancel Request"
-	// 		}else{
-	// 			return <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>
-	// 		}
-	// 	}else {
-	// 		return <RequestBookBtn props={this.props}/>
-	// 	}
-	// }
-
 
 	render(props) {
 		const { book } = this.props;
 		const currentUserId = this.props.user.id;
 
-		console.log(this.props.requests)
-		console.log(book)
-				console.log(this.props.requests.includes(book))
-
 		const displayBtn = () => {
 			if(currentUserId === book.user_id){
 				return <EditBookBtn bookId={book.id}/>
-			}else if (this.props.requests.includes(book)){
-				console.log("true")
+			}else if (this.props.requests.filter(requestedBook => requestedBook.id === book.id)[0]){
+				return <Link to={`/books/${book.id}`} className="btn btn-danger">Cancel Request</Link>
+			}else if (window.location.pathname.includes("/books/")){
+				return null
 			}
+			return <RequestBookBtn book={book} bookId={book.id}/>
 		}
 
-
-		// console.log(book)
-
-		// 		const book_id = this.props.book.id
-		// 		console.log(book_id)
-		// const requests = this.props.requests
-		// 	console.log(requests)
-		// const requestedBook = (requests.filter(book => book.id === book_id))
 
 		return(
 			<div className="col-sm-3 pt-3 pb-3">
@@ -76,13 +38,6 @@ class Book extends Component {
 					<Card.Text>{book.author}</Card.Text>
 				    <Card.Text><b>Reading age:</b> {book.reading_age}</Card.Text>
 				    {displayBtn()}
-				    {/*{this.displayBtn(book, requestedBook)}*/}
-				    {/*{console.log(this.props)}*/}
-				    {/*{console.log(loggedIn(this.props.loginStatus))}*/}
-				    {/*{window.location.href.includes("http://localhost:3000/books/") ? null :
-				    	this.checkLogin() ? 
-				    	((book.user_id === this.props.user.id) ? <EditBookBtn bookId={book.id}/> : <RequestBookBtn bookId={book.id} book={book} loggedIn={this.checkLogin()}/>) 
-				    	: <RequestBookBtn props={this.props}/>}*/}
 				  </Card.Body>
 				</Card>
 			</div>
