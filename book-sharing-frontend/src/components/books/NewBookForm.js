@@ -13,7 +13,6 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 function NewBookForm(props) {
     let history = useHistory();
 	console.log(props)
-	console.log(props.book_id)
 
 	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: ""})
 
@@ -27,7 +26,9 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		const newBook = props.books[props.books.length - 1]
+		const newBook = props.books[props.books.length]
+		console.log(props.books.length)
+		console.log(newBook)
 		history.push(`/books/${newBook.id}`)
 	}
 

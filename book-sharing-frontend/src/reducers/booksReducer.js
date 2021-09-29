@@ -15,7 +15,6 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 			}
 
 		case 'ADD_BOOK':
-			console.log(action.book)
 			return {
 				...state,
 				booklist: [...state.booklist, action.book],

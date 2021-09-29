@@ -57,6 +57,9 @@ const userReducer = (
 		case 'LOAD_REQUEST':
 			return state;
 
+		case 'LOADING_USER':
+			return state;
+
 		case 'SUBMIT_REQUEST':
 			return {
 				...state,

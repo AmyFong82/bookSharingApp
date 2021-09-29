@@ -46,6 +46,18 @@ export const logout = () => {
 	}
 }
 
+
+export const refreshUserInfo = (user_id) => {
+	return (dispatch) => {
+		dispatch({type: 'LOADING_USER'})
+		fetch(`http://localhost:3001/api/v1/users/${user_id}`)
+		.then(resp => resp.json())
+			.then(respJson => {
+			dispatch({type: 'REFRESH_USER_INFO', user: respJson})
+		})
+	}
+}
+
 export const request = details => {
 	return (dispatch) => {
 		dispatch({type: 'LOAD_REQUEST'})
