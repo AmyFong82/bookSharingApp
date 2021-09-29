@@ -57,13 +57,15 @@ const userReducer = (
 		case 'LOAD_REQUEST':
 			return state;
 
-
 		case 'SUBMIT_REQUEST':
-		console.log(action.request)
 			return {
 				...state,
 				requests: [...state.requests, action.request]
 			}
+
+		case 'CANCEL_REQUEST':
+			const requests = state.requests.filter(request => request.id !== action.book_id)
+			return {...state, requests }
 
 		default:
 			return state;

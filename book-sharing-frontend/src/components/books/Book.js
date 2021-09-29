@@ -20,10 +20,10 @@ class Book extends Component {
 		const displayBtn = () => {
 			if(currentUserId === book.user_id){
 				return <EditBookBtn bookId={book.id}/>
-			}else if (this.props.requests.filter(requestedBook => requestedBook.id === book.id)[0]){
-				return <Link to={`/books/${book.id}`} className="btn btn-danger">Cancel Request</Link>
-			}else if (window.location.pathname.includes("/books/")){
+			}else if (window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/")){
 				return null
+			}else if (this.props.requests.filter(requestedBook => requestedBook.id === book.id)[0]){
+				return <Link to={`/requests/${book.id}`} className="btn btn-danger">Cancel Request</Link>
 			}
 			return <RequestBookBtn book={book} bookId={book.id}/>
 		}

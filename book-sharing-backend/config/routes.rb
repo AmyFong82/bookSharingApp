@@ -5,9 +5,8 @@ Rails.application.routes.draw do
       resources :users, except: [:index] do
         resources :books
       end
-      resources :reviews
-      resources :requests
       resources :books
+      resources :requests
       post '/login', to: 'auth#create'
       post '/signup', to: 'users#create'
     end

@@ -7,7 +7,13 @@ class Api::V1::RequestsController < ApplicationController
 		else
 			render json: { message: "Book has already been requested."}, status: :not_acceptable
 		end
+	end
 
+
+	def destroy
+		request = Request.find_by(book_id: params[:id])
+		request.delete
+		render json: {message: "Request Canceled"}
 	end
 
 end

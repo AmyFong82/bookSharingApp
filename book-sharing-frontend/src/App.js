@@ -19,6 +19,7 @@ import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
 import LogoutButton from './components/users/LogoutButton'
 import Request from './components/requests/Request'
+import CancelRequest from './components/requests/CancelRequest'
 import ShareBookBtn from './components/books/ShareBookBtn'
 import NewBookForm from './components/books/NewBookForm'
 
@@ -54,6 +55,7 @@ class App extends Component {
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
+            <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props}/>} />
             {/*<Route exact path="/request" component={Request} />*/}
             {/*<Route path='/books/:id' render={routerProps => <Request {...routerProps} />} />*/}
             {/*<Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />*/}

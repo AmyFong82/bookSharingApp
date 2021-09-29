@@ -66,3 +66,24 @@ export const request = details => {
 		})
 	}
 }
+
+export const cancelRequest = book_id => {
+	return (dispatch) => {
+		dispatch({type: 'LOAD_REQUEST'})
+		fetch(`http://localhost:3001/api/v1/requests/${book_id}`, {
+			method: 'DELETE',
+			headers: {
+			"Content-Type": "application/json",
+    		"Accept": "application/json"
+			},
+			body: JSON.stringify(book_id)
+		}).then(resp => resp.json())
+		.then(respJson => {
+			if(respJson.message){
+				console.log(respJson.message)
+				dispatch({type: 'CANCEL_REQUEST', book_id: book_id})
+			}
+			return(respJson.message)
+		})
+	}
+}
