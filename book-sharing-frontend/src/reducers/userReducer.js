@@ -19,12 +19,18 @@ const userReducer = (
 			}
 
 		case 'LOGIN_USER':
-			return {
+		return {
 				...state,
 				loginStatus: "LOGGED_IN",
 				details: action.details,
 				books: action.books,
 				requests: action.requests
+			}
+
+		case 'ADD_USER_NEW_BOOK':
+			return {
+				...state,
+				books: [...state.books, action.book]
 			}
 
 		case 'SIGNUP_USER':

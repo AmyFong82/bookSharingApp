@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/bookActions'
+import { addUserNewBook } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
@@ -25,11 +26,12 @@ function NewBookForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
+		console.log(book)
 		props.addBook(book)
-		const newBook = props.books[props.books.length]
-		console.log(props.books.length)
-		console.log(newBook)
-		history.push(`/books/${newBook.id}`)
+		props.addUserNewBook(book)
+		const newBookId = props.books.length + 1
+		console.log(newBookId)
+		history.push(`/books/${newBookId}`)
 	}
 
 	return(
@@ -137,4 +139,15 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {addBook})(NewBookForm)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addBook: (book) => {
+			dispatch(addBook(book))
+		},
+		addUserNewBook: (book) => {
+			dispatch(addUserNewBook(book))
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewBookForm)
