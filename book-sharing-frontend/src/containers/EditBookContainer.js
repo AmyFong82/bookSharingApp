@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Book from '../components/books/Book'
-import NewBookForm from "../components/books/NewBookForm"
+import EditBookForm from "../components/books/EditBookForm"
 import { connect } from 'react-redux'
 
 
@@ -46,7 +46,7 @@ class EditBookContainer extends Component {
 				<div className="container mt-5">
 					<div className="row justify-content-center">
 						<Book book={book}/>
-						<NewBookForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
+						<EditBookForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
 					</div>
 				</div>
 			)
