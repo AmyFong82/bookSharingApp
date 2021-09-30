@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function EditBookBtn(props){
 	return(
-	    <Link to={`/books/${props.bookId}/edit`} className="btn btn-warning">Edit</Link>
+	    <Link to={`/book_edit/${props.book.id}`} className="btn btn-warning">Edit</Link>
 	)
 }
 

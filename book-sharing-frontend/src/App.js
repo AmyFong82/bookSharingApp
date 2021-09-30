@@ -14,7 +14,7 @@ import { logout } from './actions/userActions'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import BooksContainer from './containers/BooksContainer'
-import EditBookContainer from './containers/BooksContainer'
+import EditBookContainer from './containers/EditBookContainer'
 import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
 import LoginButton from './components/users/LoginButton'
@@ -55,8 +55,8 @@ class App extends Component {
             </Route>
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
+            <Route path="/book_edit/:id" render={routerProps => <EditBookContainer {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
-            <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props}/>} />
             {/*<Route exact path="/request" component={Request} />*/}
             {/*<Route path='/books/:id' render={routerProps => <Request {...routerProps} />} />*/}

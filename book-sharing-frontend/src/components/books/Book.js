@@ -19,7 +19,7 @@ class Book extends Component {
 
 		const displayBtn = () => {
 			if(currentUserId === book.user_id){
-				return <EditBookBtn bookId={book.id}/>
+				return <EditBookBtn book={book}/>
 			}else if (window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/")){
 				return null
 			}else if (this.props.requests.filter(requestedBook => requestedBook.id === book.id)[0]){
