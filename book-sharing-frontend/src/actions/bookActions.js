@@ -26,3 +26,22 @@ export const addBook = book => {
 		})
 	}
 }
+
+
+export const editBook = book => {
+	return(dispatch) => {
+		dispatch({type: 'LOADING_BOOKS'})
+		fetch(`http://localhost:3001/api/v1/books/${book.id}`,{
+			method: 'PATCH',
+			headers: {
+			"Content-Type": "application/json",
+    		"Accept": "application/json"
+			},
+			body: JSON.stringify(book)
+		}).then(resp => resp.json())
+		.then(respJson => {
+			console.log(respJson)
+			dispatch({type: 'UPDATE_BOOK', book: respJson})
+		})
+	}
+}

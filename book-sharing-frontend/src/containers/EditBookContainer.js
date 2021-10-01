@@ -46,7 +46,7 @@ class EditBookContainer extends Component {
 				<div className="container mt-5">
 					<div className="row justify-content-center">
 						<Book book={book}/>
-						<EditBookForm book={book} requester={this.props.user} loginStates={this.props.loginStatus}/>
+						<EditBookForm book={book} loginStates={this.props.loginStatus}/>
 					</div>
 				</div>
 			)
@@ -55,11 +55,5 @@ class EditBookContainer extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		user: state.user.details,
-		loginStates: state.user.loginStatus
-	}
-}
 
-export default connect(mapStateToProps)(EditBookContainer)
+export default connect()(EditBookContainer)

@@ -25,10 +25,10 @@ function EditBookForm(props) {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.addBook(book)
-		props.addUserNewBook(book)
-		const newBookId = props.books.length + 1
-		history.push(`/books/${newBookId}`)
+		props.editBook(book)
+		props.updateBook(book)
+		// const BookId = props.book
+		// history.push(`/books/${newBookId}`)
 	}
 
 	return(

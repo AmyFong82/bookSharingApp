@@ -18,10 +18,10 @@ class Book extends Component {
 		const currentUserId = this.props.user.id;
 
 		const displayBtn = () => {
-			if(currentUserId === book.user_id){
-				return <EditBookBtn book={book}/>
-			}else if (window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/")){
+			if(window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/") || window.location.pathname.includes("/book_edit/")){
 				return null
+			}else if(currentUserId === book.user_id) {
+				return <EditBookBtn book={book}/>
 			}else if (this.props.requests.filter(requestedBook => requestedBook.id === book.id)[0]){
 				return <Link to={`/requests/${book.id}`} className="btn btn-danger">Cancel Request</Link>
 			}
