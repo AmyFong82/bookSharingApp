@@ -46,7 +46,7 @@ class EditBookContainer extends Component {
 		this.props.editBook(this.state.book)
 		// this.props.updateBook(this.state.book)
 		// const BookId = props.book
-		// history.push(`/books/${newBookId}`)
+		this.props.history.push(`/books/${this.state.book.id}`)
 	}
 
 	render(){
