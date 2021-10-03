@@ -7,53 +7,61 @@ import { connect } from 'react-redux'
 class EditBookContainer extends Component {
 	constructor(props){
 		super(props);
+		const id = this.props.match.params.id
 		this.state = {
-			error: null,
-			isLoaded: false,
-			book: []
+			book: this.props.props.books.booklist.find(book => book.id === parseInt(id))
 		}
+		console.log(this.state)
 	}
 
-	componentDidMount(){
-		const id = this.props.match.params.id
-		fetch(`http://localhost:3001/api/v1/books/` + id)
-		.then(resp => resp.json())
-		.then(
-			respJson => {
-				this.setState({
-					isLoaded: true,
-					book: respJson
-				});
-			},
-	        (error) => {
-	          this.setState({
-	            isLoaded: true,
-	            error
-	          });
-	        }
-        )
+	// book(){
+	// 	const id = this.props.match.params.id
+	// 	console.log(id)
+	// 	this.setState({
+	// 		book: this.props.props.books.booklist.find(book => book.id === id)
+	// 	})
+	// 	console.log(this.state)
+	// }
+
+	// componentDidMount(){
+	// 	const id = this.props.match.params.id
+	// 	this.setState({
+	// 		book: this.props.props.books.booklist.filter(book => book.id === id)
+	// 	})
+	// 	console.log(this.state.book)
+	// }
+
+	handleOnChange = event => {
+	    this.setState({
+	    	book: {
+	    		...this.state.book,
+	    		[event.target.name]: event.target.value
+	    	}
+	    	
+	    });
 	}
-	
+
+	handleSubmit = event => {
+		event.preventDefault()
+		this.props.editBook(this.state.book)
+		this.props.updateBook(this.state.book)
+		// const BookId = props.book
+		// history.push(`/books/${newBookId}`)
+	}
 
 	render(){
-		const { error, isLoaded, book } = this.state
-		if (error) {
-			return <div> Error: {error.message}</div>
-		} else if (!isLoaded) {
-			return <div>Loading...</div>
-		} else {
-			return (
-				<div className="container mt-5">
-					<div className="row justify-content-center">
-						<Book book={book}/>
-						<EditBookForm book={book} loginStates={this.props.loginStatus}/>
-					</div>
+		console.log(this.state)
+		console.log(this.state.book)
+		return (
+			<div className="container mt-5">
+				<div className="row justify-content-center">
+					<Book book={this.state.book}/>
+					<EditBookForm book={this.state.book} handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} loginStates={this.props.loginStatus}/>
 				</div>
-			)
-		}
-
+			</div>
+		)
 	}
 }
 
 
-export default connect()(EditBookContainer)
+export default EditBookContainer

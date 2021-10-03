@@ -13,38 +13,43 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 function EditBookForm(props) {
     let history = useHistory();
+    // console.log(props)
 
-	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: ""})
+    const book = props.book
+    console.log(props.handleOnChange)
+    // console.log(props.book)
 
-	const handleOnChange = event => {
-	    setDetails({
-	    	...book,
-	      [event.target.name]: event.target.value
-	    });
-	}
+	// const [book_revised, setBook_revised] = useState({user_id: book.user_id, title: book.title, author: book.author, cover_image: book.cover_image, reading_age: book.reading_age})
 
-	const handleSubmit = event => {
-		event.preventDefault()
-		props.editBook(book)
-		props.updateBook(book)
-		// const BookId = props.book
-		// history.push(`/books/${newBookId}`)
-	}
+	// const handleOnChange = event => {
+	//     setBook_revised({
+	//     	...book_revised,
+	//       [event.target.name]: event.target.value
+	//     });
+	// }
+
+	// const handleSubmit = event => {
+	// 	event.preventDefault()
+	// 	props.editBook(book)
+	// 	props.updateBook(book)
+	// 	// const BookId = props.book
+	// 	// history.push(`/books/${newBookId}`)
+	// }
 
 	return(
 		<div className="col m-5">
 			<h5 className="bg-primary">Edit Book Info</h5>
 
-			<Form onSubmit={handleSubmit}>
+			<Form onSubmit={props.handleSubmit}>
 
 			  <Form.Group className="mb-3" controlId="title">
 				  <FloatingLabel label="Title" className="mb-3">
 				    <Form.Control 
 				    	type="text" 
 				    	placeholder="Title"
-				    	onChange={handleOnChange}
+				    	onChange={event => props.handleOnChange(event)}
 				    	name='title'
-				    	value={book.title}
+				    	Value={book.title}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
@@ -54,9 +59,9 @@ function EditBookForm(props) {
 				    <Form.Control 
 				    	type="text" 
 				    	placeholder="Author"
-				    	onChange={handleOnChange}
+				    	onChange={event => props.handleOnChange(event)}
 				    	name='author'
-				    	value={book.author}
+				    	Value={book.author}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
@@ -67,9 +72,9 @@ function EditBookForm(props) {
 				    <Form.Control 
 				    	type="text" 
 				    	placeholder="Cover Image Link"
-				    	onChange={handleOnChange}
+				    	onChange={event => props.handleOnChange(event)}
 				    	name='cover_image'
-				    	value={book.cover_image}
+				    	Value={book.cover_image}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
@@ -82,38 +87,38 @@ function EditBookForm(props) {
 			      <Col m={4} className="mt-3">
 			        <Form.Check
 			          inline
-			    	  onChange={handleOnChange}
+			    	  onChange={event => props.handleOnChange(event)}
 			          type="radio"
 			          label="Toddlers"
 			          value="Toddlers"
-			          name="reading_age"
+			          checked={book.reading_age === "Toddlers"}
 			          id="toddlers"
 			        />
 			        <Form.Check
 			          inline
-  			    	  onChange={handleOnChange}
+  			    	  onChange={event => props.handleOnChange(event)}
 			          type="radio"
 			          label="Kids"
 			          value="Kids"
-			          name="reading_age"
+			          checked={book.reading_age === "Kids"}
 			          id="kids"
 			        />
 			        <Form.Check
 			          inline
-			    	  onChange={handleOnChange}
+			    	  onChange={event => props.handleOnChange(event)}
 			          type="radio"
 			          label="Teens"
 			          value="Teens"
-			          name="reading_age"
+			          checked={book.reading_age === "Teens"}
 			          id="teens"
 			        />
 			        <Form.Check
 			          inline
-			    	  onChange={handleOnChange}
+			    	  onChange={event => props.handleOnChange(event)}
 			          type="radio"
 			          label="Adults"
 			          value="Adults"
-			          name="reading_age"
+			          checked={book.reading_age === "Adults"}
 			          id="adults"
 			        />
 			      </Col>
