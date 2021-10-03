@@ -16,7 +16,6 @@ function EditBookForm(props) {
     // console.log(props)
 
     const book = props.book
-    console.log(props.handleOnChange)
     // console.log(props.book)
 
 	// const [book_revised, setBook_revised] = useState({user_id: book.user_id, title: book.title, author: book.author, cover_image: book.cover_image, reading_age: book.reading_age})
@@ -91,7 +90,8 @@ function EditBookForm(props) {
 			          type="radio"
 			          label="Toddlers"
 			          value="Toddlers"
-			          checked={book.reading_age === "Toddlers"}
+			          name='reading_age'
+			          defaultChecked={book.reading_age === "Toddlers"}
 			          id="toddlers"
 			        />
 			        <Form.Check
@@ -100,7 +100,8 @@ function EditBookForm(props) {
 			          type="radio"
 			          label="Kids"
 			          value="Kids"
-			          checked={book.reading_age === "Kids"}
+			          name='reading_age'
+			          defaultChecked={book.reading_age === "Kids"}
 			          id="kids"
 			        />
 			        <Form.Check
@@ -109,7 +110,8 @@ function EditBookForm(props) {
 			          type="radio"
 			          label="Teens"
 			          value="Teens"
-			          checked={book.reading_age === "Teens"}
+			          name='reading_age'
+			          defaultChecked={book.reading_age === "Teens"}
 			          id="teens"
 			        />
 			        <Form.Check
@@ -118,7 +120,8 @@ function EditBookForm(props) {
 			          type="radio"
 			          label="Adults"
 			          value="Adults"
-			          checked={book.reading_age === "Adults"}
+			          name='reading_age'
+			          defaultChecked={book.reading_age === "Adults"}
 			          id="adults"
 			        />
 			      </Col>

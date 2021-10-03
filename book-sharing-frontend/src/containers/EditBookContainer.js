@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Book from '../components/books/Book'
 import EditBookForm from "../components/books/EditBookForm"
 import { connect } from 'react-redux'
+import {editBook} from '../actions/bookActions'
 
 
 class EditBookContainer extends Component {
@@ -11,7 +12,6 @@ class EditBookContainer extends Component {
 		this.state = {
 			book: this.props.props.books.booklist.find(book => book.id === parseInt(id))
 		}
-		console.log(this.state)
 	}
 
 	// book(){
@@ -44,14 +44,12 @@ class EditBookContainer extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		this.props.editBook(this.state.book)
-		this.props.updateBook(this.state.book)
+		// this.props.updateBook(this.state.book)
 		// const BookId = props.book
 		// history.push(`/books/${newBookId}`)
 	}
 
 	render(){
-		console.log(this.state)
-		console.log(this.state.book)
 		return (
 			<div className="container mt-5">
 				<div className="row justify-content-center">
@@ -64,4 +62,4 @@ class EditBookContainer extends Component {
 }
 
 
-export default EditBookContainer
+export default connect(null, {editBook})(EditBookContainer)

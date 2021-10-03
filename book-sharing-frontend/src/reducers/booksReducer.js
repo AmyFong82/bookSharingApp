@@ -21,6 +21,14 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 				loading: false
 			}
 
+		case 'UPDATE_BOOK':
+			const books = state.booklist.filter(book => book.id !== action.book.id)
+			return {
+				...state,
+				booklist: [books, action.book]
+			}
+
+
 		default:
 			return state;
 	}
