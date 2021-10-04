@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 
 import EditBookBtn from './EditBookBtn'
 import RequestBookBtn from './RequestBookBtn'
+import DeleteBookBtn from './DeleteBookBtn'
 
 
 class Book extends Component {
@@ -15,7 +16,9 @@ class Book extends Component {
 		const currentUserId = this.props.user.id;
 
 		const displayBtn = () => {
-			if(window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/") || window.location.pathname.includes("/edit")){
+			if(window.location.pathname.includes("/edit")){
+				return <DeleteBookBtn book={book}/>
+			}else if(window.location.pathname.includes("/books/") || window.location.pathname.includes("/requests/")){
 				return null
 			}else if(currentUserId === book.user_id) {
 				return <EditBookBtn book={book}/>

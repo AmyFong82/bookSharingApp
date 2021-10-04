@@ -3,6 +3,7 @@ import Book from '../components/books/Book'
 import EditBookForm from "../components/books/EditBookForm"
 import { connect } from 'react-redux'
 import {editBook} from '../actions/bookActions'
+import {updateBook} from '../actions/userActions'
 import { showBook } from '../actions/bookActions'
 import DeleteBookBtn from '../components/books/DeleteBookBtn'
 
@@ -30,6 +31,7 @@ class EditBookContainer extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		this.props.editBook(this.state.book)
+		this.props.updateBook(this.state.book)
 		this.props.history.push(`/books/${this.state.book.id}`)
 	}
 
@@ -39,11 +41,6 @@ class EditBookContainer extends Component {
 				<div className="row justify-content-center">
 					<Book book={this.state.book}/>
 					<EditBookForm formData={this.state.book} handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} loginStates={this.props.loginStatus}/>
-				</div>
-				<div className="row justify-content-start">
-					<div className="col-3">
-						<DeleteBookBtn book={this.state.book}/>
-					</div>
 				</div>
 			</div>
 		)
@@ -60,7 +57,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		showBook: (id) => dispatch(showBook(id)),
-		editBook: (book) => dispatch(editBook(book))
+		editBook: (book) => dispatch(editBook(book)),
+		updateBook: (book) => dispatch(updateBook(book))
 	}
 }
 

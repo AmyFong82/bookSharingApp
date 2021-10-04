@@ -37,7 +37,7 @@ function DeleteBookBtn(props) {
 	    );
 	  }
 	   return (
-	   		<Button id="request_btn" onClick={handleSubmit}>Delete Book</Button>
+	   		<Button id="request_btn" variant="danger" onClick={handleSubmit}>Delete Book</Button>
 	   	)
 	}
 

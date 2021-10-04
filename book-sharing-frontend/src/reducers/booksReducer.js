@@ -3,7 +3,6 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 		case 'LOADING_BOOKS':
 			return {
 				...state,
-				booklist: [...state.booklist],
 				loading: true
 			}
 
@@ -27,14 +26,6 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 				booklist: [...state.booklist, action.book],
 				loading: false
 			}
-
-		case 'UPDATE_BOOK':
-			const books = state.booklist.filter(book => book.id !== action.book.id)
-			return {
-				...state,
-				booklist: [books, action.book]
-			}
-
 
 		default:
 			return state;

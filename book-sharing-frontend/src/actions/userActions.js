@@ -46,7 +46,7 @@ export const logout = () => {
 	}
 }
 
-export const addUserNewBook = (book) => {
+export const addUserNewBook = book => {
 	return {
 		type: 'ADD_USER_NEW_BOOK',
 		book
@@ -55,16 +55,12 @@ export const addUserNewBook = (book) => {
 }
 
 
-// export const addUserNewBook = (user_id) => {
-// 	return (dispatch) => {
-// 		dispatch({type: 'LOADING_USER'})
-// 		fetch(`http://localhost:3001/api/v1/users/${user_id}`)
-// 		.then(resp => resp.json())
-// 			.then(respJson => {
-// 			dispatch({type: 'ADD_USER_NEW_BOOK', book: respJson.books[respJson.books.length-1]})
-// 		})
-// 	}
-// }
+export const updateBook = book => {
+	return {
+		type: 'UPDATE_BOOK',
+		book
+	}
+}
 
 export const request = details => {
 	return (dispatch) => {
