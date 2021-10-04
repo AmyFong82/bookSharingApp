@@ -6,8 +6,6 @@ import {editBook} from '../actions/bookActions'
 import { showBook } from '../actions/bookActions'
 
 
-
-
 class EditBookContainer extends Component {
 	constructor(props){
 		super(props);
@@ -16,6 +14,7 @@ class EditBookContainer extends Component {
 			book: this.props.books.find(book => book.id === parseInt(id))
 		}
 	}
+
 
 	handleOnChange = event => {
 	    this.setState({
