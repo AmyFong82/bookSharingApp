@@ -11,9 +11,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function EditBookForm(props) {
-
-    const book = props.book
-    console.log(props)
+console.log(props)
+    const book = props.formData
+    console.log(book)
 
 	return(
 		<div className="col m-5">
