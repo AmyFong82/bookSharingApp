@@ -18,7 +18,7 @@ class Api::V1::BooksController < ApplicationController
 	def update
 		book = Book.find(params[:id])
 		book.update(book_params)
-		render json: book, except: [:created_at, :updated_at], status: :updated
+		render json: book, except: [:created_at, :updated_at], status: :accepted
 	end
 
 

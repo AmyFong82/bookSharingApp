@@ -8,6 +8,16 @@ export const fetchBooks = () => {
 	}
 }
 
+export const showBook = id => {
+	return (dispatch) => {
+		dispatch({type: 'LOADING_BOOKS'})
+		fetch(`http://localhost:3001/api/v1/books/${id}`).then(resp => resp.json())
+			.then(respJson => {
+				console.log(respJson)
+			dispatch({type: 'SHOW_BOOK', book: respJson})
+		})
+	}
+}
 
 export const addBook = book => {
 	return(dispatch) => {
@@ -38,10 +48,11 @@ export const editBook = book => {
     		"Accept": "application/json"
 			},
 			body: JSON.stringify(book)
-		}).then(resp => resp.json())
-		.then(respJson => {
-			console.log(respJson)
-			dispatch({type: 'UPDATE_BOOK', book: respJson})
 		})
+		// .then(resp => resp.json())
+		// .then(respJson => {
+		// 	console.log(respJson)
+		// 	dispatch({type: 'UPDATE_BOOK', book: respJson})
+		// })
 	}
 }

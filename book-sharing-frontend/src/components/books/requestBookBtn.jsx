@@ -11,7 +11,7 @@ function RequestBookBtn(props){
   
 	if(props.loginStatus === "LOGGED_IN") {
 		return(
-			<Link to={`/books/${props.bookId}`} className="btn btn-primary">Request</Link>
+			<Link to={`/books/${props.bookId}/request`} className="btn btn-primary">Request</Link>
 		)}
 	return(
 		<Link to="/login" className="btn btn-primary" onClick={handleGuestClick}>Request</Link>

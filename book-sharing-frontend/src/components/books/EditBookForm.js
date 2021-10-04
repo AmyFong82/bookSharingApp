@@ -13,27 +13,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 function EditBookForm(props) {
     let history = useHistory();
-    // console.log(props)
 
     const book = props.book
-    // console.log(props.book)
-
-	// const [book_revised, setBook_revised] = useState({user_id: book.user_id, title: book.title, author: book.author, cover_image: book.cover_image, reading_age: book.reading_age})
-
-	// const handleOnChange = event => {
-	//     setBook_revised({
-	//     	...book_revised,
-	//       [event.target.name]: event.target.value
-	//     });
-	// }
-
-	// const handleSubmit = event => {
-	// 	event.preventDefault()
-	// 	props.editBook(book)
-	// 	props.updateBook(book)
-	// 	// const BookId = props.book
-	// 	// history.push(`/books/${newBookId}`)
-	// }
 
 	return(
 		<div className="col m-5">

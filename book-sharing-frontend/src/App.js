@@ -15,6 +15,7 @@ import { logout } from './actions/userActions'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import BooksContainer from './containers/BooksContainer'
+import BookContainer from './containers/BookContainer'
 import EditBookContainer from './containers/EditBookContainer'
 import AccountContainer from './containers/AccountContainer'
 import LoginContainer from './containers/LoginContainer'
@@ -57,7 +58,8 @@ class App extends Component {
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />
-            <Route path="/books/:id" render={routerProps => <Request {...routerProps} props={this.props}/>} />
+            <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
+            <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
             {/*// <Route path="/requests/:id" render={routerProps =>         <CancelRequest {...routerProps} 
             //                         props={this.props}

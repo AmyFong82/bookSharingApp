@@ -5,31 +5,29 @@ import { connect } from 'react-redux'
 import {editBook} from '../actions/bookActions'
 
 
+
 class EditBookContainer extends Component {
 	constructor(props){
 		super(props);
-		const id = this.props.match.params.id
 		this.state = {
-			book: this.props.props.books.booklist.find(book => book.id === parseInt(id))
+			book: []
 		}
 	}
 
-	// book(){
-	// 	const id = this.props.match.params.id
-	// 	console.log(id)
-	// 	this.setState({
-	// 		book: this.props.props.books.booklist.find(book => book.id === id)
-	// 	})
-	// 	console.log(this.state)
-	// }
-
-	// componentDidMount(){
-	// 	const id = this.props.match.params.id
-	// 	this.setState({
-	// 		book: this.props.props.books.booklist.filter(book => book.id === id)
-	// 	})
-	// 	console.log(this.state.book)
-	// }
+	componentDidMount(){
+		const id = this.props.match.params.id
+		fetch(`http://localhost:3001/api/v1/books/` + id)
+		.then(resp => resp.json())
+		.then(
+			respJson => {
+				this.setState({
+					isLoaded: true,
+					book: respJson
+				});
+			}
+        )
+	}
+	
 
 	handleOnChange = event => {
 	    this.setState({
@@ -50,11 +48,12 @@ class EditBookContainer extends Component {
 	}
 
 	render(){
+		const { book } = this.state
 		return (
 			<div className="container mt-5">
 				<div className="row justify-content-center">
-					<Book book={this.state.book}/>
-					<EditBookForm book={this.state.book} handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} loginStates={this.props.loginStatus}/>
+					<Book book={book}/>
+					<EditBookForm book={book} handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} loginStates={this.props.loginStatus}/>
 				</div>
 			</div>
 		)
