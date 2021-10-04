@@ -4,6 +4,7 @@ import EditBookForm from "../components/books/EditBookForm"
 import { connect } from 'react-redux'
 import {editBook} from '../actions/bookActions'
 import { showBook } from '../actions/bookActions'
+import DeleteBookBtn from '../components/books/DeleteBookBtn'
 
 
 class EditBookContainer extends Component {
@@ -38,6 +39,11 @@ class EditBookContainer extends Component {
 				<div className="row justify-content-center">
 					<Book book={this.state.book}/>
 					<EditBookForm formData={this.state.book} handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} loginStates={this.props.loginStatus}/>
+				</div>
+				<div className="row justify-content-start">
+					<div className="col-3">
+						<DeleteBookBtn book={this.state.book}/>
+					</div>
 				</div>
 			</div>
 		)
