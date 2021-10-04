@@ -15,7 +15,10 @@ class BookContainer extends Component {
 	
 
 	render(){
-		return (
+		console.log(this.props.message)
+		console.log(this.props.book.length === 1)
+		if(this.props.book.length === 1){
+			return (
 				<div className="container mt-5">
 					<div className="row justify-content-center">
 						<Book book={this.props.book}/>
@@ -26,7 +29,17 @@ class BookContainer extends Component {
 						</div>
 					</div>
 				</div>
-		)
+			)
+		}else{
+			return (
+				<div className="container mt-5">
+					<div className="row justify-content-center">
+						<div><b>Book {this.props.message}</b></div>
+					</div>
+				</div>
+			)
+		}
+
 	}
 }
 
@@ -34,7 +47,8 @@ const mapStateToProps = state => {
 	return {
 		user: state.user.details,
 		loginStates: state.user.loginStatus,
-		book: state.books.booklist
+		book: state.books.booklist,
+		message: state.books.message
 	}
 }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
 import { loggedIn } from '../users/loggedIn'
-import { request } from '../../actions/userActions'
+import { deleteBook } from '../../actions/bookActions'
 
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
@@ -11,25 +11,23 @@ import Button from 'react-bootstrap/Button'
 
 function DeleteBookBtn(props) {
 	// where is the closing bracket?
+	const book = props.book
+	console.log(props)
+	console.log(props.book)
+	console.log(book)
+
 
 	const history = useHistory();
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		// if(loggedIn(props.loginStatus)){
-			const details = {requester_id: props.requester.id,
-							book_id: props.book.id}
-			props.request(details)
-			setShow(true)						
-		// }else{
-		//     history.push("/login");
-		// }
+		props.deleteBook(book)
+		setShow(true)						
 	}
 
 	const [show, setShow] = useState(false);
 
-	if (show) {
-		
+	if (show) {		
 	    return (
 	      <Alert variant="success" onClose={() => setShow(false)} >
 	        <Alert.Heading>Book Deleted</Alert.Heading>
@@ -48,4 +46,4 @@ function DeleteBookBtn(props) {
 	}
 
 
-export default connect(mapStateToProps, {request})(DeleteBookBtn)
+export default connect(mapStateToProps, {deleteBook})(DeleteBookBtn)

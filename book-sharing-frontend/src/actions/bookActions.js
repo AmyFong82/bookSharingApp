@@ -14,7 +14,11 @@ export const showBook = id => {
 		fetch(`http://localhost:3001/api/v1/books/${id}`).then(resp => resp.json())
 			.then(respJson => {
 				console.log(respJson)
-			dispatch({type: 'SHOW_BOOK', booklist: respJson})
+				if(respJson.error){
+					dispatch({type: "ERROR", message: respJson.error})
+				}else{
+					dispatch({type: 'SHOW_BOOK', booklist: respJson})
+				}
 		})
 	}
 }
@@ -31,7 +35,6 @@ export const addBook = book => {
 			body: JSON.stringify(book)
 		}).then(resp => resp.json())
 		.then(respJson => {
-			console.log(respJson)
 			dispatch({type: 'ADD_BOOK', book: respJson})
 		})
 	}

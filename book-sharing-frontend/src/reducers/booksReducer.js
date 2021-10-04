@@ -20,6 +20,13 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 				loading: false
 			}
 
+		case 'ERROR':
+			return {
+				...state,
+				message: action.message,
+				loading: false
+			}
+
 		case 'ADD_BOOK':
 			return {
 				...state,
