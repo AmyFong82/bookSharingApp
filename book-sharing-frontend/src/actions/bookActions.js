@@ -14,7 +14,7 @@ export const showBook = id => {
 		fetch(`http://localhost:3001/api/v1/books/${id}`).then(resp => resp.json())
 			.then(respJson => {
 				console.log(respJson)
-			dispatch({type: 'SHOW_BOOK', book: respJson})
+			dispatch({type: 'SHOW_BOOK', booklist: respJson})
 		})
 	}
 }

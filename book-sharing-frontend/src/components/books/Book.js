@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 
 import EditBookBtn from './EditBookBtn'
 import RequestBookBtn from './RequestBookBtn'
-import { loggedIn } from '../users/loggedIn'
-
 
 
 class Book extends Component {

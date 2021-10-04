@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useHistory } from "react-router-dom";
+import React from 'react'
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/bookActions'
 import { addUserNewBook } from '../../actions/userActions'
@@ -12,9 +11,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 
 
 function EditBookForm(props) {
-    let history = useHistory();
 
     const book = props.book
+    console.log(props)
 
 	return(
 		<div className="col m-5">
@@ -29,7 +28,7 @@ function EditBookForm(props) {
 				    	placeholder="Title"
 				    	onChange={event => props.handleOnChange(event)}
 				    	name='title'
-				    	Value={book.title}
+				    	value={book.title}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
@@ -41,7 +40,7 @@ function EditBookForm(props) {
 				    	placeholder="Author"
 				    	onChange={event => props.handleOnChange(event)}
 				    	name='author'
-				    	Value={book.author}
+				    	value={book.author}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>
@@ -54,7 +53,7 @@ function EditBookForm(props) {
 				    	placeholder="Cover Image Link"
 				    	onChange={event => props.handleOnChange(event)}
 				    	name='cover_image'
-				    	Value={book.cover_image}
+				    	value={book.cover_image}
 				    	required />
 				  </FloatingLabel>
 			  </Form.Group>

@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from "react-router-dom";
 
-import { loggedIn } from '../users/loggedIn'
 import { cancelRequest } from '../../actions/userActions'
 
 import Alert from 'react-bootstrap/Alert'
@@ -11,8 +9,6 @@ import Button from 'react-bootstrap/Button'
 
 function SubmitCancelRequestBtn(props) {
 	// where is the closing bracket?
-
-	const history = useHistory();
 
 	const handleSubmit = event => {
 		event.preventDefault()
