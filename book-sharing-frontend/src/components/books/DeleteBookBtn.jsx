@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
-import { loggedIn } from '../users/loggedIn'
 import { deleteBook } from '../../actions/bookActions'
 
 import Alert from 'react-bootstrap/Alert'
@@ -22,7 +21,8 @@ function DeleteBookBtn(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.deleteBook(book)
-		setShow(true)						
+		setShow(true)	
+		setTimeout(() => {history.push('/account')}, 2000);					
 	}
 
 	const [show, setShow] = useState(false);

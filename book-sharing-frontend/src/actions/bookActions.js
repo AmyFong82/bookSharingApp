@@ -66,5 +66,9 @@ export const deleteBook = book => {
 			},
 			body: JSON.stringify(book)
 		})
+		.then(resp => resp.json())
+		.then(respJson => {
+			dispatch({type: 'DELETE_BOOK', book: book})
+		})
 	}
 }

@@ -17,7 +17,15 @@ class BookContainer extends Component {
 	render(){
 		console.log(this.props.message)
 		console.log(this.props.book.length === 1)
-		if(this.props.book.length === 1){
+		if(this.props.message){
+			return (
+				<div className="container mt-5">
+					<div className="row justify-content-center">
+						<div><b>Book {this.props.message}</b></div>
+					</div>
+				</div>
+			)
+		}else{
 			return (
 				<div className="container mt-5">
 					<div className="row justify-content-center">
@@ -27,14 +35,6 @@ class BookContainer extends Component {
 						<div className="col-sm-3 pt-3">
 							<EditBookBtn book={this.props.book} requester={this.props.user} loginStates={this.props.loginStatus}/>
 						</div>
-					</div>
-				</div>
-			)
-		}else{
-			return (
-				<div className="container mt-5">
-					<div className="row justify-content-center">
-						<div><b>Book {this.props.message}</b></div>
 					</div>
 				</div>
 			)

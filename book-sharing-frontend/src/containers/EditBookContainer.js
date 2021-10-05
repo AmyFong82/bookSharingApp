@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import {editBook} from '../actions/bookActions'
 import {updateBook} from '../actions/userActions'
 import { showBook } from '../actions/bookActions'
-import DeleteBookBtn from '../components/books/DeleteBookBtn'
 
 
 class EditBookContainer extends Component {

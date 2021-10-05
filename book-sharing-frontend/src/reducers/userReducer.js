@@ -38,6 +38,13 @@ const userReducer = (
 			books.push(action.book)			
 			return {...state, books}
 
+		case 'DELETE_BOOK':
+			const remaining_books = state.books.filter(book => book.id !== action.book.id)
+			return {
+					...state, 
+					books: remaining_books
+				}
+
 		case 'SIGNUP_USER':
 			return {
 				...state,
