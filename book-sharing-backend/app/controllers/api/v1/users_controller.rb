@@ -17,9 +17,6 @@ class Api::V1::UsersController < ApplicationController
 		end
 	end
 
-	def show_new_book
-		
-	end
 
 	private
 

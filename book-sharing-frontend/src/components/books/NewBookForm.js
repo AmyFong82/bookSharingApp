@@ -25,7 +25,7 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		history.push(`/books/${book.user_id}/newbook`)
+		history.push(`/users/${props.user_id}/newbook`)
 	}
 
 	return(
@@ -133,4 +133,10 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {addBook})(NewBookForm)
+const mapDispatchToProps = dispatch => {
+	return {
+		addBook: (book) => dispatch(addBook(book))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewBookForm)

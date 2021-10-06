@@ -60,9 +60,9 @@ class App extends Component {
              {!loggedIn(this.props.loginStatus) ? <Redirect to="/login" /> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
              </Route>
             {/*<Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />*/}
+            <Route path="/users/:user_id/newbook" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
-            {/*<Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />*/}
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
             {/*// <Route path="/requests/:id" render={routerProps =>         <CancelRequest {...routerProps} 
             //                         props={this.props}
