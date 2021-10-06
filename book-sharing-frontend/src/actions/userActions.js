@@ -47,8 +47,11 @@ export const logout = () => {
 }
 
 export const addBook = book => {
+	// const newbook = { ...book, id: cuid()}
+
 	return(dispatch) => {
-		dispatch({type: 'LOADING_BOOKS'})
+		// dispatch({type: 'ADD_BOOK', book})
+		dispatch({type: 'ADD_BOOK', book})
 		fetch(`http://localhost:3001/api/v1/users/${book.user_id}/books`,{
 			method: 'POST',
 			headers: {
@@ -58,22 +61,23 @@ export const addBook = book => {
 			body: JSON.stringify(book)
 		}).then(resp => resp.json())
 		.then(respJson => {
+			dispatch({type: 'SHOW_BOOK', booklist: respJson})
 			dispatch({type: 'ADD_BOOK', book: respJson})
 		})
 	}
 }
 
-export const fetchNewBook = (user_id) => {
-	return(dispatch) => {
-		dispatch({type: 'LOADING_BOOKS'})
-			fetch(`http://localhost:3001/api/v1/users/${user_id}/newbook`)
-			.then(resp => resp.json())
-			.then(respJson => {
-				console.log(respJson)
-				dispatch({type: 'FETCH_NEW_BOOK', book: respJson})
-			})
-	}
-}
+// export const fetchNewBook = (user_id) => {
+// 	return(dispatch) => {
+// 		dispatch({type: 'LOADING_BOOKS'})
+// 			fetch(`http://localhost:3001/api/v1/users/${user_id}/newbook`)
+// 			.then(resp => resp.json())
+// 			.then(respJson => {
+// 				console.log(respJson)
+// 				dispatch({type: 'FETCH_NEW_BOOK', book: respJson})
+// 			})
+// 	}
+// }
 
 
 export const updateBook = book => {

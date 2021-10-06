@@ -23,6 +23,11 @@ export const showBook = id => {
 	}
 }
 
+export const addBookToBooklist = book => {
+	return(dispatch) => {
+		dispatch({type: 'ADD_BOOK_TO_BOOKLIST'}, book)
+	}
+}
 
 export const editBook = book => {
 	return(dispatch) => {

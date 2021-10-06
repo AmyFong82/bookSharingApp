@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux'
 import { addBook } from '../../actions/userActions'
+import { addBookToBooklist } from '../../actions/bookActions'
 
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
@@ -25,7 +26,8 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		history.push(`/users/${props.user_id}/newbook`)
+		// props.addBookToBooklist(book)
+		history.push(`/books/newbook`)
 	}
 
 	return(
@@ -135,7 +137,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addBook: (book) => dispatch(addBook(book))
+		addBook: (book) => dispatch(addBook(book)),
+		addBookToBooklist: (book) => dispatch(addBookToBooklist(book))
 	}
 }
 

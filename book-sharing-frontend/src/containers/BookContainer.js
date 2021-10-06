@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import Book from '../components/books/Book'
 import EditBookBtn from "../components/books/EditBookBtn"
 import RequestBookBtn from "../components/books/RequestBookBtn"
-import CancelRequestBtn from "../components/requests/SubmitCancelRequestBtn"
 import { connect } from 'react-redux'
 
 import { showBook } from '../actions/bookActions'
+// import { fetchNewBook } from '../actions/userActions'
 import { Link } from 'react-router-dom'
 
 
@@ -13,8 +13,11 @@ import { Link } from 'react-router-dom'
 class BookContainer extends Component {
 
 	componentDidMount(){
-		const id = this.props.match.params.id
-		this.props.showBook(id)
+		if(this.props.match.params.id){
+			const id = this.props.match.params.id
+			this.props.showBook(id)
+		}
+		
 	}
 
 
@@ -27,7 +30,7 @@ class BookContainer extends Component {
 		const displayBtn = () => {
 			if(thisbook.user_id === this.props.user.id){
 				return(
-					<EditBookBtn book={thisbook} requester={this.props.user} loginStates={this.props.loginStatus}/>
+					<EditBookBtn book={thisbook} loginStates={this.props.loginStatus}/>
 				)
 			}else if(this.props.requests && this.props.requests.find(book => book.id === thisbook.id)){
 				return(
@@ -76,4 +79,11 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps, {showBook})(BookContainer)
+const mapDispatchToProps = dispatch => {
+	return {
+		// fetchNewBook: user_id => dispatch(fetchNewBook(user_id)),
+		showBook: id => dispatch(showBook(id))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookContainer)

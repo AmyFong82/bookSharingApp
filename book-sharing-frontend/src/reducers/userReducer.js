@@ -33,11 +33,6 @@ const userReducer = (
 				books: [...state.books, action.book]
 			}
 
-		case 'FETCH_NEW_BOOK':
-			return {
-				...state
-			}
-
 		case 'UPDATE_BOOK':
 			const books = state.books.filter(book => book.id !== action.book.id)
 			books.push(action.book)			
