@@ -1,7 +1,7 @@
 class Api::V1::BooksController < ApplicationController
 
 	def index
-		books = Book.all
+		books = Book.available_books
 		render json: books, except: [:created_at, :updated_at]
 	end
 
