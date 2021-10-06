@@ -27,10 +27,15 @@ const userReducer = (
 				requests: action.requests
 			}
 
-		case 'ADD_USER_NEW_BOOK':
+		case 'ADD_BOOK':
 			return {
 				...state,
 				books: [...state.books, action.book]
+			}
+
+		case 'FETCH_NEW_BOOK':
+			return {
+				...state
 			}
 
 		case 'UPDATE_BOOK':

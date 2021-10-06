@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addBook } from '../../actions/bookActions'
-import { addUserNewBook } from '../../actions/userActions'
+import { addBook } from '../../actions/userActions'
 
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
@@ -124,15 +123,4 @@ const mapStateToProps = state => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		addBook: (book) => {
-			dispatch(addBook(book))
-		},
-		addUserNewBook: (book) => {
-			dispatch(addUserNewBook(book))
-		}
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditBookForm)
+export default connect(mapStateToProps, {addBook})(EditBookForm)

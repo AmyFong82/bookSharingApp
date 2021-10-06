@@ -11,11 +11,14 @@ class Api::V1::UsersController < ApplicationController
 		@user = User.create(user_params)
 		if @user.valid?
 			@token = encode_token(user_id: @user.id)
-			# how to user except: here?
 			render json: { details: @user, jwt: @token }, except: [:created_at, :updated_at, :password_digest], status: :created
 		else
 			render json: { error: 'Username taken' }, status: :not_acceptable
 		end
+	end
+
+	def show_new_book
+		
 	end
 
 	private

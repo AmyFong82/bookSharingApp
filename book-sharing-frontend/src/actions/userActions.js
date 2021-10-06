@@ -46,12 +46,33 @@ export const logout = () => {
 	}
 }
 
-export const addUserNewBook = book => {
-	return {
-		type: 'ADD_USER_NEW_BOOK',
-		book
+export const addBook = book => {
+	return(dispatch) => {
+		dispatch({type: 'LOADING_BOOKS'})
+		fetch(`http://localhost:3001/api/v1/users/${book.user_id}/books`,{
+			method: 'POST',
+			headers: {
+			"Content-Type": "application/json",
+    		"Accept": "application/json"
+			},
+			body: JSON.stringify(book)
+		}).then(resp => resp.json())
+		.then(respJson => {
+			dispatch({type: 'ADD_BOOK', book: respJson})
+		})
 	}
-	
+}
+
+export const fetchNewBook = (user_id) => {
+	return(dispatch) => {
+		dispatch({type: 'LOADING_BOOKS'})
+			fetch(`http://localhost:3001/api/v1/users/${user_id}/newbook`)
+			.then(resp => resp.json())
+			.then(respJson => {
+				console.log(respJson)
+				dispatch({type: 'FETCH_NEW_BOOK', book: respJson})
+			})
+	}
 }
 
 
