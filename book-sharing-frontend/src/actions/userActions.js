@@ -47,11 +47,7 @@ export const logout = () => {
 }
 
 export const addBook = book => {
-	// const newbook = { ...book, id: cuid()}
-
 	return(dispatch) => {
-		// dispatch({type: 'ADD_BOOK', book})
-		dispatch({type: 'ADD_BOOK', book})
 		fetch(`http://localhost:3001/api/v1/users/${book.user_id}/books`,{
 			method: 'POST',
 			headers: {

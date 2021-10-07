@@ -26,7 +26,6 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		// props.addBookToBooklist(book)
 		history.push(`/books/newbook`)
 	}
 
