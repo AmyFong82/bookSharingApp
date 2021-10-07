@@ -49,9 +49,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
-            {/*<Route exact path="/account" render={routerProps => <AccountContainer {...routerProps} /> } /> */}
             <Route exact path="/account"> 
-            {/*{loggedIn(this.props.loginStatus) ? <AccountContainer props={...routerProps}/> : <Redirect to="/login" />}*/}
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
@@ -59,17 +57,10 @@ class App extends Component {
             <Route path="/books/:id/edit">
              {!loggedIn(this.props.loginStatus) ? <Redirect to="/login" /> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
              </Route>
-            {/*<Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />*/}
             <Route exact path="/books/newbook" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
-            {/*// <Route path="/requests/:id" render={routerProps =>         <CancelRequest {...routerProps} 
-            //                         props={this.props}
-            //                         book={this.props.books.booklist.id === useParams()}/>} />
-            {/*<Route exact path="/request" component={Request} />*/}
-            {/*<Route path='/books/:id' render={routerProps => <Request {...routerProps} />} />*/}
-            {/*<Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />*/}
           </Switch>
         </Container>
       </Router>
@@ -80,6 +71,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
+    user: state.user,
     loginStatus: state.user.loginStatus,
     books: state.books
   }

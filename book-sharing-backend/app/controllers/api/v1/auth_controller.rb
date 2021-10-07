@@ -1,5 +1,4 @@
 class Api::V1::AuthController < ApplicationController
-	# skip_before_action :authorized, only: [:create]
 
 	def create #POST /api/v1/login
 		@user = User.find_by(username: user_login_params[:username])
@@ -18,10 +17,3 @@ class Api::V1::AuthController < ApplicationController
 	    params.require(:user).permit(:username, :password)
 	end
 end
-
-
-		  # render json: sighting.to_json(:include => {
-		  #   :bird => {:only => [:name, :species]},
-		  #   :location => {:only => [:latitude, :longitude]}
-		  # }, :except => [:updated_at])
-		  # render json: book, except: [:created_at, :updated_at], status: :created

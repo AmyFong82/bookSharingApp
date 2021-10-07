@@ -12,7 +12,7 @@ function ShareBookBtn(props){
 	}
 
 	return(
-  	<Link to={handleClick} id="share_book_btn" className="btn btn-warning">Share A Book</Link> 
+  		<Link to={handleClick} id="share_book_btn" className="btn btn-warning">Share A Book</Link> 
 	)
 }
 

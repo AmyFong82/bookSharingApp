@@ -5,7 +5,6 @@ import RequestBookBtn from "../components/books/RequestBookBtn"
 import { connect } from 'react-redux'
 
 import { showBook } from '../actions/bookActions'
-// import { fetchNewBook } from '../actions/userActions'
 import { Link } from 'react-router-dom'
 
 
@@ -81,7 +80,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		// fetchNewBook: user_id => dispatch(fetchNewBook(user_id)),
 		showBook: id => dispatch(showBook(id))
 	}
 }
