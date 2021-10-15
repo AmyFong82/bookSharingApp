@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 	return {
 		user: state.user.details,
 		loginStates: state.user.loginStatus,
-		book: state.books.booklist
+		book: state.books.currentBook
 	}
 }
 
