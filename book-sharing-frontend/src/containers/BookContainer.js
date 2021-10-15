@@ -15,12 +15,9 @@ class BookContainer extends Component {
 		if(this.props.match.params.id){
 			const id = this.props.match.params.id
 			this.props.showBook(id)
-		}
-		
+		}	
 	}
 
-
-	
 
 	render(props){
 

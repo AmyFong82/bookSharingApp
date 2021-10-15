@@ -11,8 +11,16 @@ class EditBookContainer extends Component {
 	constructor(props){
 		super(props);
 		const id = this.props.match.params.id
+		this.props.showBook(id)
 		this.state = {
 			book: this.props.books.find(book => book.id === parseInt(id))
+		}
+	}
+
+	componentDidMount(){
+		if(this.props.match.params.id){
+			const id = this.props.match.params.id
+			this.props.showBook(id)
 		}
 	}
 
@@ -49,6 +57,7 @@ class EditBookContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		user: state.user.details,
+		book: state.books.currentBook,
 		books: state.user.books
 	}
 }
