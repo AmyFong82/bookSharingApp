@@ -57,8 +57,8 @@ export const addBook = book => {
 			body: JSON.stringify(book)
 		}).then(resp => resp.json())
 		.then(respJson => {
-			dispatch({type: 'SHOW_BOOK', book: respJson})
 			dispatch({type: 'ADD_BOOK', book: respJson})
+			dispatch({type: 'SHOW_BOOK', book: respJson})
 		})
 	}
 }
