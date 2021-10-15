@@ -22,9 +22,10 @@ const userReducer = (
 		return {
 				...state,
 				loginStatus: "LOGGED_IN",
-				details: action.details,
-				books: action.books,
-				requests: action.requests
+				details: action.respJson.details,
+				jwt: action.respJson.jwt,
+				books: action.respJson.books,
+				requests: action.respJson.requests
 			}
 
 		case 'ADD_BOOK':

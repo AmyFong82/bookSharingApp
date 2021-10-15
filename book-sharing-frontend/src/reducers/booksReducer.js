@@ -1,4 +1,4 @@
-const booksReducer = (state = { booklist: [], loading: false}, action) => {
+const booksReducer = (state = { booklist: [], currentBook: [], loading: false}, action) => {
 	switch(action.type) {
 		case 'LOADING_BOOKS':
 			return {
@@ -7,10 +7,16 @@ const booksReducer = (state = { booklist: [], loading: false}, action) => {
 			}
 
 		case 'FETCH_BOOKS':
-		case 'SHOW_BOOK':
 			return {
 				...state,
 				booklist: action.booklist,
+				loading: false
+			}
+
+		case 'SHOW_BOOK':
+			return {
+				...state,
+				currentBook: action.book,
 				loading: false
 			}
 

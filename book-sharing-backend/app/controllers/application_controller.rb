@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  # before_action :authorized
 
 	def jwt_key
         ENV['ACCESS_TOKEN_SECRET']

@@ -13,11 +13,10 @@ export const showBook = id => {
 		dispatch({type: 'LOADING_BOOKS'})
 		fetch(`http://localhost:3001/api/v1/books/${id}`).then(resp => resp.json())
 			.then(respJson => {
-				console.log(respJson)
 				if(respJson.error){
 					dispatch({type: "ERROR", message: respJson.error})
 				}else{
-					dispatch({type: 'SHOW_BOOK', booklist: respJson})
+					dispatch({type: 'SHOW_BOOK', book: respJson})
 				}
 		})
 	}

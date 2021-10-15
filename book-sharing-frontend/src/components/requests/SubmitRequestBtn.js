@@ -18,7 +18,8 @@ function SubmitRequestBtn(props) {
 		event.preventDefault()
 		if(loggedIn(props.loginStatus)){
 			const details = {requester_id: props.requester.id,
-							book_id: props.book.id}
+							book_id: props.book.id,
+							jwt: props.jwt}
 			props.request(details)
 			setShow(true)						
 		}else{
@@ -41,7 +42,8 @@ function SubmitRequestBtn(props) {
 
 	const mapStateToProps = state => {
 		return {
-			loginStatus: state.user.loginStatus
+			loginStatus: state.user.loginStatus,
+			jwt: state.user.jwt
 		}
 	}
 

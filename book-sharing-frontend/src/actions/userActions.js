@@ -11,7 +11,7 @@ export const login = user => {
 		}).then(resp => resp.json())
 			.then(respJson => {
 				if (respJson.details){
-					dispatch({type: 'LOGIN_USER', details: respJson.details, books: respJson.books, requests: respJson.requests })
+					dispatch({type: 'LOGIN_USER', respJson})
 				}else{
 					dispatch({type: 'LOGIN_FAILED', loginStatus: respJson.message})
 				}
@@ -74,9 +74,11 @@ export const updateBook = book => {
 export const request = details => {
 	return (dispatch) => {
 		dispatch({type: 'LOAD_REQUEST'})
+		let jwt = details.jwt
 		fetch('http://localhost:3001/api/v1/requests', {
 			method: 'POST',
 			headers: {
+			// Authorization: `Bearer ${jwt}`,
 			"Content-Type": "application/json",
     		"Accept": "application/json"
 			},
@@ -84,7 +86,6 @@ export const request = details => {
 		}).then(resp => resp.json())
 		.then(respJson => {
 			if(respJson){
-				console.log(respJson)
 				dispatch({type: 'SUBMIT_REQUEST', request: respJson})
 			}
 			return(respJson.message)
