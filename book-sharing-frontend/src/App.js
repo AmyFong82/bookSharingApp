@@ -57,13 +57,7 @@ class App extends Component {
             <Route path="/books/:id/edit">
              {!loggedIn(this.props.loginStatus) ? <Redirect to="/login" /> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
              </Route>
-            <Route exact path="/books/newbook">
-            console.log(this.props.book)
-             {(this.props.book.length !== 1) ? <Redirect to={["/"]} render={routerProps => <BooksContainer {...routerProps} />} />
-              : <Route exact path="/books/newbook" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
-             }
-            </Route>
-            {/*<Route exact path="/books/newbook" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />*/}
+            <Route exact path="/books/newbook" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />

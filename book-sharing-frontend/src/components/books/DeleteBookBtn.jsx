@@ -11,9 +11,6 @@ import Button from 'react-bootstrap/Button'
 function DeleteBookBtn(props) {
 	// where is the closing bracket?
 	const book = props.book
-	console.log(props)
-	console.log(props.book)
-	console.log(book)
 
 
 	const history = useHistory();

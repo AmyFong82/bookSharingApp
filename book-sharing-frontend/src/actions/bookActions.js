@@ -29,6 +29,7 @@ export const addBookToBooklist = book => {
 }
 
 export const editBook = book => {
+
 	return(dispatch) => {
 		dispatch({type: 'LOADING_BOOKS'})
 		fetch(`http://localhost:3001/api/v1/books/${book.id}`,{
@@ -38,6 +39,10 @@ export const editBook = book => {
     		"Accept": "application/json"
 			},
 			body: JSON.stringify(book)
+		})
+		.then(resp => resp.json())
+		.then(respJson => {
+			dispatch({type: 'SHOW_BOOK', book: respJson})
 		})
 	}
 }
