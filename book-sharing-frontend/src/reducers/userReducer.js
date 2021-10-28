@@ -1,10 +1,11 @@
-const userReducer = (
-	state = { 
+const userReducer = 
+	(state = { 
 		loginStatus: "NOT_LOGGED_IN",
       	details: {},
       	books: [],
       	requests: []
-		}, action) => {
+		}, action
+	) => {
 	switch(action.type) {
 		case 'AUTHENTICATING':
 			return {
@@ -19,14 +20,14 @@ const userReducer = (
 			}
 
 		case 'LOGIN_USER':
-		return {
-				...state,
-				loginStatus: "LOGGED_IN",
-				details: action.respJson.details,
-				jwt: action.respJson.jwt,
-				books: action.respJson.books,
-				requests: action.respJson.requests
-			}
+			return {
+					...state,
+					loginStatus: "LOGGED_IN",
+					details: action.respJson.details,
+					jwt: action.respJson.jwt,
+					books: action.respJson.books,
+					requests: action.respJson.requests
+				}
 
 		case 'ADD_BOOK':
 			return {
