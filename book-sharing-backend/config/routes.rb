@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, except: [:index] do
-        resources :books
          # match '/newbook', to: 'books#show_new_book', via: [:get]
       end
       resources :books
-      resources :requests
+      resources :books, :requests
       post '/login', to: 'auth#create'
       post '/signup', to: 'users#create'
     end

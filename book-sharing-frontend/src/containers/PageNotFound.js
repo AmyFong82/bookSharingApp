@@ -6,7 +6,7 @@ export default class PageNotFound extends Component {
 		return(
 			<div className="account-container mt-5">
 				<h1> The page you are trying to visit does not exist.</h1>
-				<Link to={`/books/`} className="btn btn-primary">Home</Link>
+				<Link to={`/books`} className="btn btn-primary">Home</Link>
 			</div>
 		)
 	}
