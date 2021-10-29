@@ -24,6 +24,7 @@ import Request from './components/requests/Request'
 import CancelRequest from './components/requests/CancelRequest'
 import ShareBookBtn from './components/books/ShareBookBtn'
 import NewBookForm from './components/books/NewBookForm'
+import PageNotFound from './containers/PageNotFound'
 
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
+            <Route component={PageNotFound}/>
           </Switch>
         </Container>
       </Router>
