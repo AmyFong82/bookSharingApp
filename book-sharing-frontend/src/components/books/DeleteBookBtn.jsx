@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button'
 
 
 function DeleteBookBtn(props) {
-	// where is the closing bracket?
 	const book = props.book
 
 
@@ -30,17 +29,18 @@ function DeleteBookBtn(props) {
 	        <Alert.Heading>Book Deleted</Alert.Heading>
 	      </Alert>
 	    );
-	  }
-	   return (
-	   		<Button id="request_btn" variant="danger" onClick={handleSubmit}>Delete Book</Button>
-	   	)
 	}
+	return (
+	   	<Button id="request_btn" variant="danger" onClick={handleSubmit}>Delete Book</Button>
+	)
+	
+}
 
-	const mapStateToProps = state => {
-		return {
-			loginStatus: state.user.loginStatus
-		}
+const mapStateToProps = state => {
+	return {
+		loginStatus: state.user.loginStatus
 	}
+}
 
 
 export default connect(mapStateToProps, {deleteBook})(DeleteBookBtn)
