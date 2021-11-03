@@ -29,7 +29,6 @@ export const addBookToBooklist = book => {
 }
 
 export const editBook = book => {
-
 	return(dispatch) => {
 		dispatch({type: 'LOADING_BOOKS'})
 		fetch(`http://localhost:3001/api/v1/books/${book.id}`,{

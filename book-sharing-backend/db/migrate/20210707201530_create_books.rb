@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :reading_age
       t.string :cover_image
       t.integer :user_id
+      t.string :cuid
 
       t.timestamps
     end
