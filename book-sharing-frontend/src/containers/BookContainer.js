@@ -15,7 +15,7 @@ class BookContainer extends Component {
 		if(this.props.match.params.id){
 			const id = this.props.match.params.id
 			this.props.showBook(id)
-		}	
+		}
 	}
 
 
@@ -40,7 +40,7 @@ class BookContainer extends Component {
 		}
 
 
-		if(this.props.message){
+		if(this.props.message.length < 0){
 			return (
 				<div className="container mt-5">
 					<div className="row justify-content-center">

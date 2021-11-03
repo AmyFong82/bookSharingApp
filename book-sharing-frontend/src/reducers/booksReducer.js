@@ -16,6 +16,7 @@ const booksReducer = (state = { booklist: [], currentBook: [], loading: false}, 
 		case 'SHOW_BOOK':
 			return {
 				...state,
+				message: [],
 				currentBook: action.book,
 				loading: false
 			}

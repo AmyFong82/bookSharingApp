@@ -7,7 +7,7 @@ class Api::V1::BooksController < ApplicationController
 	end
 
 	def show
-		if book = Book.find(params[:id]) || book = Book.find_by(cuid: params[:id])
+		if book = Book.find_by(cuid: params[:id])
 			render json: book, except: [:created_at, :updated_at]
 		end
 	end
