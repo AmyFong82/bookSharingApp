@@ -40,7 +40,7 @@ class BookContainer extends Component {
 		}
 
 
-		if(this.props.message.length < 0){
+		if(this.props.message.length > 0){
 			return (
 				<div className="container mt-5">
 					<div className="row justify-content-center">
