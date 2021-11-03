@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, except: [:index] do
-         # match '/newbook', to: 'books#show_new_book', via: [:get]
+        resources :books
       end
-      resources :books
       resources :books, :requests
       post '/login', to: 'auth#create'
       post '/signup', to: 'users#create'

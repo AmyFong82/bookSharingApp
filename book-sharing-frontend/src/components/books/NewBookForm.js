@@ -9,12 +9,13 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import cuid from 'cuid'
 
 
 function NewBookForm(props) {
     let history = useHistory();
 
-	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: ""})
+	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: "", cuid: cuid()})
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -26,7 +27,7 @@ function NewBookForm(props) {
 	const handleSubmit = event => {
 		event.preventDefault()
 		props.addBook(book)
-		history.push(`/books/newbook`)
+		history.push(`/books/${book.cuid}`)
 	}
 
 	return(

@@ -7,8 +7,9 @@ class Api::V1::BooksController < ApplicationController
 	end
 
 	def show
-		book = Book.find(params[:id])
-		render json: book, except: [:created_at, :updated_at]
+		if book = Book.find(params[:id]) || book = Book.find_by(cuid: params[:id])
+			render json: book, except: [:created_at, :updated_at]
+		end
 	end
 
 	def create
@@ -32,7 +33,7 @@ class Api::V1::BooksController < ApplicationController
 	private
 
 	def book_params
-		params.require(:book).permit(:user_id, :title, :author, :reading_age, :cover_image)
+		params.require(:book).permit(:user_id, :title, :author, :reading_age, :cover_image, :cuid)
 	end
 
 end
