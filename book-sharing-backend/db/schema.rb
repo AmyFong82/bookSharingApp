@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_140958) do
     t.string "reading_age"
     t.string "cover_image"
     t.integer "user_id"
+    t.string "cuid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
