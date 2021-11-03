@@ -7,7 +7,9 @@ class Api::V1::BooksController < ApplicationController
 	end
 
 	def show
-		if book = Book.find_by(cuid: params[:id])
+		if params[:id].length > 10 
+			book = Book.find_by(cuid: params[:id])
+		else book = Book.find(params[:id])
 			render json: book, except: [:created_at, :updated_at]
 		end
 	end

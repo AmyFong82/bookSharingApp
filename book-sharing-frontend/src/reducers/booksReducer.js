@@ -1,4 +1,4 @@
-const booksReducer = (state = { booklist: [], currentBook: [], loading: false}, action) => {
+const booksReducer = (state = { booklist: [], currentBook: [], message: [], loading: false}, action) => {
 	switch(action.type) {
 		case 'LOADING_BOOKS':
 			return {
@@ -24,6 +24,7 @@ const booksReducer = (state = { booklist: [], currentBook: [], loading: false}, 
 		case 'ERROR':
 			return {
 				...state,
+				currentBook: [],
 				message: action.message,
 				loading: false
 			}
