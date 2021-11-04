@@ -74,11 +74,10 @@ export const updateBook = book => {
 
 export const request = details => {
 	return (dispatch) => {
-		let jwt = details.jwt
 		fetch('http://localhost:3001/api/v1/requests', {
 			method: 'POST',
 			headers: {
-			Authorization: `Bearer ${jwt}`,
+			Authorization: `Bearer ${details.jwt}`,
 			"Content-Type": "application/json",
     		"Accept": "application/json"
 			},
