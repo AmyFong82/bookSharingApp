@@ -15,7 +15,9 @@ import cuid from 'cuid'
 function NewBookForm(props) {
     let history = useHistory();
 
-	const [book, setDetails] = useState({user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: "", cuid: cuid()})
+	const [book, setDetails] = useState({
+		user_id: props.user_id, title: "", author: "", cover_image: "", reading_age: "", cuid: cuid(), jwt: props.jwt
+	})
 
 	const handleOnChange = event => {
 	    setDetails({
@@ -132,7 +134,8 @@ const mapStateToProps = state => {
 	return {
 		user_id: state.user.details.id,
 		books: state.user.books,
-		book: state.user.books.currentBook
+		book: state.user.books.currentBook,
+		jwt: state.user.jwt
 	}
 }
 
