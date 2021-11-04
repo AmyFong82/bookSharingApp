@@ -81,13 +81,8 @@ const userReducer =
 				requests: [...state.requests, action.request]
 			}
 
-		case 'LOAD_REQUEST':
-			return state;
-
 		case 'LOADING_USER':
 			return state;
-
-
 
 		case 'CANCEL_REQUEST':
 			const requests = state.requests.filter(request => request.id !== action.book_id)

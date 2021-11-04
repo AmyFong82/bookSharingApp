@@ -73,7 +73,6 @@ export const updateBook = book => {
 
 export const request = details => {
 	return (dispatch) => {
-		dispatch({type: 'LOAD_REQUEST'})
 		let jwt = details.jwt
 		fetch('http://localhost:3001/api/v1/requests', {
 			method: 'POST',
