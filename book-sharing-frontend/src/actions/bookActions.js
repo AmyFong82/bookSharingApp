@@ -34,6 +34,7 @@ export const editBook = book => {
 		fetch(`http://localhost:3001/api/v1/books/${book.id}`,{
 			method: 'PATCH',
 			headers: {
+			Authorization: `Bearer ${book.jwt}`,
 			"Content-Type": "application/json",
     		"Accept": "application/json"
 			},

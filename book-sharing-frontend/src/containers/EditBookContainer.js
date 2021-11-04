@@ -26,6 +26,7 @@ class EditBookContainer extends Component {
 	    this.setState({
 	    	book: {
 	    		...this.state.book,
+	    		jwt: this.props.jwt,
 	    		[event.target.name]: event.target.value
 	    	}
 	    	
@@ -54,7 +55,8 @@ class EditBookContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		user: state.user.details,
-		books: state.user.books
+		books: state.user.books,
+		jwt: state.user.jwt
 	}
 }
 
