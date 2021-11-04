@@ -58,6 +58,7 @@ const userReducer =
 			return {
 				loginStatus: "LOGGED_OUT",
 				details: {},
+				jwt: "",
 				books: [],
 				requests: []
 			}
