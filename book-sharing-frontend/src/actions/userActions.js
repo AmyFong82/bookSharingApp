@@ -78,7 +78,7 @@ export const request = details => {
 		fetch('http://localhost:3001/api/v1/requests', {
 			method: 'POST',
 			headers: {
-			// Authorization: `Bearer ${jwt}`,
+			Authorization: `Bearer ${jwt}`,
 			"Content-Type": "application/json",
     		"Accept": "application/json"
 			},

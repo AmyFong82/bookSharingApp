@@ -19,22 +19,22 @@ function SubmitCancelRequestBtn(props) {
 
 	const [show, setShow] = useState(false);
 
-	if (show) {
-		
+	if (show) {		
 	    return (
 	      <Alert variant="success" onClose={() => setShow(false)} >
 	        <Alert.Heading>Request Canceled</Alert.Heading>
 	      </Alert>
 	    );
-	  }
-	   return <Button className="btn btn-danger" onClick={handleSubmit}>Confirm Cancel Request</Button>;
 	}
+	
+	return <Button className="btn btn-danger" onClick={handleSubmit}>Confirm Cancel Request</Button>;
+}
 
-	const mapStateToProps = state => {
-		return {
-			loginStatus: state.user.loginStatus
-		}
+const mapStateToProps = state => {
+	return {
+		loginStatus: state.user.loginStatus
 	}
+}
 
 
 export default connect(mapStateToProps, {cancelRequest})(SubmitCancelRequestBtn)
