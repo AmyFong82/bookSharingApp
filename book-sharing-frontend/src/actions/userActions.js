@@ -32,7 +32,7 @@ export const signup = user => {
 		}).then(resp => resp.json())
 			.then(respJson => {
 				if (respJson.details){
-					dispatch({type: 'SIGNUP_USER', details: respJson.details})
+					dispatch({type: 'SIGNUP_USER', respJson})
 				}else{
 					dispatch({type: 'SIGNUP_FAILED', loginStatus: respJson.error})
 				}

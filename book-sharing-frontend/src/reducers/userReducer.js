@@ -19,6 +19,14 @@ const userReducer =
 				loginStatus: "REGISTERING"
 			}
 
+		case 'SIGNUP_USER':
+			return {
+				...state,
+				loginStatus: "LOGGED_IN",
+				details: action.details,
+				jwt: action.jwt
+			}
+
 		case 'LOGIN_USER':
 			return {
 					loginStatus: "LOGGED_IN",
@@ -45,13 +53,6 @@ const userReducer =
 					...state, 
 					books: remaining_books
 				}
-
-		case 'SIGNUP_USER':
-			return {
-				...state,
-				loginStatus: "LOGGED_IN",
-				details: action.details
-			}
 
 		case 'LOGOUT_USER':
 			return {
