@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button'
 
 
 function SubmitCancelRequestBtn(props) {
-	// where is the closing bracket?
 
 	const handleSubmit = event => {
 		event.preventDefault()

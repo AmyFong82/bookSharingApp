@@ -75,17 +75,19 @@ const userReducer =
 				loginStatus: action.loginStatus,
 			}
 
+		case 'SUBMIT_REQUEST':
+			return {
+				...state,
+				requests: [...state.requests, action.request]
+			}
+
 		case 'LOAD_REQUEST':
 			return state;
 
 		case 'LOADING_USER':
 			return state;
 
-		case 'SUBMIT_REQUEST':
-			return {
-				...state,
-				requests: [...state.requests, action.request]
-			}
+
 
 		case 'CANCEL_REQUEST':
 			const requests = state.requests.filter(request => request.id !== action.book_id)

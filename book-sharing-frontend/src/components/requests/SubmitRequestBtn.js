@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button'
 
 
 function SubmitRequestBtn(props) {
-	// where is the closing bracket?
 
 	const history = useHistory();
 
@@ -30,22 +29,21 @@ function SubmitRequestBtn(props) {
 	const [show, setShow] = useState(false);
 
 	if (show) {
-		
 	    return (
 	      <Alert variant="success" onClose={() => setShow(false)} >
 	        <Alert.Heading>Request Submit Successful</Alert.Heading>
 	      </Alert>
 	    );
-	  }
-	   return <Button id="request_btn" onClick={handleSubmit}>Submit Request</Button>;
 	}
+	return <Button id="request_btn" onClick={handleSubmit}>Submit Request</Button>;
+}
 
-	const mapStateToProps = state => {
-		return {
-			loginStatus: state.user.loginStatus,
-			jwt: state.user.jwt
-		}
+const mapStateToProps = state => {
+	return {
+		loginStatus: state.user.loginStatus,
+		jwt: state.user.jwt
 	}
+}
 
 
 export default connect(mapStateToProps, {request})(SubmitRequestBtn)
