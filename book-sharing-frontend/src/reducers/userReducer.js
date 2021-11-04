@@ -23,8 +23,8 @@ const userReducer =
 			return {
 				...state,
 				loginStatus: "LOGGED_IN",
-				details: action.details,
-				jwt: action.jwt
+				details: action.respJson.details,
+				jwt: action.respJson.jwt
 			}
 
 		case 'LOGIN_USER':
