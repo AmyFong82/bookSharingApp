@@ -14,6 +14,7 @@ class LoginContainer extends Component {
 	}
 
 	render(){
+		console.log(this.props)
 		return(
 			<div className="container mt-5">
 				<div className="row">
