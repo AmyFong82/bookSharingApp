@@ -13,10 +13,6 @@ class LoginContainer extends Component {
 		}
 	}
 
-	loginStatus(){
-		return this.props.props.loginStatus
-	}
-
 	render(){
 		return(
 			<div className="container mt-5">

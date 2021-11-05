@@ -21,8 +21,12 @@ class Api::V1::BooksController < ApplicationController
 
 	def update
 		book = Book.find(params[:id])
-		book.update(book_params)
-		render json: book, except: [:created_at, :updated_at], status: :accepted
+		if current_user.id == book.user_id
+			book.update(book_params)
+			render json: book, except: [:created_at, :updated_at], status: :accepted
+		else
+			render json: {message: "You cannot edit this book"}
+		end
 	end
 
 

@@ -13,6 +13,7 @@ import { logout } from './actions/userActions'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import Alert from 'react-bootstrap/Alert'
 import BooksContainer from './containers/BooksContainer'
 import BookContainer from './containers/BookContainer'
 import EditBookContainer from './containers/EditBookContainer'
@@ -56,7 +57,7 @@ class App extends Component {
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/edit">
-             {!loggedIn(this.props.loginStatus) ? <Redirect to="/login" /> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
+             {!loggedIn(this.props.loginStatus) ? <Redirect to="/login" message="Please login to access the page"/> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
              </Route>
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
