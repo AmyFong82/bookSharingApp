@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux'
 import { loggedIn } from './components/users/loggedIn'
 import { logout } from './actions/userActions'
+import { redirect } from './containers/redirect'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -56,14 +57,7 @@ class App extends Component {
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
             <Route path="/books/:id/edit">
-             {!loggedIn(this.props.loginStatus) ? 
-              <Redirect to={{
-                              pathname: "/login",
-                              // search: "?utm=your+face",
-                              state: { message: "Please login to get access." }
-                            }}/> : 
-                            <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
-             {/*{!loggedIn(this.props.loginStatus) ? <Redirect to="/login" message="Please login to access the page"/> : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} */}
+             {!loggedIn(this.props.loginStatus) ? redirect() : <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
              </Route>
             <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} />
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
