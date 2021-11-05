@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Alert from 'react-bootstrap/Alert'
 
 import LoginForm from '../components/users/LoginForm'
 import SignupForm from '../components/users/SignupForm'
+import {alert} from './alert'
 
 
 class LoginContainer extends Component {
@@ -14,16 +14,12 @@ class LoginContainer extends Component {
 		}
 	}
 
-	alert = () => {
-		return <Alert variant="primary">{this.props.location.state.message}</Alert>
-	}
-
 	render(){
 		console.log(this.props)
 		return(
 			<div className="container mt-5">
 				<div className="row">
-					{this.props.location.state ? this.alert() : null}
+					{this.props.location.state ? alert(this.props) : null}
 					<LoginForm loginStatus={this.props.props.loginStatus} />
 					<SignupForm loginStatus={this.props.props.loginStatus} />
 				</div>
