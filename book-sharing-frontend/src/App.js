@@ -13,7 +13,6 @@ import { logout } from './actions/userActions'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Alert from 'react-bootstrap/Alert'
 import BooksContainer from './containers/BooksContainer'
 import BookContainer from './containers/BookContainer'
 import EditBookContainer from './containers/EditBookContainer'
@@ -60,7 +59,7 @@ class App extends Component {
              {!loggedIn(this.props.loginStatus) ? 
               <Redirect to={{
                               pathname: "/login",
-                              search: "?utm=your+face",
+                              // search: "?utm=your+face",
                               state: { message: "Please login to get access." }
                             }}/> : 
                             <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />} 
