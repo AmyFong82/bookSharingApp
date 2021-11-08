@@ -51,19 +51,24 @@ class App extends Component {
 
           <Switch>
             <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
+
             <Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : redirectToLogin()}
             </Route>
+
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
+
             <Route path="/books/:id/edit">
              {loggedIn(this.props.loginStatus) ? <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />
              : redirectToLogin()} 
              </Route>
+
             <Route path="/books/:id/request"> 
               {loggedIn(this.props.loginStatus) ? <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} /> 
               : redirectToLogin()}
             </Route>
+            
             <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
             <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
             <Route component={PageNotFound}/>
