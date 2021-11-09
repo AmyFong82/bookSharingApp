@@ -1,9 +1,12 @@
+import { createContext } from 'react'
 import { Route } from 'react-router-dom'
 import { loggedIn } from './components/users/loggedIn'
 import { redirectToLogin } from './containers/redirectToLogin'
 
-export function AuthorizedRoute({children, ...rest}) {
-	const auth = loggedIn(this.props.loginStatus)
+export const UserContext = createContext(null);
+
+function AuthorizedRoute({children, ...rest}) {
+	const auth = loggedIn(props.loginStatus)
 
 	return (
 		<Route 
@@ -29,3 +32,5 @@ const mapStateToProps = state => {
 		loginStatus: state.user.loginStatus
 	}
 }
+
+export default AuthorizedRoute
