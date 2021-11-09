@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import {
   BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import AuthorizedRoute from './AuthorizedRoute'
+import AuthorizedRoute, { UserContext } from './AuthorizedRoute'
 import { connect } from 'react-redux'
 import { loggedIn } from './components/users/loggedIn'
 import { logout } from './actions/userActions'
@@ -29,7 +29,9 @@ import NewBookForm from './components/books/NewBookForm'
 import PageNotFound from './containers/PageNotFound'
 
 
-class App extends Component {
+function App() {
+
+  const [user, setUser] = useState(null);
 
   render(props){
     return (
@@ -53,11 +55,16 @@ class App extends Component {
           <Switch>
             <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
 
-            <AuthorizedRoute path="/account" />
 
+            {/*<AuthorizedRoute path="/account" />*/}
+
+            <UserContext.Provider value="hello!">
+              <Route path ="/account" component={AccountContainer}>
             {/*<Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : redirectToLogin()}
             </Route>*/}
+
+            </UserContext.Provider>
 
             <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
             <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
