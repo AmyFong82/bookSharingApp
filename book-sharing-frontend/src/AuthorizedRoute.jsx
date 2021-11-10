@@ -6,7 +6,6 @@ import { redirectToLogin } from './containers/redirectToLogin'
 export const UserContext = createContext(null);
 
 function AuthorizedRoute({children, ...rest}) {
-	const auth = loggedIn(props.loginStatus)
 
 	return (
 		<Route 
@@ -27,10 +26,10 @@ function AuthorizedRoute({children, ...rest}) {
 	
 }
 
-const mapStateToProps = state => {
-	return {
-		loginStatus: state.user.loginStatus
-	}
-}
+// const mapStateToProps = state => {
+// 	return {
+// 		loginStatus: state.user.loginStatus
+// 	}
+// }
 
 export default AuthorizedRoute
