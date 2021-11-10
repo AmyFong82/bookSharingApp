@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import Container from 'react-bootstrap/Container';
 import {
   BrowserRouter as Router,
@@ -7,6 +7,7 @@ import {
   Redirect
 } from "react-router-dom";
 
+import AuthorizedRoute, { UserContext } from './AuthorizedRoute'
 import { connect } from 'react-redux'
 import { loggedIn } from './components/users/loggedIn'
 import { logout } from './actions/userActions'
@@ -29,9 +30,12 @@ import PageNotFound from './containers/PageNotFound'
 
 
 
-class App extends React.Component {
+function App(props) {
 
-  render(){
+  const [user, setUser] = useState("Amy");
+
+  // const userValue = useMemo(()=>({user, setUser}), [user, setUser])
+
     return (
       <Router>
         <Container className="app p-3">
@@ -42,10 +46,10 @@ class App extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/books">Books</Nav.Link>
-                    { loggedIn(this.props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
+                    { loggedIn(props.loginStatus) ? <Nav.Link href="/account">Account</Nav.Link> : null }
                   </Nav>
                     <ShareBookBtn />
-                  { loggedIn(this.props.loginStatus) ? <LogoutButton logout={this.props.logout} /> : <LoginButton/> }   
+                  { loggedIn(props.loginStatus) ? <LogoutButton logout={props.logout} /> : <LoginButton/> }   
                 </Navbar.Collapse>
             </Container>
           </Navbar>
@@ -53,33 +57,38 @@ class App extends React.Component {
           <Switch>
             <Route exact path={["/", "/books"]} render={routerProps => <BooksContainer {...routerProps} />} />
 
-            /*<Route exact path="/account"> 
+
+            {/*<AuthorizedRoute path="/account" />*/}
+
+            <UserContext.Provider value={}>
+              <Route path ="/account" component={AccountContainer} />
+            {/*<Route exact path="/account"> 
               {loggedIn(this.props.loginStatus) ? <AccountContainer /> : redirectToLogin()}
-            </Route>*/
+            </Route>*/}
 
+            </UserContext.Provider>
 
-            <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={this.props} />} />
-            <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={this.props}/>} />
+            <Route exact path="/login" render={routerProps => <LoginContainer {...routerProps} props={props} />} />
+            <Route exact path="/books/new" render={routerProps => <NewBookForm {...routerProps} props={props}/>} />
 
             <Route path="/books/:id/edit">
-             {loggedIn(this.props.loginStatus) ? <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={this.props} />} />
+             {loggedIn(props.loginStatus) ? <Route path="/books/:id/edit" render={routerProps => <EditBookContainer {...routerProps} props={props} />} />
              : redirectToLogin()} 
              </Route>
 
             <Route path="/books/:id/request"> 
-              {loggedIn(this.props.loginStatus) ? <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={this.props}/>} /> 
+              {loggedIn(props.loginStatus) ? <Route path="/books/:id/request" render={routerProps => <Request {...routerProps} props={props}/>} /> 
               : redirectToLogin()}
             </Route>
             
-            <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={this.props}/>} />
-            <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={this.props} />} />
+            <Route path="/books/:id" render={routerProps => <BookContainer {...routerProps} props={props}/>} />
+            <Route path="/requests/:id" render={routerProps => <CancelRequest {...routerProps} props={props} />} />
             <Route component={PageNotFound}/>
           </Switch>
         </Container>
       </Router>
 
     );
-  }
 }
 
 const mapStateToProps = state => {

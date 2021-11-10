@@ -3,10 +3,9 @@ import { Route } from 'react-router-dom'
 import { loggedIn } from './components/users/loggedIn'
 import { redirectToLogin } from './containers/redirectToLogin'
 
-export const UserContext = createContext(null);
+export const UserContext = createContext();
 
 function AuthorizedRoute({children, ...rest}) {
-
 	return (
 		<Route 
 			{...rest}
