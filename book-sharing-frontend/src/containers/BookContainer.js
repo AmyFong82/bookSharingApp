@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Book from '../components/books/Book'
-import EditBookBtn from "../components/books/EditBookBtn"
-import RequestBookBtn from "../components/books/RequestBookBtn"
+import EditBookBtn from "../components/books/editBookBtn"
+import RequestBookBtn from "../components/books/requestBookBtn"
 import { connect } from 'react-redux'
 
 import { showBook } from '../actions/bookActions'

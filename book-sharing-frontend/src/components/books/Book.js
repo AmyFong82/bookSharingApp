@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 import Card from 'react-bootstrap/Card';
 
-import EditBookBtn from './EditBookBtn'
-import RequestBookBtn from './RequestBookBtn'
+import EditBookBtn from './editBookBtn'
+import RequestBookBtn from './requestBookBtn'
 import DeleteBookBtn from './DeleteBookBtn'
 
 
